@@ -145,27 +145,6 @@ export async function adminView() {
     const container = app.querySelector('.container');
     container.querySelector('.spinner').remove();
 
-    const overviewHtml = `
-      <div class="admin-overview">
-        <div class="stat glass">
-          <div class="stat__value">${overview.totalStudents}</div>
-          <div class="stat__label">Students</div>
-        </div>
-        <div class="stat glass">
-          <div class="stat__value">${overview.totalRounds}</div>
-          <div class="stat__label">Total Rounds</div>
-        </div>
-        <div class="stat glass">
-          <div class="stat__value">${overview.avgScore}/${overview.quizLength}</div>
-          <div class="stat__label">Avg Score</div>
-        </div>
-        <div class="stat glass">
-          <div class="stat__value">${overview.activeToday}</div>
-          <div class="stat__label">Active Today</div>
-        </div>
-      </div>
-    `;
-
     // Cohort filter chips
     const allCohorts = [...new Set(students.map(s => s.cohort).filter(Boolean))].sort();
     let activeCohort = null;
@@ -260,7 +239,7 @@ export async function adminView() {
       }
     }
 
-    container.insertAdjacentHTML('beforeend', overviewHtml + '<div id="student-table-wrap"></div>');
+    container.insertAdjacentHTML('beforeend', '<div id="student-table-wrap"></div>');
     renderTable();
   } catch (e) {
     app.querySelector('.spinner').outerHTML = `<p class="text-muted text-center">Failed to load admin data</p>`;
