@@ -80,7 +80,7 @@ export async function adminStudentView(params) {
             </thead>
             <tbody>
               ${wrongQuestions.map((q, i) => `
-                <tr style="border-bottom:1px solid rgba(0,0,0,0.05);background:${i % 2 === 0 ? 'transparent' : 'rgba(0,0,0,0.02)'};">
+                <tr class="weak-spot-row" data-idx="${i}" style="border-bottom:1px solid rgba(0,0,0,0.05);background:${i % 2 === 0 ? 'transparent' : 'rgba(0,0,0,0.02)'};cursor:pointer;" onmouseover="this.style.background='rgba(255,20,147,0.06)'" onmouseout="this.style.background='${i % 2 === 0 ? 'transparent' : 'rgba(0,0,0,0.02)'}'">
                   <td style="padding:0.6rem 0.75rem;color:var(--card-text);line-height:1.4;max-width:480px;">${q.question}</td>
                   <td style="padding:0.6rem 0.75rem;white-space:nowrap;">
                     <span style="display:inline-block;padding:2px 8px;border-radius:12px;font-size:0.75rem;font-weight:600;background:rgba(0,0,0,0.06);color:var(--card-text-secondary);">${q.sectionName}</span>
@@ -108,6 +108,79 @@ export async function adminStudentView(params) {
       const hidden = body.style.display === 'none';
       body.style.display = hidden ? '' : 'none';
       chevron.textContent = hidden ? '▼' : '▶';
+    });
+
+    // Practice modal
+    function openPracticeModal(q) {
+      const existing = document.getElementById('practice-modal');
+      if (existing) existing.remove();
+
+      const tile1 = `--tile-1`; // CSS vars
+      const tileColors = ['var(--tile-1)', 'var(--tile-2)', 'var(--tile-3)', 'var(--tile-4)'];
+
+      // Shuffle options, track correct
+      const indices = [0, 1, 2, 3];
+      const shuffled = [...indices].sort(() => Math.random() - 0.5);
+      const shuffledOptions = shuffled.map(i => q.options[i]);
+      const correctShuffledIdx = shuffled.indexOf(q.correctIndex);
+
+      const tilesHtml = shuffledOptions.map((opt, i) => {
+        const len = opt.length;
+        const sizeClass = len > 60 ? 'option-btn--text-sm' : len > 25 ? 'option-btn--text-md' : '';
+        return `<button class="option-btn ${sizeClass}" data-index="${i}" style="background:${tileColors[i]};">
+          <span class="option-btn__num">${i + 1}</span>
+          ${opt}
+        </button>`;
+      }).join('');
+
+      const modal = document.createElement('div');
+      modal.id = 'practice-modal';
+      modal.innerHTML = `
+        <div class="practice-backdrop"></div>
+        <div class="practice-modal">
+          <div class="practice-modal__meta">${q.sectionName} · missed ${q.missCount}×</div>
+          <div class="question-banner" style="margin-bottom:1.25rem;">
+            <p class="question-banner__text">${q.question}</p>
+          </div>
+          <div class="option-tiles" style="margin-bottom:1.5rem;">${tilesHtml}</div>
+          <div id="practice-result" style="min-height:2rem;text-align:center;"></div>
+          <button class="btn btn--ghost practice-modal__back" style="display:block;margin:1rem auto 0;">← Back to Weak Spots</button>
+        </div>
+      `;
+      document.body.appendChild(modal);
+
+      const close = () => { modal.remove(); };
+      modal.querySelector('.practice-backdrop').addEventListener('click', close);
+      modal.querySelector('.practice-modal__back').addEventListener('click', close);
+
+      modal.querySelectorAll('.option-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const selected = parseInt(btn.dataset.index);
+          modal.querySelectorAll('.option-btn').forEach(b => {
+            b.disabled = true;
+            const idx = parseInt(b.dataset.index);
+            if (idx === correctShuffledIdx) {
+              b.classList.add('option-btn--correct');
+            } else if (idx === selected && selected !== correctShuffledIdx) {
+              b.classList.add('option-btn--wrong');
+            } else {
+              b.classList.add('option-btn--dimmed');
+            }
+          });
+          const result = modal.querySelector('#practice-result');
+          if (selected === correctShuffledIdx) {
+            result.innerHTML = `<span style="color:var(--success);font-weight:700;font-size:1.1rem;">★ Correct!</span>`;
+          } else {
+            result.innerHTML = `<span style="color:var(--error);font-weight:700;font-size:1.1rem;">✗ Wrong — correct answer highlighted above</span>`;
+          }
+        });
+      });
+    }
+
+    // Bind row clicks in weak spots table
+    document.querySelectorAll('.weak-spot-row').forEach(row => {
+      const idx = parseInt(row.dataset.idx);
+      row.addEventListener('click', () => openPracticeModal(wrongQuestions[idx]));
     });
   } catch (e) {
     app.querySelector('.spinner').outerHTML = `<p class="text-muted text-center">Failed to load student data</p>`;

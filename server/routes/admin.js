@@ -69,7 +69,7 @@ router.get('/students/:id', (req, res) => {
 
   // Lifetime wrong answers grouped by question, sorted by miss count desc
   const wrongQuestions = db.prepare(`
-    SELECT q.id, q.question, q.topic,
+    SELECT q.id, q.question, q.topic, q.options, q.answer as correctIndex,
       COUNT(*) as missCount,
       SUM(CASE WHEN qa.is_correct = 1 THEN 1 ELSE 0 END) as correctCount
     FROM quiz_answers qa
@@ -80,6 +80,7 @@ router.get('/students/:id', (req, res) => {
     ORDER BY missCount DESC
   `).all(student.id).map(q => ({
     ...q,
+    options: JSON.parse(q.options),
     sectionName: SECTION_MAP[q.topic] || 'Unknown',
   }));
 
