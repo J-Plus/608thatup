@@ -80,6 +80,13 @@ try {
   // Column already exists
 }
 
+// Migration: add is_active column to questions (soft-delete for removed questions)
+try {
+  db.exec(`ALTER TABLE questions ADD COLUMN is_active INTEGER NOT NULL DEFAULT 1`);
+} catch (e) {
+  // Column already exists
+}
+
 db.exec(`CREATE INDEX IF NOT EXISTS idx_users_cohort ON users(cohort)`);
 
 db.exec(`

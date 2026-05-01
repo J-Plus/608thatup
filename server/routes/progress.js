@@ -20,7 +20,7 @@ router.get('/summary', (req, res) => {
     `).all(req.user.id, topic).map(r => r.reward_type);
 
     const questionCount = db.prepare(`
-      SELECT COUNT(*) as count FROM questions WHERE topic = ?
+      SELECT COUNT(*) as count FROM questions WHERE topic = ? AND is_active = 1
     `).get(topic).count;
 
     // Count wrong answers from last 10 rounds for retrain button visibility

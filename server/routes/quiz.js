@@ -24,7 +24,7 @@ router.get('/questions', (req, res) => {
     return res.status(400).json({ error: 'Invalid topic (0-3)' });
   }
 
-  const allQuestions = db.prepare('SELECT * FROM questions WHERE topic = ?').all(topic);
+  const allQuestions = db.prepare('SELECT * FROM questions WHERE topic = ? AND is_active = 1').all(topic);
   const selected = shuffleArray(allQuestions).slice(0, QUIZ_LENGTH);
 
   const quizQuestions = selected.map(q => {
@@ -123,7 +123,7 @@ router.get('/retrain', (req, res) => {
   // Cap at RETRAIN_LENGTH — already sorted by missCount desc so worst ones come first
   const questionIds = wrongAnswers.slice(0, RETRAIN_LENGTH).map(w => w.question_id);
   const qPlaceholders = questionIds.map(() => '?').join(',');
-  const dbQuestions = db.prepare(`SELECT * FROM questions WHERE id IN (${qPlaceholders})`).all(...questionIds);
+  const dbQuestions = db.prepare(`SELECT * FROM questions WHERE id IN (${qPlaceholders}) AND is_active = 1`).all(...questionIds);
 
   const quizQuestions = dbQuestions.map(q => {
     const options = JSON.parse(q.options);
@@ -311,7 +311,7 @@ router.get('/classroom', (req, res) => {
     return res.status(400).json({ error: 'Invalid topic (0-3)' });
   }
 
-  const allQuestions = db.prepare('SELECT * FROM questions WHERE topic = ?').all(topic);
+  const allQuestions = db.prepare('SELECT * FROM questions WHERE topic = ? AND is_active = 1').all(topic);
   const count = Math.min(CLASSROOM_LENGTH, allQuestions.length);
   const selected = shuffleArray(allQuestions).slice(0, count);
 
