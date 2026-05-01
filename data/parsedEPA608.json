@@ -1,0 +1,4812 @@
+[
+  {
+    "id": "0-1",
+    "question": "A disposable cylinder should be reduced to what pressure before scrapping?",
+    "options": [
+      "0 psig",
+      "20 psig",
+      "50 psig",
+      "80 psig"
+    ],
+    "answer": 0,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-2",
+    "question": "A major system repair is being performed on an R-22 appliance. What CANNOT be done to recharge the appliance?",
+    "options": [
+      "Add R-22 after the repair is completed.",
+      "Retrofit the unit to R-407C.",
+      "Use recovered or recycled R-22 from the same owner.",
+      "Top off the unit with R-410A."
+    ],
+    "answer": 3,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-3",
+    "question": "A refillable refrigerant cylinder must not be filled above what percent of its capacity by weight:",
+    "options": [
+      "50%",
+      "70%",
+      "80%",
+      "95%"
+    ],
+    "answer": 2,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-4",
+    "question": "A refrigerant label is placed on a;",
+    "options": [
+      "refrigerant cylinder to be returned for reclaiming.",
+      "truck to identify cylinder hauler.",
+      "cylinder to identify gross weight.",
+      "cylinder to identify pressure."
+    ],
+    "answer": 0,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-5",
+    "question": "A refrigerant label to identify the type of refrigerant recovered is placed on recovery cylinders for all of the following reasons, EXCEPT to:",
+    "options": [
+      "Avoid accidental mixing of recovered refrigerants.",
+      "Allow the recycler to identify the contents.",
+      "Tell if the cylinder is safe.",
+      "Allow the technician's company to determine the amount of refrigerant recovered for record keeping purposes."
+    ],
+    "answer": 2,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-6",
+    "question": "According to the ASHRAE refrigerant safety classification standard, which of the following designations would be the safest?",
+    "options": [
+      "A-1",
+      "A-3",
+      "B-1",
+      "B-3"
+    ],
+    "answer": 0,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-7",
+    "question": "After the phase-out of a refrigerant, where will supplies of that refrigerant for equipment servicing come from?",
+    "options": [
+      "Recovery and reclaimed gas",
+      "Solvent conversion",
+      "Foreign manufacturers",
+      "Exemptions granted under the Montreal Protocol"
+    ],
+    "answer": 0,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-8",
+    "question": "Although the saturation pressure-temperature behavior of two refrigerants might be similar, of all the following characteristics of the refrigerants being compared what must also be considered?",
+    "options": [
+      "Latent heat of evaporation",
+      "Cooling effect per volume",
+      "Necessary volumetric displacement of the compressor",
+      "Potential to oxidize copper tubing"
+    ],
+    "answer": 2,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-9",
+    "question": "An example of a CFC refrigerant is:",
+    "options": [
+      "R-134a",
+      "R-123",
+      "R-22",
+      "R-12"
+    ],
+    "answer": 3,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-10",
+    "question": "Approved refrigerant recovery cylinders can be identified by which color code?",
+    "options": [
+      "Gray tops and yellow bodies",
+      "Blue tops and green bodies",
+      "Yellow tops and gray bodies",
+      "Green tops and gray bodies"
+    ],
+    "answer": 2,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-11",
+    "question": "As of 2017, how much can a technician be fined for violating the Clean Air Act, including knowingly releasing non-exempt refrigerant from appliances?",
+    "options": [
+      "$10,000 per day per violation",
+      "$17,531 per day per violation",
+      "$27,500 per day per violation",
+      "$44,539 per day per violation"
+    ],
+    "answer": 3,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-12",
+    "question": "Chlorofluorocarbons (CFCs), hydrochlorofluorocarbons (HCFCs) and hydrofluorocarbons (HFCs) have which of the following in common?",
+    "options": [
+      "They deplete the stratospheric ozone layer.",
+      "They contain chlorine.",
+      "They must be recovered before opening or disposing of appliances.",
+      "They have the same saturation pressure at 70°F."
+    ],
+    "answer": 2,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-13",
+    "question": "Distributors must verify which of the following before they can sell HFC or HCFC refrigerant?",
+    "options": [
+      "The distributor is a Section 608 certified distributor.",
+      "The distributor is selling Section 608 certified refrigerant.",
+      "The purchaser owns certified recovery and/or recycling equipment.",
+      "The purchaser is or employs a Section 608 certified technician."
+    ],
+    "answer": 3,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-14",
+    "question": "During servicing of a refrigeration system containing either R-22 or R-410A, the refrigerant must be:",
+    "options": [
+      "Replaced with R-32",
+      "Recovered",
+      "Vented",
+      "Destroyed"
+    ],
+    "answer": 1,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-15",
+    "question": "EPA does NOT require technicians (or the company employing the technician) to keep which of the following records when disposing of appliances with 5-50 pounds of refrigerant?",
+    "options": [
+      "The model and serial number of the appliance.",
+      "The type of refrigerant recovered.",
+      "The quantity of refrigerant, by type, recovered from disposed appliances in each calendar month.",
+      "The quantity of refrigerant, by type, sent for reclamation or destruction."
+    ],
+    "answer": 0,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-16",
+    "question": "For accurate readings during evacuation, how should the vacuum gauge be connected to the system?",
+    "options": [
+      "At the pump discharge.",
+      "As far from the vacuum pump as possible.",
+      "Directly to the pump suction.",
+      "Anywhere in the evacuation service hose."
+    ],
+    "answer": 1,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-17",
+    "question": "For an appliance that uses a CFC, HCFC, or HFC refrigerant, which of the following violates the prohibition on venting?",
+    "options": [
+      "Accidental releases associated with timely repair of an appliance.",
+      "Refrigerants emitted when cutting a line without properly evacuating the appliance.",
+      "Refrigerants emitted in a catastrophic failure of an appliance.",
+      "Refrigerants emitted when connecting or disconnecting low loss hoses to charge or service an appliance."
+    ],
+    "answer": 1,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-18",
+    "question": "From which of the following does the ozone layer protect the earth?",
+    "options": [
+      "Nuclear radiation from the Van Allen belt",
+      "Gamma radiation from the sun",
+      "Ultraviolet radiation from the sun",
+      "Infrared radiation from the sun"
+    ],
+    "answer": 2,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-19",
+    "question": "HCFC refrigerants contain which of the following?",
+    "options": [
+      "Helium, carbon, fluorine & chlorine",
+      "Hydrogen, chlorine, ferrite & carbon",
+      "Hydrogen, chlorine, fluorine & carbon",
+      "Hydrogen, chlorine, fluorine & calcium"
+    ],
+    "answer": 2,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-20",
+    "question": "HFC refrigerants contain which of the following?",
+    "options": [
+      "Chlorine, fluorine & carbon",
+      "Chlorine, fluorine & hydrogen",
+      "Hydrogen, chlorine & carbon",
+      "Hydrogen, fluorine & carbon"
+    ],
+    "answer": 3,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-21",
+    "question": "How do refrigerant blends leak from a system?",
+    "options": [
+      "At a faster rate than other refrigerants.",
+      "At uneven rates due to different vapor pressures.",
+      "At a slower rate than other refrigerants.",
+      "In exactly the same way as all other refrigerants."
+    ],
+    "answer": 1,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-22",
+    "question": "How do the global warming potentials of isobutane (R 600a), propane (R-290), and R-441A compare to the GWPs of HFC-134a, R-404A, and R-410A?",
+    "options": [
+      "They are significantly higher",
+      "They are significantly lower",
+      "They are approximately equal",
+      "They are just slightly higher"
+    ],
+    "answer": 1,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-23",
+    "question": "How does cooling occur in a direct expansion vapor compression refrigeration system?",
+    "options": [
+      "When the refrigerant vapor turns to a liquid.",
+      "When the refrigerant is under maximum pressure.",
+      "When the liquid refrigerant is vaporized.",
+      "When the refrigerant gives off heat."
+    ],
+    "answer": 2,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-24",
+    "question": "How does the global warming potential of R-410A compare to carbon dioxide?",
+    "options": [
+      "It is lower.",
+      "They are equal.",
+      "It is hundreds of times greater.",
+      "It is thousands of times greater."
+    ],
+    "answer": 3,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-25",
+    "question": "How frequently must reusable containers for refrigerants that are under high pressure (above 15 psig) at normal ambient temperature be hydrostatically tested?",
+    "options": [
+      "1 year",
+      "2 years",
+      "5 years",
+      "10 years"
+    ],
+    "answer": 2,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-26",
+    "question": "How many different refrigerants may be recovered into the same cylinder?",
+    "options": [
+      "Only one.",
+      "Only two.",
+      "Any number as long as all are CFCs.",
+      "Depends on the reclaim company."
+    ],
+    "answer": 0,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-27",
+    "question": "How many ozone molecules can each chlorine atom in the stratosphere destroy?",
+    "options": [
+      "1,000 molecules",
+      "100,000 molecules",
+      "100,000,000 molecules",
+      "None. Chlorine is not the element in refrigerant that harms ozone."
+    ],
+    "answer": 1,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-28",
+    "question": "How should disposable cylinders of CFCs, HCFCs, and HFCs be discarded?",
+    "options": [
+      "Bleed any remaining refrigerant to ambient air and put the cylinders into a trash dumpster.",
+      "Recover all remaining refrigerant, render the cylinders useless and recycle the metal.",
+      "Refill the cylinders at an approved facility and reuse.",
+      "Reuse the cylinders as recovery tanks."
+    ],
+    "answer": 1,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-29",
+    "question": "How should refrigerant blends be charged?",
+    "options": [
+      "As a vapor.",
+      "At very high temperatures.",
+      "As a liquid.",
+      "The same as any other refrigerant."
+    ],
+    "answer": 2,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-30",
+    "question": "How should refrigerant cylinders be positioned when they are shipped?",
+    "options": [
+      "Inverted",
+      "Upright",
+      "Horizontally",
+      "Stacked"
+    ],
+    "answer": 1,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-31",
+    "question": "In addition to fines and being required to appear in court, what penalty can be imposed on service technicians who violate Clean Air Act provisions?",
+    "options": [
+      "They may lose their certification.",
+      "They may have equipment confiscated .",
+      "They may be required to take mandatory training.",
+      "They may be required to pass an online test."
+    ],
+    "answer": 0,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-32",
+    "question": "In general, which elastomers for use in seals and gaskets are NOT compatible with HFO refrigerants?",
+    "options": [
+      "Neoprene",
+      "Silicone",
+      "Ethylene-Propylene-Diene monomer rubber",
+      "None"
+    ],
+    "answer": 2,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-33",
+    "question": "In the event of a large release of CFC, HCFC, or HFC refrigerant in a contained area which of the following is true?",
+    "options": [
+      "Safety goggles and lined butyl gloves are sufficient.",
+      "Self-contained breathing apparatus {SCBA) or leaving the area is required.",
+      "Respiratory protection is not required.",
+      "Dust masks are sufficient."
+    ],
+    "answer": 1,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-34",
+    "question": "In what state does refrigerant enter the compressor of a refrigeration system?",
+    "options": [
+      "Liquid",
+      "Sub-cooled liquid",
+      "Sub-cooled vapor",
+      "Superheated vapor"
+    ],
+    "answer": 3,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-35",
+    "question": "In what state does the refrigerant leave the condenser?",
+    "options": [
+      "Low pressure liquid",
+      "Low pressure vapor",
+      "High pressure liquid",
+      "High pressure vapor"
+    ],
+    "answer": 2,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-36",
+    "question": "In what state should a system be to measure a final system vacuum?",
+    "options": [
+      "With the gas ballast open.",
+      "With the vacuum pump operating.",
+      "With the system heated.",
+      "With the system isolated and the vacuum pump turned off."
+    ],
+    "answer": 3,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-37",
+    "question": "In which component of a system does the refrigerant change from a high-pressure vapor to a high pressure liquid?",
+    "options": [
+      "Receiver",
+      "Metering device",
+      "Accumulator",
+      "Condenser"
+    ],
+    "answer": 3,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-38",
+    "question": "In which of the following scenarios can refrigerant be vented?",
+    "options": [
+      "Releasing R-410A from household refrigerators.",
+      "Releasing mixed refrigerant from a recovery cylinder.",
+      "Releasing isobutane from a household freezer.",
+      "Releasing R-22 from appliances with a charge less than 5 pounds."
+    ],
+    "answer": 2,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-39",
+    "question": "Manufacturers often color code the exterior of gauges. What color is the high pressure gauge on a typical gauge manifold set?",
+    "options": [
+      "Green",
+      "Yellow",
+      "Blue",
+      "Red"
+    ],
+    "answer": 3,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-40",
+    "question": "One should NEVER heat a refrigerant storage or recovery tank with an open flame because of all of the following, EXCEPT?",
+    "options": [
+      "Reclaimers will not accept visibly burned recovery tanks",
+      "It can result in venting refrigerant to the atmosphere",
+      "The tank may explode, causing serious injury to people nearby",
+      "Refrigerant in the tank may decompose, forming a toxic material"
+    ],
+    "answer": 0,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-41",
+    "question": "Over-evacuation of a system;",
+    "options": [
+      "causes tube collapse.",
+      "damages vacuum gauges.",
+      "causes vacuum pump damage.",
+      "does not occur."
+    ],
+    "answer": 3,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-42",
+    "question": "Ozone depletion in the stratosphere is what type of problem?",
+    "options": [
+      "Local",
+      "Regional",
+      "National",
+      "Global"
+    ],
+    "answer": 3,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-43",
+    "question": "Portable refillable tanks or containers used to ship CFC or HCFC refrigerants obtained with recovery equipment must meet what standard(s)?",
+    "options": [
+      "Department of Transportation",
+      "Community Right to Know Act",
+      "Underwriters Laboratories",
+      "All of the above"
+    ],
+    "answer": 0,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-44",
+    "question": "Recovery equipment that relies on the compressor in the appliance and/or the pressure of the refrigerant in the appliance would be considered:",
+    "options": [
+      "System-dependent",
+      "Self-contained",
+      "A packaged terminal unit",
+      "Self-sufficient"
+    ],
+    "answer": 0,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-45",
+    "question": "Refrigerant cylinders should be all of the following, EXCEPT:",
+    "options": [
+      "Be free of rust and damage.",
+      "Filled to 95% of capacity.",
+      "Be labeled.",
+      "Be secure."
+    ],
+    "answer": 1,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-46",
+    "question": "Refrigerant will migrate to a compressor's crankcase when there is a difference between the oil pressure and what characteristic of the refrigerant?",
+    "options": [
+      "Vapor pressure",
+      "Acidity",
+      "Volume",
+      "Density"
+    ],
+    "answer": 0,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-47",
+    "question": "State and local governments may;",
+    "options": [
+      "not establish any laws related to refrigerants.",
+      "establish laws that are not as strict as the Clean Air Act/EPA regulations.",
+      "establish laws that contain stricter requirements than the Clean Air Act/EPA regulations.",
+      "establish laws that exempt refrigerants from the Clean Air Act."
+    ],
+    "answer": 2,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-48",
+    "question": "The color marking that is required on all pipes, hoses, or other devices through which a flammable refrigerant passes and where a service connection is probable, must extend a minimum of how many inch(es) in both directions from such locations?",
+    "options": [
+      "1",
+      "2.5",
+      "3.5",
+      "4.6"
+    ],
+    "answer": 1,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-49",
+    "question": "The date when the production and import of new R-22 in the U.S. ends is;",
+    "options": [
+      "2018",
+      "2020",
+      "2022",
+      "2025"
+    ],
+    "answer": 1,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-50",
+    "question": "The Department of Transportation regulations require which parameter to be recorded on the shipping paper for hazard class 2.2 Nonflammable Compressed Gases?",
+    "options": [
+      "Weight of each cylinder",
+      "Total cubic feet of each gas",
+      "Number of cylinders of each gas",
+      "Total weight of all cylinders"
+    ],
+    "answer": 0,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-51",
+    "question": "The piping connection to the vacuum pump should be;",
+    "options": [
+      "as short in length and as large in diameter as possible.",
+      "suitably sized to connect to a gauge manifold.",
+      "coiled and taped together.",
+      "colored red or blue to meet codes."
+    ],
+    "answer": 0,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-52",
+    "question": "The term \"retrofit\" refers to a change to the appliance in order to do what?",
+    "options": [
+      "Replace one of the major components.",
+      "Repair it for use with different compressor.",
+      "Convert it to use less energy.",
+      "Convert it to use a different refrigerant."
+    ],
+    "answer": 3,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-53",
+    "question": "Under EPA's regulations, what standard must reclaimed refrigerant meet before it can be resold?",
+    "options": [
+      "AHRI 700",
+      "EPA 700",
+      "ASHRAE 700",
+      "UL 700"
+    ],
+    "answer": 0,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-54",
+    "question": "Under the Section 608 \"safe disposal requirements\", who is responsible for ensuring that refrigerant has been removed from household refrigerators before they are disposed of?",
+    "options": [
+      "The final person in the disposal chain.",
+      "The service technician who last worked on the equipment.",
+      "The manager/supervisor of the service company that last serviced the equipment.",
+      "The Environmental Protection Agency field staff."
+    ],
+    "answer": 0,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-55",
+    "question": "Under what conditions may you use a disposable cylinder to recover refrigerant?",
+    "options": [
+      "When the system contains the same refrigerant as the cylinder.",
+      "When the system contains less than 10 lbs. of refrigerant.",
+      "When disposing of the refrigerant.",
+      "Never"
+    ],
+    "answer": 3,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-56",
+    "question": "Upon completion of refrigerant liquid transfer between recovery unit and the refrigeration system, you should guard against trapping;",
+    "options": [
+      "oil in the transfer unit receiver.",
+      "oil in the refrigeration system's cooler.",
+      "liquid refrigerant in the service hose between closed service valves.",
+      "liquid refrigerant in the recovery receiver."
+    ],
+    "answer": 2,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-57",
+    "question": "Vacuum lines (hoses) should be;",
+    "options": [
+      "orange in color for safety reasons.",
+      "as long as possible.",
+      "smaller than pump intake connection.",
+      "equal to or larger than pump intake connection."
+    ],
+    "answer": 3,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-58",
+    "question": "What are the characteristics of hydrofluorooletins (HFOs)?",
+    "options": [
+      "Non-ozone depleting, and have high global warming potentials.",
+      "Non-ozone depleting, and have a low global warming potentials.",
+      "Ozone depleting, and have high global warming potentials.",
+      "Ozone depleting, and have low global warming potentials."
+    ],
+    "answer": 1,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-59",
+    "question": "What can ester based oils be mixed with?",
+    "options": [
+      "Pag oils",
+      "Paraffinic mineral oils",
+      "Alkylbenzene oils",
+      "No other oils"
+    ],
+    "answer": 3,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-60",
+    "question": "What characteristic of HFC refrigerants make them damaging to the environment?",
+    "options": [
+      "They are toxic to plants and animals at low doses.",
+      "They contain chlorine which damages the ozone layer.",
+      "They have a high Ozone Depletion Potential (ODP).",
+      "They can have very high global warming potentials."
+    ],
+    "answer": 3,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-61",
+    "question": "What characteristic(s) of CFCs and HCFCs make them more likely to reach the stratosphere than most other compounds containing chlorine?",
+    "options": [
+      "They do not dissolve in water or easily break down in the atmosphere.",
+      "They are lighter than other chlorine compounds, making it easier for them to reach the stratosphere when released.",
+      "They are stored under pressure, causing them to jet upward when released.",
+      "They are attracted to ultraviolet radiation."
+    ],
+    "answer": 0,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-62",
+    "question": "What does a Section 608 certification allow a technician to do?",
+    "options": [
+      "Import R-22 from overseas.",
+      "Purchase or handle controlled refrigerants.",
+      "Service motor vehicle air conditioners.",
+      "Perform any type of work on any type of HVACR equipment."
+    ],
+    "answer": 1,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-63",
+    "question": "What does ozone depletion potential (or 'ODP') measure?",
+    "options": [
+      "The ability of a substance to cause global warming.",
+      "The ability of a substance to destroy ozone in the stratosphere.",
+      "A rating of health hazards caused by ozone depletion.",
+      "The length of time a refrigerant stays in the atmosphere."
+    ],
+    "answer": 1,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-64",
+    "question": "What does ozone in the stratosphere above the earth consist of?",
+    "options": [
+      "Molecules containing 2 oxygen atoms.",
+      "Molecules containing 3 oxygen atoms.",
+      "Molecules containing 4 oxygen atoms.",
+      "Molecules containing 5 oxygen atoms."
+    ],
+    "answer": 1,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-65",
+    "question": "What effect will low ambient temperatures have on recovery?",
+    "options": [
+      "Shortened recovery time.",
+      "Increase the recovery time.",
+      "Minimize emissions.",
+      "Require frequent drier changes."
+    ],
+    "answer": 1,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-66",
+    "question": "What evidence demonstrates that chlorine in the stratosphere is primarily from man-made chemicals rather than from natural sources such as volcanoes?",
+    "options": [
+      "The rise in the amount of chlorine measured in the stratosphere matches the rise in the amount of fluorine, which has different natural sources than chlorine, over the same period.",
+      "The rise in the amount of chlorine measured in the stratosphere matches the rise in ODS emissions over the same period.",
+      "Samples of air taken from the stratosphere over erupting volcanoes show that volcanoes contribute a small quantity of chlorine to the stratosphere compared to CFCs and HCFCs.",
+      "All of the listed reasons."
+    ],
+    "answer": 3,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-67",
+    "question": "What gas should be used to leak check a system designed for use with R-410A that has been opened for a major system repair?",
+    "options": [
+      "Any available HFC.",
+      "Any available HCFC.",
+      "Pressurized nitrogen.",
+      "Compressed air."
+    ],
+    "answer": 2,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-68",
+    "question": "What happens if EPA regulations change after a technician becomes certified?",
+    "options": [
+      "The technician certification is grandfathered for one year to allow time for recertification.",
+      "It will be the technician's responsibility to comply with any future changes in the law.",
+      "The technician must take a new online certification test.",
+      "The technician must attend a class to become recertified."
+    ],
+    "answer": 1,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-69",
+    "question": "What is a characteristic of a refrigerant oil that is hygroscopic?",
+    "options": [
+      "It is a good lubricant.",
+      "It is crude oil and unrefined.",
+      "It readily absorbs moisture.",
+      "It can be left open to the ambient air."
+    ],
+    "answer": 2,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-70",
+    "question": "What is a ternary blend refrigerant?",
+    "options": [
+      "A two-part mixture",
+      "A three-part mixture",
+      "A four-part mixture",
+      "A five-part mixture"
+    ],
+    "answer": 1,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-71",
+    "question": "What is being done in the U.S. to stop damage to the stratospheric ozone layer?",
+    "options": [
+      "Using natural gas instead of coal to generate electricity.",
+      "Phasing out the use of chlorofluorocarbons and hydrochlorofluorocarbons.",
+      "Enforcing strict emission requirements on incinerators.",
+      "Increasing the energy efficiency of air conditioners."
+    ],
+    "answer": 1,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-72",
+    "question": "What is one of the most serious results of damage to the stratospheric ozone layer?",
+    "options": [
+      "Increased acid rain.",
+      "Increased rates of asthma.",
+      "Increased rates of skin cancer in humans.",
+      "Higher natural background radioactivity."
+    ],
+    "answer": 2,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-73",
+    "question": "What is the center port on a three port manifold used for?",
+    "options": [
+      "Obtaining gauge readings.",
+      "Pumping air into system.",
+      "By-pass from low to high side.",
+      "Recovery, evacuation, and charging."
+    ],
+    "answer": 3,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-74",
+    "question": "What is the Montreal Protocol?",
+    "options": [
+      "An international treaty that addresses ozone depleting substances and their alternatives.",
+      "A test for energy efficiency adopted by the Canadian government.",
+      "A procedure for measuring levels of CFCs in the atmosphere.",
+      "A test for ozone concentration."
+    ],
+    "answer": 0,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-75",
+    "question": "What is the name of EPA's program that identifies refrigerants with lower overall risks to human health and the environment?",
+    "options": [
+      "The Significant New Alternatives Policy (SNAP) Program",
+      "The GreenChill Program",
+      "The Approved ASHRAE List {AAL)",
+      "Energy Star"
+    ],
+    "answer": 0,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-76",
+    "question": "What is the phaseout date for the production and import of new R-22 in the U.S.?",
+    "options": [
+      "2018",
+      "2020",
+      "2022",
+      "2025"
+    ],
+    "answer": 1,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-77",
+    "question": "What is the state of the refrigerant entering the compressor of a refrigeration system?",
+    "options": [
+      "Low pressure liquid",
+      "Low pressure vapor",
+      "High pressure liquid",
+      "High pressure vapor"
+    ],
+    "answer": 1,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-78",
+    "question": "What is the strongest evidence that HCFCs are in the stratosphere?",
+    "options": [
+      "Chemical reactions predict there should be HCFCs in the upper atmosphere.",
+      "Measurement of chlorine in air samples from the lower atmosphere.",
+      "Measurement of HCFCs in air samples from the stratosphere.",
+      "Satellite measurements of light passing through the atmosphere."
+    ],
+    "answer": 2,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-79",
+    "question": "What is the term for removing refrigerant in any condition from a system and storing it in an external container without necessarily testing or processing it in any way?",
+    "options": [
+      "Recycling",
+      "Recovering",
+      "Reclaiming",
+      "Restoring"
+    ],
+    "answer": 1,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-80",
+    "question": "What is the term used to describe the fact that a refrigerant blend has a range of bubble or dew points at a constant pressure?",
+    "options": [
+      "Pressure slump",
+      "Mixture glide",
+      "Fractionation",
+      "Temperature glide"
+    ],
+    "answer": 3,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-81",
+    "question": "What is unique about an azeotropic refrigerant mixture?",
+    "options": [
+      "It is a mixture of refrigerants that is easily made.",
+      "It has a pressure temperature curve identical to one of its components.",
+      "It may not be charged in the vapor phase and must only be charged in the liquid phase.",
+      "It is a mixture that acts like a single component refrigerant over its entire range."
+    ],
+    "answer": 3,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-82",
+    "question": "What must be done before disposing of any appliance containing a CFC, HCFC, or HFC refrigerant?",
+    "options": [
+      "Recover the refrigerant.",
+      "Purge the appliance with nitrogen.",
+      "Flush the appliance with R-134a.",
+      "Seal the appliance so no refrigerant can escape."
+    ],
+    "answer": 0,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-83",
+    "question": "What must be done before shipping any used refrigerant in a cylinder?",
+    "options": [
+      "Properly label the refrigerant container.",
+      "Fill the cylinder to capacity.",
+      "Check that the recipient is Section 608 certified to recycle refrigerant.",
+      "Pressure check the refrigerant."
+    ],
+    "answer": 0,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-84",
+    "question": "What range is displayed on a high pressure gauge on a service manifold?",
+    "options": [
+      "500 microns to 0 psi",
+      "0 to 200 psi",
+      "0 to 800 psi",
+      "250 psi to 750 psi"
+    ],
+    "answer": 2,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-85",
+    "question": "What should a technician do if they discover that some R-410A was added to an R-22 system?",
+    "options": [
+      "Vent the refrigerant since it cannot be reclaimed.",
+      "Recycle the refrigerant.",
+      "Recover the mixture in a separate recovery tank.",
+      "Recover and use in another system."
+    ],
+    "answer": 2,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-86",
+    "question": "What should a technician do if they lose their Section 608 certification card?",
+    "options": [
+      "Request a replacement from the EPA.",
+      "Request a replacement from their certifying organization.",
+      "Remain silent so as not to tell anyone they are out of compliance with that requirement.",
+      "Have your friend vouch for you."
+    ],
+    "answer": 1,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-87",
+    "question": "What should the technician review when working with any solvents, chemicals, or refrigerants?",
+    "options": [
+      "Moisture solubility data sheets (MSDS)",
+      "Chemical compound reference sheets (CCRS)",
+      "Safety data sheets (SOS)",
+      "Chemical composition reference sheets (CCRS)"
+    ],
+    "answer": 2,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-88",
+    "question": "What synthetic lubricant is presently used with ternary blends containing HCFCs?",
+    "options": [
+      "Alkylbenzene",
+      "Glycol",
+      "Ester",
+      "Castor oil"
+    ],
+    "answer": 0,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-89",
+    "question": "What type of synthetic oils are commonly used in new HFC systems and for retrofitting HCFC equipment to HFC refrigerants?",
+    "options": [
+      "Polyolester",
+      "Glycol",
+      "Alkyl-benzene",
+      "Mineral oil"
+    ],
+    "answer": 0,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-90",
+    "question": "What units does a compound pressure gauge for the low side of the system measure pressure in?",
+    "options": [
+      "Psia",
+      "Torrs and microns",
+      "Psig and inches of mercury",
+      "Psia and microns"
+    ],
+    "answer": 2,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-91",
+    "question": "What will the capacity of a vacuum pump and its suction line size determine?",
+    "options": [
+      "Where the vacuum hose is connected to the system.",
+      "The length of dehydration time.",
+      "The type of refrigerant that can be charged.",
+      "The viscosity of the oil that can be used in the system."
+    ],
+    "answer": 1,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-92",
+    "question": "When corrosion is found within the body of a relief valve, the valve must be:",
+    "options": [
+      "Repaired",
+      "Reconditioned",
+      "Cleaned",
+      "Replaced"
+    ],
+    "answer": 3,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-93",
+    "question": "When do EPA's refrigerant management regulations exempt refrigerant from the venting prohibition?",
+    "options": [
+      "When the EPA has determined that the refrigerant in that type of appliance does not pose a threat to the environment if released.",
+      "When you do not vent refrigerant in excess of the leak rate threshold.",
+      "When there are no available disposal facilities.",
+      "When it is done in a well-ventilated area."
+    ],
+    "answer": 0,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-94",
+    "question": "When is a system considered dehydrated?",
+    "options": [
+      "The vacuum indicator shows you have reached and held a vacuum of 500 microns or less.",
+      "The vacuum pump has run at least 12 hours.",
+      "The manifold suction gauge has held 30 in. hg/760 mm vacuum for 2 hours.",
+      "You are ready to leave for the day."
+    ],
+    "answer": 0,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-95",
+    "question": "When pressurizing a refrigeration system with nitrogen what rule should you always follow?",
+    "options": [
+      "Charge nitrogen as a liquid.",
+      "Use a pressure regulator with a pressure relief valve on the nitrogen cylinder.",
+      "Pressurize to above 1000 psig.",
+      "Never use nitrogen inside the system."
+    ],
+    "answer": 1,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-96",
+    "question": "When transporting cylinders containing used refrigerant, DOT requires that you:",
+    "options": [
+      "Use OSHA-approved containers.",
+      "Attach DOT classification tags.",
+      "Ship by EPA certified carrier.",
+      "Do all of the above."
+    ],
+    "answer": 1,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-97",
+    "question": "When using vapor recovery, the fill level of the recovery cylinder can be controlled by any of the following, EXCEPT;",
+    "options": [
+      "mechanical float devices.",
+      "electronic shut-off devices.",
+      "the gross cylinder weight.",
+      "the pitch of the recovery device."
+    ],
+    "answer": 3,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-98",
+    "question": "When working with an appliance containing HCFCs or HFCs, which of the following does NOT require a person to be a Section 608 certified technician?",
+    "options": [
+      "Removing refrigerant.",
+      "Rewiring an external electric circuit.",
+      "Replacing a component.",
+      "Performing any activity that violates the refrigerant circuit."
+    ],
+    "answer": 1,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-99",
+    "question": "Whenever dry nitrogen from a portable cylinder is used in service or installation, what item is of most importance in consideration of safety?",
+    "options": [
+      "The pressure regulator is opened to test the pressure relief valve.",
+      "The gauges are clean.",
+      "A relief valve is inserted in the downstream line from the pressure regulator.",
+      "A pressure regulator is inserted in the downstream line from the relief valve."
+    ],
+    "answer": 2,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-100",
+    "question": "Which element in a CFC or HCFC molecule causes ozone depletion?",
+    "options": [
+      "Fluorine",
+      "Chlorine",
+      "Carbon",
+      "Hydrogen"
+    ],
+    "answer": 1,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-101",
+    "question": "Which factor does NOT affect the speed of evacuation?",
+    "options": [
+      "The size of the equipment being evacuated.",
+      "The ambient temperature.",
+      "The amount of moisture in the system.",
+      "The brand of micron gauge used."
+    ],
+    "answer": 3,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-102",
+    "question": "Which if the following is required on all new recovery equipment?",
+    "options": [
+      "A calibration stamp or label.",
+      "An EPA approved certification label.",
+      "Oil-less compressors.",
+      "Manual triple shut-offs and triple seal isolation."
+    ],
+    "answer": 1,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-103",
+    "question": "Which of the following appliances is NOT covered by EPA Section 608 regulations?",
+    "options": [
+      "Freezers",
+      "Air conditioning and refrigeration equipment",
+      "Commercial refrigeration equipment",
+      "Desiccant dehumidifiers"
+    ],
+    "answer": 3,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-104",
+    "question": "Which of the following factors affect the speed of system dehydration?",
+    "options": [
+      "The ambient temperature and the entropy of the refrigerant.",
+      "The ambient temperature and amount of moisture in the system.",
+      "The latent heat content of the refrigerant.",
+      "The system superheat."
+    ],
+    "answer": 1,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-105",
+    "question": "Which of the following gases help form the earth's protective shield?",
+    "options": [
+      "Methane",
+      "Radon",
+      "Stratospheric Ozone",
+      "Carbon Dioxide"
+    ],
+    "answer": 2,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-106",
+    "question": "Which of the following gases is used as the baseline measurement for global warming potential?",
+    "options": [
+      "Ammonia",
+      "Carbon Dioxide",
+      "CFC-12",
+      "Propane"
+    ],
+    "answer": 1,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-107",
+    "question": "Which of the following is a \"high-pressure refrigerant\" under EPA's section 608 regulations?",
+    "options": [
+      "R-410A",
+      "R-113",
+      "R-123",
+      "R-11"
+    ],
+    "answer": 0,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-108",
+    "question": "Which of the following is a \"low-pressure refrigerant\" under EPA's refrigerant recycling regulations?",
+    "options": [
+      "R-134a",
+      "R-123",
+      "R-22",
+      "R-500"
+    ],
+    "answer": 1,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-109",
+    "question": "Which of the following is a lawful use of HCFC-22?",
+    "options": [
+      "Creating a new air conditioner using \"dry-charge\" components.",
+      "Servicing existing R-22 systems.",
+      "Charging any new system designed for R-407C.",
+      "Retrofitting any equipment."
+    ],
+    "answer": 1,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-110",
+    "question": "Which of the following is a reason to heat a system during dehydration?",
+    "options": [
+      "To prevent oxidation.",
+      "To increase oil viscosity.",
+      "To decrease dehydration time.",
+      "To increase dehydration time."
+    ],
+    "answer": 2,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-111",
+    "question": "Which of the following is a requirement for all CFC, HCFC, and HFC refrigerant recovery devices?",
+    "options": [
+      "They must be portable",
+      "They must contain a heavy-duty shield",
+      "They must have a 20,000 btu/hr rating",
+      "They must meet EPA standards"
+    ],
+    "answer": 3,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-112",
+    "question": "Which of the following is an approved 'drop-in' service replacement for R-22?",
+    "options": [
+      "HFC-134a",
+      "R-407C",
+      "R-407A",
+      "There are no direct 'drop-in' refrigerant substitutes"
+    ],
+    "answer": 3,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-113",
+    "question": "Which of the following is an HFC refrigerant?",
+    "options": [
+      "R-134a",
+      "R-115",
+      "R-22",
+      "R-11"
+    ],
+    "answer": 0,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-114",
+    "question": "Which of the following is considered an unacceptable release of CFC, HCFC, or HFC refrigerant?",
+    "options": [
+      "Release during the procedure of installing manifold gauges equipped with low-loss fittings.",
+      "Release during vandalism or theft of equipment.",
+      "Release during the connection of a recovery machine equipped with low-loss fittings.",
+      "Release during a leak-checking procedure using nitrogen and a trace gas."
+    ],
+    "answer": 1,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-115",
+    "question": "Which of the following is illegal?",
+    "options": [
+      "Use of CFC, HCFC or HFC refrigerants.",
+      "Manufacturing or importing HFO refrigerants into the U.S.",
+      "Knowingly release CFC, HCFC or HFC refrigerants during the service, maintenance, repair or disposal of appliances.",
+      "Selling recovered refrigerant to a reclaimer."
+    ],
+    "answer": 2,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-116",
+    "question": "Which of the following is NOT a \"refrigerant\" as it is used in Section 608 of the Clean Air Act?",
+    "options": [
+      "An ozone-depleting substance used in a household or commercial air conditioner.",
+      "A non-ozone depleting substance used in a refrigerator or freezer.",
+      "Any substitute for a Class I or Class II substance used in a chiller.",
+      "A leak trace gas."
+    ],
+    "answer": 3,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-117",
+    "question": "Which of the following is not a reason to recover refrigerants?",
+    "options": [
+      "Provide supplies for service after the refrigerant has been phased out.",
+      "Prevent venting to the atmosphere.",
+      "Prevent stratospheric ozone depletion.",
+      "Avoid violating the warranty on equipment."
+    ],
+    "answer": 3,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-118",
+    "question": "Which of the following is NOT a recommended safety practice when operating refrigerant recovery or recycling equipment?",
+    "options": [
+      "Wear safety glasses.",
+      "Wear protective gloves.",
+      "Follow all safety precautions for the equipment.",
+      "Remain at least 5 feet away from any operating equipment."
+    ],
+    "answer": 3,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-119",
+    "question": "Which of the following is not a violation of the Clean Air Act or EPA's regulations?",
+    "options": [
+      "Failing to keep required records.",
+      "Failing to meet the required evacuation levels before opening or disposing of appliances.",
+      "Knowingly releasing CFC, HCFC, or HFC refrigerants while repairing appliances.",
+      "Knowingly recovering an exempt refrigerant."
+    ],
+    "answer": 3,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-120",
+    "question": "Which of the following is not a violation of the refrigerant management regulations under the Clean Air Act?",
+    "options": [
+      "Failing to recover refrigerant in a system to the required evacuation level.",
+      "Servicing a system that uses CFCs or HCFCs after the phaseout of those refrigerants.",
+      "Failing to recover refrigerant in a leaking system to at least 0 psig.",
+      "Adding nitrogen to a fully charged system, then call the mixture a \"leak check gas\" and venting the mixture to the atmosphere."
+    ],
+    "answer": 3,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-121",
+    "question": "Which of the following is NOT important to do before recharging any flammable hydrocarbon or HFO refrigerant into a system?",
+    "options": [
+      "Ensure that the refrigeration system is electrically grounded.",
+      "Install a fresh filter-drier and successfully complete a standing-pressure leak check at the maximum system pressure.",
+      "Evacuate to 500 microns or lower.",
+      "Add an odorant to the system to indicate a flammable refrigerant is being used."
+    ],
+    "answer": 3,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-122",
+    "question": "Which of the following is TRUE if a system WILL NOT hold a vacuum after it has been evacuated?",
+    "options": [
+      "The system is ready to be charged.",
+      "The system has been adequately evacuated.",
+      "The system may be leaking.",
+      "An expansion valve is clogged."
+    ],
+    "answer": 2,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-123",
+    "question": "Which of the following leak detection methods is considered to be the most effective for locating the general area of a small leak?",
+    "options": [
+      "Standing vacuum test",
+      "Electronic or ultrasonic tester",
+      "Halide torch",
+      "Audible sound"
+    ],
+    "answer": 1,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-124",
+    "question": "Which of the following refrigerant releases is considered a violation of the prohibition on venting?",
+    "options": [
+      "Release of \"de minimis\" quantities in the course of making good faith attempts to recapture and recycle or safely dispose of refrigerant.",
+      "Release of mixtures of nitrogen and refrigerant that result from adding nitrogen to a fully charged appliance to leak check the appliance.",
+      "Refrigerants emitted in the course of normal operation of an appliance.",
+      "Refrigerants emitted when connecting or disconnecting low loss hoses to charge or service an appliance."
+    ],
+    "answer": 1,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-125",
+    "question": "Which of the following refrigerants contains chlorine?",
+    "options": [
+      "R-22",
+      "R-134a",
+      "R-410A",
+      "R-1234yf"
+    ],
+    "answer": 0,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-126",
+    "question": "Which of the following refrigerants damages stratospheric ozone?",
+    "options": [
+      "HFOs",
+      "HFCs",
+      "HCFCs",
+      "Ammonia"
+    ],
+    "answer": 2,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-127",
+    "question": "Which of the following refrigerants has the lowest global warming potential?",
+    "options": [
+      "R-134a",
+      "R-407C",
+      "R-410A",
+      "R-600a"
+    ],
+    "answer": 3,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-128",
+    "question": "Which of the following refrigerants has the lowest ozone depletion potential?",
+    "options": [
+      "R-22",
+      "R-123",
+      "R-410A",
+      "R-502"
+    ],
+    "answer": 2,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-129",
+    "question": "Which of the following refrigerants have an ozone depletion potential of more than zero?",
+    "options": [
+      "R-600a and R-441A",
+      "R-134a and R-410A",
+      "R-123 and R-22",
+      "R-290 and R-404A"
+    ],
+    "answer": 2,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-130",
+    "question": "Which of the following refrigerants is an HFO?",
+    "options": [
+      "R-1234yf",
+      "R-123",
+      "R-134a",
+      "All three are HFOs"
+    ],
+    "answer": 0,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-131",
+    "question": "Which of the following releases of a refrigerant is illegal?",
+    "options": [
+      "Venting a refrigerant that EPA has determined does not pose a threat to the environment.",
+      "Venting refrigerant from a recovery machine or recovery cylinder.",
+      "Releasing refrigerant while connecting or removing low loss service hoses.",
+      "Small \"de minimis\" releases while making a good faith effort to recover refrigerant."
+    ],
+    "answer": 1,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-132",
+    "question": "Which of the following statements about \"self contained\" recovery devices is true?",
+    "options": [
+      "They are evacuated cylinders capable of liquid transfer.",
+      "They remove refrigerant from an appliance without the assistance of components in the appliance.",
+      "They have a self-contained power source that requires periodic charging.",
+      "They can only be used on air conditioning and refrigeration equipment containing less than 15 pounds of refrigerant."
+    ],
+    "answer": 1,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-133",
+    "question": "Which of the following statements is true?",
+    "options": [
+      "There is no difference between refrigerant grade hydrocarbon refrigerant and propane for grills.",
+      "Propane cylinders for grilling contain impurities that can damage refrigeration equipment.",
+      "Refrigerant-grade hydrocarbon refrigerant is of lower quality than consumer propane cylinders.",
+      "Hydrocarbon refrigerants can be used as a retrofit refrigerant."
+    ],
+    "answer": 1,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-134",
+    "question": "Which oil is used with most HFC refrigeration applications?",
+    "options": [
+      "Esters",
+      "Alkyl-benzenes",
+      "Mineral oil",
+      "Any oil that is compatible with both CFC and HCFC refrigerants"
+    ],
+    "answer": 0,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-135",
+    "question": "Which process applies to cleaning refrigerant for immediate reuse by oil separation and single or multiple passes through devices, like replaceable core filter driers, which reduce moisture and acidity?",
+    "options": [
+      "Recycling",
+      "Recovering",
+      "Reclaiming",
+      "Restoring"
+    ],
+    "answer": 0,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-136",
+    "question": "Which refrigerant can be purchased by someone who is NOT a Section 608 certified technician?",
+    "options": [
+      "Carbon Dioxide refrigerant",
+      "Hydrofluorocarbon refrigerants",
+      "Hydrofluoroolefin refrigerants",
+      "Hydrochlorofluorocarbon refrigerants"
+    ],
+    "answer": 0,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-137",
+    "question": "Which refrigerant depletes the ozone layer?",
+    "options": [
+      "R-717",
+      "R-744",
+      "R-22",
+      "R-32"
+    ],
+    "answer": 2,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-138",
+    "question": "Which refrigerant does not contain chlorine?",
+    "options": [
+      "R-134a",
+      "R-12",
+      "R-22",
+      "R-124"
+    ],
+    "answer": 0,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-139",
+    "question": "Which refrigerant(s) must be recovered before opening or disposing of appliances?",
+    "options": [
+      "HFCs",
+      "CFCs",
+      "HCFCs",
+      "All three listed"
+    ],
+    "answer": 3,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-140",
+    "question": "Which type of lubricants are HFO refrigerants miscible in?",
+    "options": [
+      "AB lubricants",
+      "POE lubricants",
+      "Mineral oils",
+      "All refrigerant lubricants"
+    ],
+    "answer": 1,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-141",
+    "question": "Which type of refrigerant has the highest ozone depletion potential (ODP)?",
+    "options": [
+      "HCFCs",
+      "HFCs",
+      "CFCs",
+      "HFOs"
+    ],
+    "answer": 2,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-142",
+    "question": "Which type of refrigerant is the most harmful to stratospheric ozone?",
+    "options": [
+      "CFCs",
+      "HCFCs",
+      "HFCs",
+      "HFOs"
+    ],
+    "answer": 0,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-143",
+    "question": "Which type of refrigerant typically has the lowest global warming potential?",
+    "options": [
+      "HCFCs",
+      "HFOs",
+      "HFCs",
+      "All are equal"
+    ],
+    "answer": 1,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-144",
+    "question": "Which types of refrigerant can only be sold to persons who have successfully passed the EPA's Section 608 certification exam?",
+    "options": [
+      "Only ozone-depleting substances used in comfort cooling.",
+      "Only non-ozone-depleting substances used in commercial refrigeration.",
+      "Only substitute refrigerants used in industrial process refrigeration.",
+      "All refrigerants that are not exempt from the venting prohibition."
+    ],
+    "answer": 3,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-145",
+    "question": "Which word applies to the process that returns refrigerant to new product specifications and that requires chemical analysis?",
+    "options": [
+      "Recovery",
+      "Recycle",
+      "Reclaim",
+      "Reprocess"
+    ],
+    "answer": 2,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-146",
+    "question": "Why are HFO refrigerants less flammable than hydrocarbon refrigerants?",
+    "options": [
+      "They contain chlorine.",
+      "They contain bromine.",
+      "They contain fluorine.",
+      "They contain carbon."
+    ],
+    "answer": 2,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-147",
+    "question": "Why are some hydrofluoroolefins {HFOs) classified as A2L?",
+    "options": [
+      "They have toxicity characteristics.",
+      "They are less flammable than hydrocarbon refrigerants, but most are still mildly flammable.",
+      "They are prohibited for use in the U.S.",
+      "They have high ozone depleting potentials, and low global warming potentials."
+    ],
+    "answer": 1,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-148",
+    "question": "Why are some hydrofluorooletin (HFO) refrigerants classified as \"A2L\"?",
+    "options": [
+      "They are no different than HFCs.",
+      "They are less flammable than hydrocarbon refrigerants, but most are still mildly flammable.",
+      "They are prohibited for use in the U.S.",
+      "They have ozone depleting potentials, and have low global warming potentials."
+    ],
+    "answer": 1,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-149",
+    "question": "Why do EPA regulations require appliances to have a service aperture or process stub?",
+    "options": [
+      "To make it easier to recover refrigerant.",
+      "To check for open motor windings.",
+      "To vent non-condensibles.",
+      "To dehydrate the system oil."
+    ],
+    "answer": 0,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-150",
+    "question": "Why it is important NOT to mix different refrigerants in the same container when recovering refrigerant?",
+    "options": [
+      "The mixture would explode.",
+      "The mixture may be impossible to reclaim.",
+      "The refrigerant mixture is toxic.",
+      "It is a violation of the SNAP regulations."
+    ],
+    "answer": 1,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-151",
+    "question": "Why must containers designated \"refillable\" by DOT be used for transporting recovered pressurized refrigerant?",
+    "options": [
+      "So refrigerants can be mixed.",
+      "To meet safety requirements.",
+      "To prevent overfilling.",
+      "To save on shipping cost."
+    ],
+    "answer": 1,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-152",
+    "question": "Why should care be used not to overfill refrigerant storage cylinders?",
+    "options": [
+      "The cylinders may be too heavy to lift.",
+      "The internal pressure of the cylinders may rise in heated areas and cause an explosion.",
+      "Some refrigerant may be vented when closing the valves.",
+      "The excess space may be needed for refrigerant from the next job."
+    ],
+    "answer": 1,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-153",
+    "question": "Why should long hoses between the unit and the recovery machine be avoided?",
+    "options": [
+      "They cause excessive pressure drop and increased recovery time.",
+      "They increase pressure and recovery time.",
+      "They decrease emissions and recovery time.",
+      "They cause excessive temperature rises, with decreasing pressures that can lead to seal failure."
+    ],
+    "answer": 0,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-154",
+    "question": "Why should refrigerant vapors or mist in high concentrations not be inhaled?",
+    "options": [
+      "They are addictive.",
+      "They may lower the body temperature.",
+      "They may cause heart irregularities or unconsciousness.",
+      "They may cause skin cancer."
+    ],
+    "answer": 2,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "0-155",
+    "question": "You have to leak-check a unit which has lost a complete charge. Which gas(es) would cause the LEAST damage to the environment?",
+    "options": [
+      "Dry nitrogen and R-22",
+      "Compressed air and R-12",
+      "Dry nitrogen",
+      "Dry nitrogen and R-134a"
+    ],
+    "answer": 2,
+    "topic": 0,
+    "sectionName": "Core"
+  },
+  {
+    "id": "1-1",
+    "question": "A passive system-dependent recovery process for small appliances;",
+    "options": [
+      "still uses a pump to recover refrigerant.",
+      "must use a pressure relief device when recovering refrigerant.",
+      "captures refrigerant in a non-pressurized container.",
+      "can only be performed on a system with an operating compressor."
+    ],
+    "answer": 2,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-2",
+    "question": "A standard vacuum pump designed specifically for evacuation and dehydration can;",
+    "options": [
+      "be used alone as a self-contained (active) recovery device.",
+      "never be used as a recovery device in combination with a pressurized container.",
+      "be used alone as a substitute for any recovery device.",
+      "be used alone as a system-dependent (passive) recovery device."
+    ],
+    "answer": 1,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-3",
+    "question": "A very large refrigerant leak can cause suffocation because refrigerants;",
+    "options": [
+      "smell strong and make breathing difficult.",
+      "are lighter than air and cause dizziness.",
+      "are heavier than air and displace oxygen.",
+      "sting the nose and cause sneezing."
+    ],
+    "answer": 2,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-4",
+    "question": "After installing and opening a piercing access valve, the recovery procedure cannot begin if the system is at what pressure?",
+    "options": [
+      "75 psig",
+      "50 psig",
+      "30 psig",
+      "0 psig"
+    ],
+    "answer": 3,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-5",
+    "question": "After recovering refrigerant from a sealed system, if nitrogen is used to pressurize or blow debris out of the system, the nitrogen;",
+    "options": [
+      "must be recovered.",
+      "may be vented to the ambient air.",
+      "should be returned to the cylinder.",
+      "should only be used if mixed with R-22."
+    ],
+    "answer": 1,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-6",
+    "question": "All appliances must be equipped with a service aperture or process stub which is used when adding or removing refrigerant from the appliance. What is typically used on small appliances?",
+    "options": [
+      "A straight piece of tubing that is entered using a piercing access valve.",
+      "A line located 15 inches below the compressor",
+      "A valve installed at the factory which has a 1/4 inch diameter and machine threads.",
+      "A service aperture is not present because small appliances are exempt from this requirement."
+    ],
+    "answer": 0,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-7",
+    "question": "Any person who opens an appliance containing a CFC, HCFC, or HFC for maintenance, service or repair must have at least one self-contained recovery machine available for use. The exception to this rule are persons working on;",
+    "options": [
+      "small appliances.",
+      "low-pressure appliances.",
+      "high-pressure appliances.",
+      "very high-pressure appliances."
+    ],
+    "answer": 0,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-8",
+    "question": "Before beginning a refrigerant recovery procedure, it is ALWAYS necessary to;",
+    "options": [
+      "allow the appliance to stabilize at room temperature.",
+      "know the type of refrigerant that is in the system.",
+      "remove the appliance to an outdoor location.",
+      "disconnect the appliance from its power source."
+    ],
+    "answer": 1,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-9",
+    "question": "EPA Section 608 rules require capture of 80% of the HCFCs and HFCs from a small appliance sealed system with a non-operating compressor if technicians are using;",
+    "options": [
+      "a system-dependent (passive) process.",
+      "a self-contained (active) process.",
+      "either a passive or an active recovery process.",
+      "neither recovery process."
+    ],
+    "answer": 2,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-10",
+    "question": "Equipment which is used to recover CFC, HCFC, and HFC refrigerant from small appliances for the purpose of disposal must meet what standard?",
+    "options": [
+      "Recover 95% or the refrigerant whether or not the compressor is operative.",
+      "Recover 80% of the refrigerant with an inoperative compressor and 90% of the refrigerant with an operative compressor.",
+      "Recover 90% of the refrigerant with an inoperative compressor and 80% of the refrigerant with an operative compressor.",
+      "Recover 75% of the refrigerant within 5 minutes."
+    ],
+    "answer": 1,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-11",
+    "question": "For which of the following refrigeration systems/appliances would it be permissible to use a passive recovery device for recovery of CFCs, HCFCs, and HFCs?",
+    "options": [
+      "A centrifugal air conditioner",
+      "A reciprocating liquid chiller",
+      "A single compressor, large commercial walk-in freezer",
+      "A domestic refrigerator"
+    ],
+    "answer": 3,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-12",
+    "question": "How many access valves are needed to recover the refrigerant on a sealed system with an operating compressor that has a completely restricted capillary tube?",
+    "options": [
+      "Two valves, one on the high and one on the low side of the system.",
+      "Only one access valve, on the low side of the system.",
+      "Only one access valve, on the high side of the system.",
+      "Two valves, one at the inlet to the compressor and one at the outlet of the condenser coil."
+    ],
+    "answer": 2,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-13",
+    "question": "If a large leak of refrigerant occurs, such as from a filled cylinder in an enclosed area, what action should be taken when no self-contained breathing apparatus is available?",
+    "options": [
+      "Use butyl lined gloves and try to stop the leak.",
+      "Use a leak detector to locate the leak and try to stop the leak.",
+      "Vacate and naturally ventilate the spill area.",
+      "Make sure the unit is de-energized, close the service valves and try to stop the leak."
+    ],
+    "answer": 2,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-14",
+    "question": "If a reclamation facility receives a tank of mixed refrigerant, they may;",
+    "options": [
+      "refuse to accept the refrigerant or charge extra for processing it.",
+      "vent the refrigerant.",
+      "resell the refrigerant for reuse in its current state.",
+      "agree to separate the refrigerants, by the tracking process."
+    ],
+    "answer": 0,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-15",
+    "question": "It is generally recommended that piercing-type valves be used on which of the following tubing materials?",
+    "options": [
+      "Copper and steel",
+      "Aluminum and steel",
+      "Steel and brass",
+      "Copper and aluminum."
+    ],
+    "answer": 3,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-16",
+    "question": "New household refrigerators may be factory charged with any of the following refrigerants, EXCEPT;",
+    "options": [
+      "R-290",
+      "R-450A",
+      "R-600a",
+      "R-404A"
+    ],
+    "answer": 0,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-17",
+    "question": "Permanent safety markings are NOT required on which of the following areas on household refrigerators using HC refrigerants?",
+    "options": [
+      "On or near any evaporators and near any exposed refrigerant tubing.",
+      "Near the machine compartment.",
+      "On the inside of the refrigerator door.",
+      "On the exterior of the refrigerator."
+    ],
+    "answer": 2,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-18",
+    "question": "Recovery devices for use with small appliances containing CFCs, HCFCs, and HFCs must meet which of the following requirements?",
+    "options": [
+      "Recovering 90% of the refrigerant when the compressor is operating or achieving a 4-inch vacuum under the conditions of AHRI 740.",
+      "Recovering 80% of the refrigerant when the compressor is operating.",
+      "Recovering 95% of the refrigerant when the compressor is operating or achieving a 10-inch vacuum under the conditions of AHRI 740.",
+      "Recovering 75% of the refrigerant when the compressor is operating."
+    ],
+    "answer": 0,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-19",
+    "question": "The sale of CFC, HCFC, HFC, and HFO refrigerants to service or install refrigeration and air conditioning equipment is;",
+    "options": [
+      "banned from use unless you have a recovery machine.",
+      "limited by law to HVAC Contractors and/or Mechanical Engineers.",
+      "allowed only if there is proof of need.",
+      "restricted to technicians who are EPA certified in refrigerant recovery."
+    ],
+    "answer": 3,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-20",
+    "question": "The system dependent (passive) recovery process;",
+    "options": [
+      "never needs the use of a pump or heat to recover refrigerant.",
+      "must use a pressure relief device to protect the technician and equipment.",
+      "recovers refrigerant in a non-pressurized container.",
+      "can only be performed on a system with an operating compressor."
+    ],
+    "answer": 2,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-21",
+    "question": "What can CFC and HCFC refrigerants decompose into at high temperatures (e.g. open flames, glowing metal surfaces, etc.)?",
+    "options": [
+      "Boric and chromic acids",
+      "Sulfuric and phosphoric acids",
+      "Hydrochloric and hydrofluoric acids",
+      "Phosphoric and dodecylbenzenesulfonic acid"
+    ],
+    "answer": 2,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-22",
+    "question": "What gases can CFC and HCFC refrigerants decompose into at high temperatures, (e.g., open flames, glowing metal surfaces, etc.)?",
+    "options": [
+      "Hydrazine gas",
+      "Phosgene gas",
+      "Helium gas",
+      "Tetraethyl gas"
+    ],
+    "answer": 1,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-23",
+    "question": "What is the approximate pressure of a storage cylinder of recovered R-134a that does not contain any non condensable impurities and is stored in a room where the temperature is 80°F?",
+    "options": [
+      "37 psig",
+      "87 psig",
+      "157 psig",
+      "207 psig"
+    ],
+    "answer": 1,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-24",
+    "question": "What is the approximate pressure of a storage cylinder of recovered R-404A that does not contain any non condensable impurities and is stored in a room where the temperature is 80°F?",
+    "options": [
+      "68 psig",
+      "72 psig",
+      "174 psig",
+      "288 psig"
+    ],
+    "answer": 2,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-25",
+    "question": "What is the approximate pressure of a storage cylinder of recovered R-410A that does not contain any non condensable impurities and is stored in a room where the temperature is 80°F?",
+    "options": [
+      "138 psig",
+      "238 psig",
+      "338 psig",
+      "368 psig"
+    ],
+    "answer": 1,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-26",
+    "question": "What is the maximum allowable factory charge of refrigerant for Type I appliances using CFCs, HCFCs, or HFCs?",
+    "options": [
+      "3 pounds",
+      "5 pounds",
+      "10 pounds",
+      "15 pounds"
+    ],
+    "answer": 1,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-27",
+    "question": "What is the maximum normal charge of HCFC or HFC refrigerant in an appliance that is allowed to use system dependent recovery equipment?",
+    "options": [
+      "5 pounds",
+      "10 pounds",
+      "15 pounds",
+      "50 pounds"
+    ],
+    "answer": 2,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-28",
+    "question": "What may be done to speed the recovery process and ensure that all CFC, HCFC, or HFC refrigerant has been removed from a frost-free refrigerator?",
+    "options": [
+      "Cool the compressor to force liquid out of the high side.",
+      "Heat the recovery cylinder to vaporize liquid refrigerant.",
+      "Turn on the defrost heater to increase the refrigerant's temperature and vaporize any liquid.",
+      "Pack ice around the evaporator to ensure maximum liquid is available."
+    ],
+    "answer": 2,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-29",
+    "question": "What must be done to the refrigerant that is vented off the top when filling a charging cylinder?",
+    "options": [
+      "The refrigerant need not be recovered.",
+      "The refrigerant must be recovered only if it is a CFC of HCFC.",
+      "The refrigerant must be recovered if it is a CFC, HCFC, or HFC.",
+      "The refrigerant must be reclaimed or incinerated."
+    ],
+    "answer": 2,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-30",
+    "question": "What should a technician do if the refrigerant in a recovery cylinder is suspected to be contaminated?",
+    "options": [
+      "Turn refrigerant in for reclamation.",
+      "Weigh the cylinder.",
+      "Discard the refrigerant.",
+      "Dilute the refrigerant with virgin refrigerant."
+    ],
+    "answer": 0,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-31",
+    "question": "What type of appliances are technicians certified to charge and open after passing the Type I examination?",
+    "options": [
+      "Appliances containing 5 pounds or less of refrigerant that have been hermetically sealed and charged at the factory.",
+      "Split systems containing 5 pounds or less of refrigerant that have been hermetically sealed and charged at the factory.",
+      "Appliances containing 5 pounds or less of refrigerant that have an open drive compressor and have been charged at the factory.",
+      "Motor vehicle air-conditioning equipment."
+    ],
+    "answer": 0,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-32",
+    "question": "What type of certification is required for persons recovering CFCs, HCFCs, or HFCs during maintenance, service, or repair of small appliances?",
+    "options": [
+      "Type II Technician.",
+      "Type Ill Technician.",
+      "Type I Technician or Universal Technician.",
+      "Technician who has passed the core exam."
+    ],
+    "answer": 2,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-33",
+    "question": "When a pungent odor is detected during a sealed system recovery and/or repair which of the following is most likely?",
+    "options": [
+      "The refrigerant should not be recovered.",
+      "A compressor burnout has occurred.",
+      "It is the characteristic smell of the refrigerant.",
+      "The refrigerant should be vented."
+    ],
+    "answer": 1,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-34",
+    "question": "When checking for non-condensables inside a recovery cylinder known to contain only one refrigerant, why should the technician allow the temperature of the cylinder to stabilize to room temperature before taking a pressure reading?",
+    "options": [
+      "To prevent safety valves from purging refrigerant.",
+      "It is a quick method of determining refrigerant level inside the tank.",
+      "Comparisons to a pressure-temperature chart are only valid if both the pressure and temperature of the refrigerant are stable and known.",
+      "A temperature reading alone is enough to determine refrigerant quality."
+    ],
+    "answer": 2,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-35",
+    "question": "When installing any type of access fitting onto a sealed system;",
+    "options": [
+      "the fitting should be leak tested before proceeding with recovery.",
+      "it is not necessary to leak test an access fitting.",
+      "the fitting need not be leak tested until the total repair is completed.",
+      "the system must be pressurized with dry nitrogen before leak testing can be attempted."
+    ],
+    "answer": 0,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-36",
+    "question": "When is it essential to take measures to help release trapped CFC, HCFC, or HFC refrigerant from the compressor oil during refrigerant recovery?",
+    "options": [
+      "When using self-contained recovery devices.",
+      "When using system-dependent active recovery devices.",
+      "When using passive recovery devices on small appliances with non-operating compressors.",
+      "When the refrigerant system has a low side leak."
+    ],
+    "answer": 2,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-37",
+    "question": "When R-410A is recovered from an appliance, it;",
+    "options": [
+      "can be mixed with either R-32 or R-125a during the recovery process, since R-410A is a mixture of those two refrigerants.",
+      "can be mixed with R-134a but not R-22 during the recovery process.",
+      "need not be recovered since R-410A is not one of the refrigerants covered by the Clean Air Act.",
+      "should be recovered into a recovery vessel that is clearly marked to ensure that mixing of refrigerants does not occur."
+    ],
+    "answer": 3,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-38",
+    "question": "When recovering refrigerant into a non-pressurized container from a refrigerator with an inoperative compressor it is;",
+    "options": [
+      "helpful to heat and strike the compressor with a rubber mallet.",
+      "only necessary to recover as much refrigerant as will naturally flow out of the system.",
+      "not necessary to recover since the refrigerant is probably contaminated.",
+      "necessary to chase refrigerant from the oil with pressurized dry nitrogen."
+    ],
+    "answer": 0,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-39",
+    "question": "When servicing a small appliance found to be leaking it is;",
+    "options": [
+      "mandatory to repair the leak within 30 days.",
+      "mandatory to repair the leak only when the annualized leak rate exceeds 15% of the total charge.",
+      "not mandatory to repair the leak but it is recommended to do so whenever possible.",
+      "mandatory to recover all remaining refrigerant and dispose of the appliance."
+    ],
+    "answer": 2,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-40",
+    "question": "When using a self-contained recovery device on a CFC, HCFC, or HFC system with an operating compressor, technicians must;",
+    "options": [
+      "recover the refrigerant to 5 inches of mercury vacuum.",
+      "recover 80% of the nameplate charge.",
+      "recover the refrigerant to both 4 inches of mercury vacuum and 80% of the nameplate charge.",
+      "either recover the refrigerant to 4 inches of mercury vacuum or 90% of the nameplate charge."
+    ],
+    "answer": 2,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-41",
+    "question": "When using nitrogen in repairing a sealed refrigeration system, what should the nitrogen tank always be equipped with?",
+    "options": [
+      "Regulator",
+      "Float sensor",
+      "Red top",
+      "Hand valve"
+    ],
+    "answer": 0,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-42",
+    "question": "When using recovery cylinders and equipment with Schrader valves, you should do all of the following, except:",
+    "options": [
+      "Use a valve tool to loosen a Schrader valve core before every use.",
+      "Inspect the Schrader valve core for bends and breakage.",
+      "Replace the damaged Schrader valve core to prevent leakage.",
+      "Cap the Schrader ports to prevent accidental depression of the valve core."
+    ],
+    "answer": 1,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-43",
+    "question": "Which condition can cause excessive pressure on the high side of a self-contained (active) recovery device?",
+    "options": [
+      "When the thermal expansion valve is stuck open.",
+      "When the capacity of the recovery tank is larger than the charge size of the system.",
+      "When there is a large volume of non-condensable gas in the refrigerant being recovered.",
+      "When the system is set for no subcooling."
+    ],
+    "answer": 2,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-44",
+    "question": "Which condition requires accessing both the high and low side of the system for refrigerant recovery when using the system-dependent (passive) recovery process?",
+    "options": [
+      "When there is a leak in the system.",
+      "When the compressor operates normally.",
+      "When the compressor only runs at half speed.",
+      "When the compressor does not run."
+    ],
+    "answer": 3,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-45",
+    "question": "Which hydrocarbon refrigerant is approved for retrofit into existing household refrigerators?",
+    "options": [
+      "HC R-600a 2 ounces or less",
+      "Blended HC R-441A",
+      "HC R-290 1 lb. or less",
+      "Hydrocarbons are not approved for retrofit applications"
+    ],
+    "answer": 3,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-46",
+    "question": "Which of the following are included in EPA's definition of a \"small appliance?\"",
+    "options": [
+      "Products fully manufactured, charged and hermetically sealed in a factory.",
+      "Products having 15 pounds or less of refrigerant.",
+      "Products with compressors under½ horsepower.",
+      "Fully charged components ready for installation in a split system."
+    ],
+    "answer": 0,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-47",
+    "question": "Which of the following are recommended safe work practices when recovering refrigerants?",
+    "options": [
+      "Wear safety eyewear and butyl-lined gloves when connecting/disconnecting hoses.",
+      "Wear a respirator when working with any refrigerant.",
+      "Wear cotton gloves when working with any compressed gas.",
+      "Ventilation is only necessary if oil, appearing as a white cloud or fog, is emitted during the recovery procedure."
+    ],
+    "answer": 0,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-48",
+    "question": "Which of the following best describes low loss fittings on refrigerant recovery devices used to recover CFCs, HCFCs, and HFCs?",
+    "options": [
+      "They can be either manually closed or automatically closed when disconnected to prevent loss of refrigerant from hoses.",
+      "They are used to connect the recovery device to an appliance and leak only small amounts of refrigerant during use.",
+      "They are used to connect the recovery device to an appliance and must be discarded after each use.",
+      "They eliminate oil loss during recovery."
+    ],
+    "answer": 0,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-49",
+    "question": "Which of the following does NOT meet the criteria for Type I appliance certification?",
+    "options": [
+      "An MVAC-like system that holds three pounds of R 12.",
+      "A water cooler that holds 13 ounces of R-22.",
+      "A food freezer that holds 22 ounces of R-134a.",
+      "A dehumidifier that holds seven ounces of R-410A."
+    ],
+    "answer": 0,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-50",
+    "question": "Which of the following is a true statement regarding a refrigerant that can be used as a direct service 'drop-in' substitute for R-22?",
+    "options": [
+      "R-134a used with a TEV",
+      "R-410A used with a TEV that has a MOP of 75psig.",
+      "R-290 with a fixed orifice metering device.",
+      "There is no such thing as a \"drop-in\" substitute."
+    ],
+    "answer": 3,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-51",
+    "question": "Which of the following is an acceptable method or device presently used for monitoring the 80% fill level in a recovery tank?",
+    "options": [
+      "Superheat when a capillary tube is present or sub cooling when a thermostatic expansion valve is used.",
+      "Refrigerant scale or tank internal float device.",
+      "Refrigerant temperature measurement.",
+      "Refrigerant pressure measurement."
+    ],
+    "answer": 1,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-52",
+    "question": "Which of the following is an approved substitute refrigerant for new household refrigerators, freezers, and combination refrigeration/freezers?",
+    "options": [
+      "R-600a",
+      "R-1234yf",
+      "R-1234zd",
+      "R-170"
+    ],
+    "answer": 0,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-53",
+    "question": "Which of the following is required when attaching a gauge set to check system pressures?",
+    "options": [
+      "Release a small amount of refrigerant to check for contamination.",
+      "Have manual or self-sealing valves on the ends of the gauge set hoses to minimize any release of refrigerant.",
+      "Recover refrigerant and recharge to specifications even if no repairs are needed.",
+      "Use hoses that are 3 feet or longer."
+    ],
+    "answer": 1,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-54",
+    "question": "Which of the following refrigerants is very high pressure and generally does NOT need to be recovered?",
+    "options": [
+      "R-22",
+      "R-134a",
+      "R-404A",
+      "R-744"
+    ],
+    "answer": 3,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-55",
+    "question": "Which recovery equipment maintenance practice should be performed on a regular basis?",
+    "options": [
+      "Check vacuum pump for any leaks.",
+      "Check recovery device for refrigerant leaks.",
+      "Check amperage draw of recovery device.",
+      "Check amperage draw of vacuum pump."
+    ],
+    "answer": 1,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-56",
+    "question": "Which refrigerants can be mixed in an appliance?",
+    "options": [
+      "R-22 and R-407C",
+      "R-12 and R-134a",
+      "R-407C and R-410A",
+      "Refrigerants cannot be mixed."
+    ],
+    "answer": 3,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-57",
+    "question": "Who must certify recovery equipment used during maintenance, service or repair of small appliances that use CFCs, HCFCs, and HFCs?",
+    "options": [
+      "An ASHRAE-approved laboratory.",
+      "Recovery equipment for small appliances does not require approval.",
+      "An AHRI 740 standards laboratory.",
+      "An EPA-approved laboratory."
+    ],
+    "answer": 3,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-58",
+    "question": "Why should low and high side access valves be installed when recovering refrigerant from a household refrigerator?",
+    "options": [
+      "To improve speed of recovery.",
+      "To prevent non-condensables contamination.",
+      "To protect the recovery machine.",
+      "To prevent oil migration."
+    ],
+    "answer": 0,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-59",
+    "question": "Why should solderless type piercing valves NOT remain installed on refrigeration systems after completion of repairs?",
+    "options": [
+      "They are too expensive to remain on every product.",
+      "They tend to leak over time.",
+      "They restrict refrigerant flow.",
+      "They tend to trap lubricant."
+    ],
+    "answer": 1,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "1-60",
+    "question": "Why should the technician watch for signs of contamination in the oil when recovering refrigerant from a system that experienced a compressor burnout?",
+    "options": [
+      "Contaminants cannot be removed from the refrigerant and the refrigerant will have to be destroyed by the reclamation center.",
+      "The system will have to be flushed if contaminants are present.",
+      "The contaminants will eat away at the recovery equipment.",
+      "The contaminants will plug up the recovery equipment."
+    ],
+    "answer": 1,
+    "topic": 1,
+    "sectionName": "Type 1"
+  },
+  {
+    "id": "2-1",
+    "question": "A chiller for comfort cooling that contains 50 pounds or more of R-123 is leaking. Starting in 2019, at what leak rate does the EPA require that the equipment be repaired?",
+    "options": [
+      "5%",
+      "10%",
+      "15%",
+      "20%"
+    ],
+    "answer": 1,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-2",
+    "question": "A cold storage warehouse chooses not to repair an appliance containing R-22 that is leaking above the threshold rate. How long can the facility continue to operate that appliance before it must be retrofitted or retired, assuming no extensions apply?",
+    "options": [
+      "1 month",
+      "9 months",
+      "12 months",
+      "24 months"
+    ],
+    "answer": 0,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-3",
+    "question": "A comfort-cooling appliance containing 50 pounds or more of R-22 is found to be leaking beyond the applicable leak rate threshold. Unless granted additional time, how many days do you have to repair the leak and conduct the initial leak verification test?",
+    "options": [
+      "1 day",
+      "10 days",
+      "30 days",
+      "45 days"
+    ],
+    "answer": 2,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-4",
+    "question": "A company uses a chiller that diverts 55% of its cooling capacity to one of its manufacturing lines and 45% of its cooling capacity to air condition the office spaces. Which leak rate category would this chiller be in?",
+    "options": [
+      "Industrial process refrigeration",
+      "Ice making refrigeration",
+      "Commercial refrigeration",
+      "Comfort cooling"
+    ],
+    "answer": 0,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-5",
+    "question": "A customer has an industrial process refrigeration system that contains 1000 lbs. of R-22 that has exceeded the applicable leak rate threshold. How often is the customer required to perform a leak inspection?",
+    "options": [
+      "Every month",
+      "Every 3 months",
+      "Every 6 months",
+      "Every 12 months"
+    ],
+    "answer": 1,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-6",
+    "question": "After a leak repair of a supermarket rack using 3000 lbs of R-22 and a successful initial verification test, when must a follow-up leak verification test be conducted?",
+    "options": [
+      "The same day.",
+      "The next day.",
+      "Within 10 days.",
+      "Within 30 days."
+    ],
+    "answer": 2,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-7",
+    "question": "After installation of a field piped split system, the unit should first be pressurized with;",
+    "options": [
+      "air and leak checked.",
+      "R-22 and leak checked.",
+      "R-410A and leak checked.",
+      "nitrogen and leak checked."
+    ],
+    "answer": 3,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-8",
+    "question": "After refrigerant liquid has been recovered from the appliance, any remaining vapor is;",
+    "options": [
+      "purged to the atmosphere.",
+      "isolated in the appliance.",
+      "pumped into appliance receiver.",
+      "removed by the recovery system."
+    ],
+    "answer": 3,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-9",
+    "question": "An initial leak verification test failed after repairing a leak in a rack refrigeration system for a supermarket using an HCFC refrigerant. What would be the next step(s)?",
+    "options": [
+      "Immediately retrofit or retire the appliance.",
+      "Conduct additional repairs within the 30-day repair window or mothball the appliance.",
+      "Conduct a follow-up verification test.",
+      "Report the amount of refrigerant added to the system to the EPA."
+    ],
+    "answer": 1,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-10",
+    "question": "An operating unit that has a receiver/storage tank requires refrigerant system service. When servicing the unit;",
+    "options": [
+      "the compressor should be valved off.",
+      "liquid refrigerant should be recovered last.",
+      "refrigerant should be pumped down to and isolated in the receiver.",
+      "a gauge pressure of \"0\"psi should be achieved by venting."
+    ],
+    "answer": 2,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-11",
+    "question": "Before making a major repair, technicians must evacuate an appliance or component containing more than 200 pounds of R-410A to which of the following levels?",
+    "options": [
+      "0 psig",
+      "25 mm Hg absolute",
+      "10 inches of Hg vacuum",
+      "15 inches of Hg vacuum"
+    ],
+    "answer": 2,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-12",
+    "question": "During evacuation with large amounts of moisture it may be necessary to increase pressure to counteract freezing with gas such as;",
+    "options": [
+      "R-410A.",
+      "R-22.",
+      "Air.",
+      "Nitrogen."
+    ],
+    "answer": 3,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-13",
+    "question": "Every refrigerating system must be protected by which of the following?",
+    "options": [
+      "A pressure relief device.",
+      "A properly located stop valve.",
+      "A low pressure control.",
+      "A refrigerant receiver."
+    ],
+    "answer": 0,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-14",
+    "question": "For what refrigerant is an equipment room refrigerant detector NOT required under ASHRAE Standard 15 provided the mechanical ventilation system in the machinery is run continuously?",
+    "options": [
+      "R-134a",
+      "R-404A",
+      "R-410A",
+      "R-717"
+    ],
+    "answer": 3,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-15",
+    "question": "How can you speed up the removal of the refrigerant charge from a system?",
+    "options": [
+      "Using a smaller recovery vessel.",
+      "Cooling the recovery cylinder to lower its pressure.",
+      "Using a two-stage vacuum pump.",
+      "Heating the recovery cylinder to raise its pressure."
+    ],
+    "answer": 1,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-16",
+    "question": "How long do owners or operators of an appliance with a full charge of 50 or more pounds of ozone depleting refrigerant have to retire an appliance if the replacement uses a refrigerant that is exempt from the venting prohibition?",
+    "options": [
+      "3 months",
+      "6 months",
+      "12 months",
+      "18 months"
+    ],
+    "answer": 3,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-17",
+    "question": "How long must an HVAC servicing company keep records for each disposed appliance with a charge between 5 and 50 pounds?",
+    "options": [
+      "1 year",
+      "3 years",
+      "5 years",
+      "10 years"
+    ],
+    "answer": 1,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-18",
+    "question": "How long must owners and operators of regulated appliances normally containing 50 or more pounds of HCFC refrigerant keep records of leak inspections, initial leak verification and follow-up verification tests?",
+    "options": [
+      "2 years",
+      "3 years",
+      "5 years",
+      "Life of the appliance"
+    ],
+    "answer": 1,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-19",
+    "question": "How would you remove moisture from refrigerant in a system?",
+    "options": [
+      "Purge the condenser.",
+      "Drain the oil separator.",
+      "Reduce water flow to the condenser.",
+      "Use a filter drier."
+    ],
+    "answer": 3,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-20",
+    "question": "Identify the best method to charge a system that has both an air-cooled condenser and evaporator with a nameplate charge of 80 pounds.",
+    "options": [
+      "Vapor charge through the suction service valve.",
+      "Liquid charge through the discharge service valve.",
+      "Liquid charge through the suction service valve.",
+      "Liquid charge through the liquid-line service valve."
+    ],
+    "answer": 3,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-21",
+    "question": "It is best practice to use dry nitrogen to break the vacuum when dehydrating by the triple evacuation method. However, it;",
+    "options": [
+      "often contains moisture.",
+      "requires a minimum of 10 psig.",
+      "is toxic when released into the atmosphere.",
+      "requires a pressure regulator."
+    ],
+    "answer": 3,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-22",
+    "question": "Liquid charging of an R-410A refrigeration system with risk of freezing is begun with vapor from a vacuum level to a pressure of approximately;",
+    "options": [
+      "32 psig.",
+      "63 psig.",
+      "90 psig.",
+      "110 psig."
+    ],
+    "answer": 3,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-23",
+    "question": "Pressure relief valves can only be installed;",
+    "options": [
+      "in series.",
+      "in parallel.",
+      "vertically.",
+      "horizontally."
+    ],
+    "answer": 1,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-24",
+    "question": "Recovered refrigerant may contain which of the following impurities?",
+    "options": [
+      "Ammonia, carbon dioxide, and methyl chloride",
+      "Sodium chloride, potassium nitrate, and silicone oil",
+      "Sulphur dioxide and methane",
+      "Acids, moisture, and oil"
+    ],
+    "answer": 3,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-25",
+    "question": "Recovering refrigerant from a system in the vapor phase will minimize the loss of which of the following?",
+    "options": [
+      "Water",
+      "Oil",
+      "Refrigerant",
+      "Non-condensables"
+    ],
+    "answer": 1,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-26",
+    "question": "Refrigerant cannot be recovered without isolating a parallel compressor system because of;",
+    "options": [
+      "the service valve connection.",
+      "the electrical connections.",
+      "an open equalization connection.",
+      "the thermal bleed connection."
+    ],
+    "answer": 2,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-27",
+    "question": "Refrigerant has been recovered from an air-conditioning system and held in a refillable cylinder, in order to replace the condenser coil. The refrigerant;",
+    "options": [
+      "may be charged back into the system.",
+      "may be sold as is to another equipment owner.",
+      "must be reclaimed.",
+      "must be destroyed."
+    ],
+    "answer": 0,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-28",
+    "question": "Starting in 2019, what leak rate triggers the EPA requirement that commercial refrigeration systems containing 50 pounds or more of R-22 be repaired?",
+    "options": [
+      "10%.",
+      "20%.",
+      "30%.",
+      "35%."
+    ],
+    "answer": 1,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-29",
+    "question": "To avoid freezing the water contained in a water-cooled heat exchanger of an R-134a refrigeration system during charging, the system should be initially charged with R 134a vapor to a pressure of approximately;",
+    "options": [
+      "0 psig.",
+      "10 psig.",
+      "30 psig.",
+      "90 psig."
+    ],
+    "answer": 2,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-30",
+    "question": "To determine if the system is leaking more than the allowable rate, the EPA allows the use of which one of the following methods to determine the full charge?",
+    "options": [
+      "Use of the calculations based on power consumption, in kWh.",
+      "Use of the calculations based on compressor horsepower",
+      "Use of calculations based on component and pipe sizes.",
+      "Use of the calculations based on the BTU capacity of the system."
+    ],
+    "answer": 2,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-31",
+    "question": "What action must an owner/operator take if a supermarket system containing 50 or more pounds of R 22 leaks more than 125% of its full charge in a calendar year?",
+    "options": [
+      "Retrofit the appliance with a substitute refrigerant.",
+      "Recover the refrigerant and leak check the appliance with a trace gas.",
+      "Retire the appliance until it can be replaced with a new one.",
+      "Submit a report to EPA describing efforts to identify leaks and repair the appliance."
+    ],
+    "answer": 3,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-32",
+    "question": "What are refrigeration and air-conditioning compressor heaters used for?",
+    "options": [
+      "To reduce the amount of refrigerant in the oil.",
+      "To prevent refrigerant vaporization.",
+      "To reduce the amount of entrained water in the receiver.",
+      "To prevent acid pitting."
+    ],
+    "answer": 0,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-33",
+    "question": "What area of a refrigeration system does oil foaming usually occur?",
+    "options": [
+      "Condenser",
+      "Evaporator",
+      "Compressor",
+      "Expansion device"
+    ],
+    "answer": 2,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-34",
+    "question": "What can happen when using a large vacuum pump to evacuate a system?",
+    "options": [
+      "Trapped oil can freeze.",
+      "Trapped refrigerant can freeze.",
+      "Water in system can freeze.",
+      "The valve seats can freeze."
+    ],
+    "answer": 2,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-35",
+    "question": "What is a deep vacuum usually measured in?",
+    "options": [
+      "Psig",
+      "Psia",
+      "Inches of Hg",
+      "Microns"
+    ],
+    "answer": 3,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-36",
+    "question": "What is a moisture indicating sight glass useful for?",
+    "options": [
+      "Determining the type of refrigerant.",
+      "Checking for moisture in refrigerant.",
+      "Providing sub-cooling.",
+      "Determining the type of oil used."
+    ],
+    "answer": 1,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-37",
+    "question": "What is the approximate refrigerant pressure in an R 134a refrigerator, when it has been off for a long time and the room temperature has been maintained at 80°F?",
+    "options": [
+      "87 psig",
+      "158 psig",
+      "219 psig",
+      "300 psig"
+    ],
+    "answer": 0,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-38",
+    "question": "What is the best use for testing with soap bubbles?",
+    "options": [
+      "To pinpoint refrigerant leaks.",
+      "To find refrigerant leaks in coil fin area.",
+      "To detect leaks in water tube condensers.",
+      "To detect leaks if the condenser is excessively dirty."
+    ],
+    "answer": 0,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-39",
+    "question": "What is the component directly following the condenser in a refrigeration system using a thermal expansion valve?",
+    "options": [
+      "Receiver",
+      "Compressor",
+      "Accumulator",
+      "Evaporator"
+    ],
+    "answer": 0,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-40",
+    "question": "What is the easiest way to check the type of refrigerant used in a 60-ton packaged rooftop unit?",
+    "options": [
+      "Look at the unit nameplate.",
+      "Use your service gauge set and a PT chart.",
+      "Ask the owner.",
+      "Measure the condenser pressure."
+    ],
+    "answer": 0,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-41",
+    "question": "What is the evaporation temperature of R-134a at 0 psig?",
+    "options": [
+      "-21°F",
+      "-15°F",
+      "-5°F",
+      "-1°F"
+    ],
+    "answer": 1,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-42",
+    "question": "What is the first thing to do when a new system has been assembled {built up), and is ready for testing?",
+    "options": [
+      "Pull a vacuum.",
+      "Pressurize with an inert gas and leak check.",
+      "Pressurize with the refrigerant to be used in the system.",
+      "Introduce an initial charge of refrigerant and start the compressor."
+    ],
+    "answer": 0,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-43",
+    "question": "What is the primary water source for a water cooled recovery unit's condensing coil?",
+    "options": [
+      "Chilled water from the evaporator",
+      "Condenser water",
+      "Local municipal water supply",
+      "De ionized water"
+    ],
+    "answer": 2,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-44",
+    "question": "What is the state of the refrigerant leaving the receiver in a refrigeration system?",
+    "options": [
+      "Low pressure liquid",
+      "Low pressure vapor",
+      "High pressure liquid",
+      "High pressure vapor"
+    ],
+    "answer": 2,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-45",
+    "question": "What level of vacuum should be pulled when evacuating a vapor compression system to ensure all moisture has been removed?",
+    "options": [
+      "2 mm Hg.",
+      "1 mm Hg.",
+      "1000 microns.",
+      "500 microns."
+    ],
+    "answer": 3,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-46",
+    "question": "What must an owner of a commercial refrigeration appliance with a charge of 2000 pounds of R-22 do once the leak rate threshold has been exceeded?",
+    "options": [
+      "Take further action by repairing, retiring, mothballing, or retrofitting the appliance.",
+      "Check to see if it has leaked above the mandatory retirement threshold.",
+      "File a report to EPA describing their efforts to repair the appliance.",
+      "Retrofit the appliance to an exempt substitute refrigerant."
+    ],
+    "answer": 0,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-47",
+    "question": "What should be done after reaching the required recovery vacuum on an appliance?",
+    "options": [
+      "Immediately disconnect the recycling or recovery equipment, and open the system for service.",
+      "Wait for at least a few minutes to see if the system pressure rises.",
+      "Break the vacuum with nitrogen and open the system for service.",
+      "Pressurize the system with nitrogen and perform a leak check."
+    ],
+    "answer": 1,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-48",
+    "question": "What should be done before transferring refrigerant to an empty cylinder?",
+    "options": [
+      "The refrigerant should be chilled.",
+      "The refrigerant should be mixed.",
+      "The cylinder should be heated.",
+      "The cylinder should be evacuated."
+    ],
+    "answer": 3,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-49",
+    "question": "What should be used to remove ice from sight glasses or viewing glasses?",
+    "options": [
+      "Non-scratching abrasive pad",
+      "Isopropyl alcohol",
+      "Water",
+      "Torch"
+    ],
+    "answer": 1,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-50",
+    "question": "What should systems that use R-407C be leak checked with?",
+    "options": [
+      "Any available CFC.",
+      "Any available HCFC.",
+      "Pressurized nitrogen and a trace amount of R-407C.",
+      "Pressurized nitrogen and a trace amount of R-22."
+    ],
+    "answer": 2,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-51",
+    "question": "What steps should be taken before using a recovery unit to remove a charge?",
+    "options": [
+      "The refrigerant should be tested for acid.",
+      "The recovery is unit should be purged with nitrogen.",
+      "The recovery unit oil should be changed and recovery cylinder evacuated.",
+      "Service valve positions and recovery oil level should be checked, when applicable."
+    ],
+    "answer": 3,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-52",
+    "question": "What will back-seating a suction shutoff valve close?",
+    "options": [
+      "Suction line and compressor port",
+      "Compressor and gauge port",
+      "Compressor port",
+      "Gauge port"
+    ],
+    "answer": 3,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-53",
+    "question": "What will non-condensables in a refrigeration system result in?",
+    "options": [
+      "Lower suction pressure",
+      "Higher suction pressure",
+      "Lower discharge pressure",
+      "Higher discharge pressure"
+    ],
+    "answer": 3,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-54",
+    "question": "What would be the approximate refrigerant pressure of an R-410A machine at (80°F) room temperature while the machine is idle?",
+    "options": [
+      "143 psig",
+      "212 psig",
+      "236 psig",
+      "260 psig"
+    ],
+    "answer": 2,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-55",
+    "question": "When a trace gas becomes absolutely necessary, which of the available gases should be used to help locate a leak?",
+    "options": [
+      "Nitrogen with HCFC R-22.",
+      "R-22 due to its universal system compatibility and its miscibility with various oils.",
+      "Nitrogen with a trace amount of the system's design refrigerant.",
+      "Nitrogen with HFC R-410A."
+    ],
+    "answer": 2,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-56",
+    "question": "When can appliances containing refrigerants be recovered to atmospheric pressure?",
+    "options": [
+      "For major repairs such as replacing the compressor, condenser, or evaporator.",
+      "The repair is followed by an evacuation of the appliance to the environment.",
+      "Leaks in the appliance make recovery to the prescribed level unattainable.",
+      "The appliance is being disposed of and recycled."
+    ],
+    "answer": 2,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-57",
+    "question": "When could a reciprocating compressor be damaged if energized?",
+    "options": [
+      "When the discharge service valve is closed.",
+      "When the suction service valve is open.",
+      "When the discharge service valve is open.",
+      "When the demand for cooling is at a steady state."
+    ],
+    "answer": 0,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-58",
+    "question": "When first inspecting a hermetic system known to be leaking, you should look for;",
+    "options": [
+      "frost on the tubing.",
+      "puddles of refrigerant.",
+      "particles of filter drier core.",
+      "traces of oil."
+    ],
+    "answer": 3,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-59",
+    "question": "When is it against EPA regulations to use system dependent recovery equipment?",
+    "options": [
+      "When the compressor of the appliance is operational.",
+      "When the ambient temperature is over 105°F.",
+      "When the appliance contains over 15 pounds of refrigerant.",
+      "When the appliance is leaking."
+    ],
+    "answer": 2,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-60",
+    "question": "When recovery is first started, at what phase is the refrigerant removed to save recovery time?",
+    "options": [
+      "Recovery phase",
+      "Recycle phase",
+      "Liquid phase",
+      "Vapor phase"
+    ],
+    "answer": 2,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-61",
+    "question": "When should refrigerant be removed from the condenser outlet?",
+    "options": [
+      "When the condenser is below the receiver.",
+      "When the condenser is on the roof.",
+      "When the condenser is inoperative.",
+      "When the evaporator has a small leak."
+    ],
+    "answer": 0,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-62",
+    "question": "When under a deep vacuum, the motor winding of a hermetic refrigeration compressor;",
+    "options": [
+      "could be damaged if energized.",
+      "must be kept warm to operate properly.",
+      "will be protected by its insulation if the compressor is started.",
+      "will overheat only if the crankcase heater is energized."
+    ],
+    "answer": 0,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-63",
+    "question": "Where must you connect a hose in order to recover liquid refrigerant?",
+    "options": [
+      "compressor suction valve.",
+      "compressor discharge valve.",
+      "liquid line.",
+      "condenser inlet."
+    ],
+    "answer": 2,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-64",
+    "question": "Which leak repair category does the EPA define as the refrigeration appliances used in the retail food and cold storage warehouse sectors?",
+    "options": [
+      "Commercial refrigeration",
+      "Industrial process refrigeration",
+      "Comfort cooling",
+      "Ice making refrigeration"
+    ],
+    "answer": 1,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-65",
+    "question": "Which of the following additions of refrigerant, when added to an appliance that contains 50 or more pounds of an ozone-depleting refrigerant, triggers the requirement to calculate the leak rate?",
+    "options": [
+      "Following a retrofit.",
+      "During the installation of a new appliance.",
+      "When using a qualified seasonal variance.",
+      "When topping off the system."
+    ],
+    "answer": 3,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-66",
+    "question": "Which of the following CANNOT be used as a reason to extend the appliance repair deadlines?",
+    "options": [
+      "Requirements of federal, state, or local regulations make the repair within 30 days impossible.",
+      "A necessary component is not available.",
+      "The appliance is located in an area that is subject to radiological contamination.",
+      "A certified service technician is not available."
+    ],
+    "answer": 3,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-67",
+    "question": "Which of the following components is located after the evaporator?",
+    "options": [
+      "Receiver",
+      "Liquid line drier",
+      "Accumulator",
+      "Condenser"
+    ],
+    "answer": 2,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-68",
+    "question": "Which of the following is a reason to take an oil sample?",
+    "options": [
+      "A new filter drier has been installed.",
+      "The unit has had a compressor burnout.",
+      "The unit is not cooling properly.",
+      "Recycled refrigerant has been added to the unit."
+    ],
+    "answer": 1,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-69",
+    "question": "Which of the following is an indicator of a leak in a high pressure system with a capillary tube?",
+    "options": [
+      "High head pressure",
+      "Low water temperature",
+      "Excessive superheat",
+      "Frequent purging"
+    ],
+    "answer": 0,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-70",
+    "question": "Which of the following is NOT required to mothball an appliance (thereby extending the leak repair deadline)?",
+    "options": [
+      "Shut down the appliance temporarily",
+      "Remove the appliance and store it in a warehouse at the facility",
+      "Recover the refrigerant from the isolated section or component",
+      "Recover refrigerant from the appliance to at least atmospheric pressure"
+    ],
+    "answer": 1,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-71",
+    "question": "Which of the following refrigerants would be used in a low-pressure appliance?",
+    "options": [
+      "R-22",
+      "R-123",
+      "R-410A",
+      "R-407A"
+    ],
+    "answer": 1,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-72",
+    "question": "Which of the following repairs would always be considered \"major\" under EPA's regulations?",
+    "options": [
+      "Replacement of an evaporator coil.",
+      "Replacement of a filter-drier.",
+      "Replacement of a Schrader valve core.",
+      "Replacement of a condenser fan motor."
+    ],
+    "answer": 0,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-73",
+    "question": "Which of the following should be replaced if a system is opened for servicing?",
+    "options": [
+      "Filter drier",
+      "Thermostat",
+      "Metering device",
+      "Crankcase heater"
+    ],
+    "answer": 0,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-74",
+    "question": "Which of the following statements about recycling and recovery equipment used for stationary refrigeration is FALSE?",
+    "options": [
+      "It must be tested by an EPA-approved third party",
+      "Purchases of such equipment must be reported to the EPA",
+      "It must be equipped with low-loss fittings",
+      "Equipment designed to recover flammable refrigerant must meet a specific UL safety standard"
+    ],
+    "answer": 1,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-75",
+    "question": "Which part of a belt-driven non-hermetic compressor is most likely to leak if the compressor has not been used for several months?",
+    "options": [
+      "Suction service valve",
+      "Rotating shaft seal",
+      "One or both of the king valves",
+      "Head gasket on discharge side"
+    ],
+    "answer": 1,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-76",
+    "question": "Why could a recycling or recovery machine that uses a hermetic compressor overheat when drawing deep vacuums?",
+    "options": [
+      "It runs faster than other equipment with oil less compressors.",
+      "The motor relies on the flow of refrigerant through the compressor for cooling.",
+      "It has a higher compression ratio limit than other equipment.",
+      "The oils used in hermetic compressors are a lower viscosity than the oils used in other equipment."
+    ],
+    "answer": 1,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-77",
+    "question": "Why do gauge set hoses used for field service work have self-sealing connectors or hand valves?",
+    "options": [
+      "To minimize the chance of an explosion during refrigerant recovery.",
+      "To prevent vapor lock during vapor transfer to recovery cylinder.",
+      "To minimize refrigerant release when hoses are connected and disconnected.",
+      "To prevent vapor lock during liquid transfer to recovery cylinder."
+    ],
+    "answer": 2,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-78",
+    "question": "You are changing out the compressor of a system containing 40 pounds of R-404A. In addition to isolating the compressor, which of the following procedures should you follow?",
+    "options": [
+      "Simply remove the compressor and cap the ends.",
+      "Evacuate the isolated section of the system to atmospheric pressure, then remove the compressor.",
+      "Evacuate the isolated section of the system to 0 psig and if system pressure does not rise after a few minutes, remove the compressor.",
+      "Evacuate the isolated section of the system to 5 inches of vacuum and when the system's pressure rises out of the vacuum, remove the compressor."
+    ],
+    "answer": 2,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "2-79",
+    "question": "Your recovery/recycling machine has R-22 refrigerant in it. You now have to recover refrigerant from an R-410A unit. What must be done before recovery?",
+    "options": [
+      "Change the recovery cylinder on the recovery machine.",
+      "Change the expansion valve on the recovery machine.",
+      "Change the filter and expansion valve on the recovery machine.",
+      "Remove the R-22 from the recovery unit and change the filter."
+    ],
+    "answer": 3,
+    "topic": 2,
+    "sectionName": "Type 2"
+  },
+  {
+    "id": "3-1",
+    "question": "A chiller containing 150 pounds of HCFC refrigerant is leaking above the leak rate threshold. Unless granted additional time, what must be completed within 30 days?",
+    "options": [
+      "Repair the appliance so that it leaks below the threshold and conduct the initial verification test",
+      "Retrofit the appliance to a different natural refrigerant approved by ASHRAE.",
+      "Document that all OEM replacement parts have been ordered.",
+      "Notify the EPA of the leak rate and the time required to complete the repair."
+    ],
+    "answer": 0,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-2",
+    "question": "A chiller with a charge of 200 pounds has passed the initial verification leak test. When must a follow up verification test be conducted?",
+    "options": [
+      "The same day.",
+      "The next day.",
+      "Within 10 days.",
+      "Within 30 days."
+    ],
+    "answer": 2,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-3",
+    "question": "A company uses a chiller that diverts 55% of its cooling capacity to one of its manufacturing lines and 45% of its cooling capacity to air condition the office spaces. Which leak rate category is this chiller in?",
+    "options": [
+      "Industrial process refrigeration",
+      "Ice making refrigeration",
+      "Commercial refrigeration",
+      "Comfort cooling"
+    ],
+    "answer": 0,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-4",
+    "question": "A hydrostatic tube test kit will;",
+    "options": [
+      "determine if a tube leaks.",
+      "blow all water out of tubes.",
+      "remove water from a machine.",
+      "vent refrigerant to the atmosphere."
+    ],
+    "answer": 0,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-5",
+    "question": "A rupture disc on a recovery vessel for low-pressure refrigerants relieves at;",
+    "options": [
+      "5 psig.",
+      "10 psig.",
+      "15 psig.",
+      "20 psig."
+    ],
+    "answer": 2,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-6",
+    "question": "A typical setting for the high pressure cut-out control on a recovery unit used for evacuating the refrigerant from a low-pressure chiller is;",
+    "options": [
+      "2 psig.",
+      "5 psig.",
+      "10 psig.",
+      "15 psig."
+    ],
+    "answer": 2,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-7",
+    "question": "According to ASH RAE Guideline 3, the system should be checked for leaks if during a standard vacuum test the pressure in a system rises from 1 mm Hg to a level above;",
+    "options": [
+      "1.5 mm Hg.",
+      "2.0 mm Hg.",
+      "2.5 mm Hg.",
+      "3.0 mm Hg."
+    ],
+    "answer": 2,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-8",
+    "question": "After system servicing, and recharging, why is refrigerant vapor re-introduced to the chiller before refrigerant liquid?",
+    "options": [
+      "Vapor charging increases pressure slowly, preventing failure of the rupture disk.",
+      "Vapor charging is faster than liquid charging.",
+      "Liquid charging is more difficult to control than vapor charging.",
+      "Liquid charged into a deep vacuum will evaporate and may lower the temperature freezing water in the heat exchanger tube bundle."
+    ],
+    "answer": 3,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-9",
+    "question": "Approximately how much refrigerant vapor is left in an average 350-ton R-123 chiller at 0 psig once all the R-123 liquid has been removed?",
+    "options": [
+      "Trace amount",
+      "50 pounds",
+      "75 pounds",
+      "100 pounds"
+    ],
+    "answer": 3,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-10",
+    "question": "ASHRAE Standard 15-2013 requires the use of room sensors and alarms to detect;",
+    "options": [
+      "A1 refrigerants",
+      "B2 refrigerants.",
+      "A2 refrigerants.",
+      "all refrigerant safety groups."
+    ],
+    "answer": 3,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-11",
+    "question": "Charged low-pressure refrigeration machines may be most efficiently leak checked by;",
+    "options": [
+      "adding dry nitrogen to increase the pressure.",
+      "adding refrigerant leak detection tracer dye.",
+      "adding heat with circulated hot water or heating blankets.",
+      "operating the purge system to see how much air comes out."
+    ],
+    "answer": 2,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-12",
+    "question": "Charging liquid R-245fa into a low-pressure refrigeration system under a vacuum greater than 18 inches Hg vacuum can cause the;",
+    "options": [
+      "liquid to absorb excess moisture.",
+      "purge unit to operate.",
+      "system water to freeze.",
+      "system water to boil."
+    ],
+    "answer": 2,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-13",
+    "question": "Continuous excessive moisture collection in the purge unit of a low-pressure refrigeration system could indicate what condition?",
+    "options": [
+      "The system was charged with contaminated refrigerant.",
+      "The condenser or chiller barrel tubes are leaking.",
+      "The purge unit is not operating properly.",
+      "The purge adjustment is not set properly."
+    ],
+    "answer": 1,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-14",
+    "question": "During evacuation of a system containing large amounts of moisture, it may be necessary to prevent freezing by increasing pressure using a gas such as;",
+    "options": [
+      "air.",
+      "carbon dioxide.",
+      "R-134a.",
+      "nitrogen."
+    ],
+    "answer": 3,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-15",
+    "question": "EPA regulations require that leaking industrial process refrigeration be repaired (or retrofitted or retired) when the leak rate exceeds;",
+    "options": [
+      "5% of the charge per year.",
+      "10% of the charge per year.",
+      "20% of the charge per year.",
+      "30% of the charge per year."
+    ],
+    "answer": 3,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-16",
+    "question": "Excessive running of a purge system on a low-pressure chiller generally indicates what condition?",
+    "options": [
+      "Faulty air sensors",
+      "Leaking system",
+      "Ambient temperature is too high",
+      "Low purge unit efficiency"
+    ],
+    "answer": 1,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-17",
+    "question": "Generally, chillers belong to which EPA leak repair category?",
+    "options": [
+      "Commercial refrigeration",
+      "Industrial process refrigeration",
+      "Comfort cooling",
+      "Ice making refrigeration"
+    ],
+    "answer": 0,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-18",
+    "question": "How do you determine when enough vapor has entered the refrigeration system before you charge refrigerant liquid?",
+    "options": [
+      "Refrigerant saturation temperature increases above 32°F.",
+      "Recovery unit liquid level drops to a lower pressure.",
+      "Vapor is charged for 15 minutes and then liquid is added.",
+      "Recovery unit pressure drops to a lower pressure."
+    ],
+    "answer": 0,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-19",
+    "question": "How long must a technician evacuating refrigerant from appliances with a full charge of more than 5 pounds and less than 50 pounds that are being disposed of keep records of the event?",
+    "options": [
+      "1 year",
+      "3 years",
+      "5 years",
+      "10 years"
+    ],
+    "answer": 1,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-20",
+    "question": "How long must owners and operators of low-pressure chillers using HCFC refrigerant keep records of leak inspections, initial verification, and follow-up verification tests?",
+    "options": [
+      "2 years",
+      "3 years",
+      "5 years",
+      "Life of the appliance"
+    ],
+    "answer": 1,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-21",
+    "question": "Identify the pressure corresponding to 32°F for R-123.",
+    "options": [
+      "23 inches of Hg vacuum",
+      "20 inches of Hg vacuum",
+      "17 inches of Hg vacuum",
+      "11 inches of Hg vacuum"
+    ],
+    "answer": 1,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-22",
+    "question": "If an owner or operator of an appliance with 50 or more pounds of an ozone-depleting refrigerant charge are required to retrofit or retire an appliance that has exceeded the threshold leak rate, how many months do they have if the replacement appliance uses a refrigerant exempt from the venting prohibition?",
+    "options": [
+      "3 months",
+      "6 months",
+      "12 months",
+      "18 months"
+    ],
+    "answer": 3,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-23",
+    "question": "Leak testing a low-pressure refrigeration system with nitrogen in excess of 10 psig could cause which of the following to fail?",
+    "options": [
+      "Condenser tubes",
+      "Purge unit shells",
+      "Evaporator tubes",
+      "Rupture disc"
+    ],
+    "answer": 3,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-24",
+    "question": "On low-pressure chillers, moisture most frequently enters the refrigerant system through;",
+    "options": [
+      "air leaks in the rupture disc assembly.",
+      "tube leaks in the evaporator.",
+      "leaks from areas with gaskets or fittings.",
+      "leaks from the charging service valve."
+    ],
+    "answer": 2,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-25",
+    "question": "Pressure relief valves must not be installed;",
+    "options": [
+      "in series.",
+      "in parallel.",
+      "vertically.",
+      "horizontally."
+    ],
+    "answer": 0,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-26",
+    "question": "R-123 at 14.7 PSIA will boil at approximately:",
+    "options": [
+      "90°F",
+      "82°F",
+      "78°F",
+      "74°F"
+    ],
+    "answer": 1,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-27",
+    "question": "R-123 at a pressure of 18.1 inches Hg vacuum has a saturation temperature of:",
+    "options": [
+      "28°F",
+      "32°F",
+      "36°F",
+      "40°F"
+    ],
+    "answer": 3,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-28",
+    "question": "Refrigerant removal from a low-pressure system starts with;",
+    "options": [
+      "vapor removal.",
+      "liquid removal.",
+      "vapor and liquid removal.",
+      "oil separation."
+    ],
+    "answer": 1,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-29",
+    "question": "Starting in 2019, EPA regulations require that leaking industrial process refrigeration be repaired (or retrofitted or retired) when the leak rate exceeds;",
+    "options": [
+      "5% of the charge per year.",
+      "10% of the charge per year.",
+      "20% of the charge per year.",
+      "30% of the charge per year."
+    ],
+    "answer": 3,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-30",
+    "question": "Starting in 2019, what is the leak rate threshold for comfort cooling appliances with a full charge of 50 or more pounds?",
+    "options": [
+      "5%",
+      "10%",
+      "20%",
+      "30%"
+    ],
+    "answer": 1,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-31",
+    "question": "Starting in 2019, what is the leak rate threshold for commercial refrigeration equipment with a full charge of 50 or more pounds of an HCFC refrigerant?",
+    "options": [
+      "30%",
+      "20%",
+      "10%",
+      "5%"
+    ],
+    "answer": 1,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-32",
+    "question": "Starting in 2019, what is the leak rate threshold for industrial process refrigeration equipment with a full charge of 50 or more pounds of an HCFC refrigerant?",
+    "options": [
+      "5%",
+      "10%",
+      "20%",
+      "30%"
+    ],
+    "answer": 3,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-33",
+    "question": "To prevent freezing, when recharging an evacuated water-cooled chiller system with R-123, at what pressure or vacuum can liquid charging first begin?",
+    "options": [
+      "500 microns",
+      "50 microns",
+      "20 in Hg vacuum",
+      "20 psig"
+    ],
+    "answer": 2,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-34",
+    "question": "Under what code group of Standard 34 does R-123 fall?",
+    "options": [
+      "A1",
+      "A2",
+      "B1",
+      "B2"
+    ],
+    "answer": 2,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-35",
+    "question": "What evacuation level must technicians recover ·refrigerant to before disposing a low-pressure appliance?",
+    "options": [
+      "0 psig",
+      "15 inches of Hg vacuum",
+      "25 inches of Hg vacuum",
+      "25 mm of Hg absolute"
+    ],
+    "answer": 3,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-36",
+    "question": "What is a typical advantage of a water cooled recovery unit?",
+    "options": [
+      "Higher pressure at the recovery compressor's discharge.",
+      "Higher pressure in the recovery tank.",
+      "Faster recovery of large quantities of refrigerant.",
+      "Greater percentage of refrigerant recovered."
+    ],
+    "answer": 2,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-37",
+    "question": "What is meant by the term \"high efficiency purge unit?\"",
+    "options": [
+      "Purge units that discharge a high percentage of refrigerant with the air they remove.",
+      "Purge units that discharge a low percentage of refrigerant with the air they remove.",
+      "Purge units that consume less than 5 watts of electrical power.",
+      "Purge units which contain less than 50 lbs of refrigerant."
+    ],
+    "answer": 1,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-38",
+    "question": "What is the best method to determine a chiller's normal charge for leak rate calculations?",
+    "options": [
+      "Determine from the maximum power consumption.",
+      "Determine from the compressor horsepower.",
+      "Determine from the dimensions of the chiller barrels.",
+      "Use the charge stated on the equipment nameplate."
+    ],
+    "answer": 3,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-39",
+    "question": "What is the primary purpose of a purge unit on a low pressure chiller?",
+    "options": [
+      "Remove refrigerant from the system.",
+      "Condense air out of the system.",
+      "Condense water out of the system.",
+      "Remove non-condensables from the system."
+    ],
+    "answer": 3,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-40",
+    "question": "What is the result of raising the temperature of the room in which a low-pressure chiller is located?",
+    "options": [
+      "Lower pressure in the chiller.",
+      "Faster refrigerant recovery.",
+      "Delayed recovery.",
+      "Reduced oil flow."
+    ],
+    "answer": 1,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-41",
+    "question": "What is the typical design burst pressure for a rupture disk on a low-pressure centrifugal air-conditioning system?",
+    "options": [
+      "5 psig",
+      "10 psig",
+      "15 psig",
+      "20 psig"
+    ],
+    "answer": 2,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-42",
+    "question": "What must a system owner do, once the threshold leak rate has been exceeded on any low-pressure system?",
+    "options": [
+      "Retire the appliance the following year.",
+      "Repair all of the leaks and submit a report about the repair to the EPA.",
+      "Immediately mothball the appliance until it is retrofitted.",
+      "Repair the appliance enough to bring the leak rate below the threshold, retrofit, or retire the appliance."
+    ],
+    "answer": 3,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-43",
+    "question": "What must be done after recovering the liquid refrigerant from a low-pressure chiller?",
+    "options": [
+      "Recover the vapor refrigerant.",
+      "Pressurize the system with nitrogen.",
+      "Separate the oil from the system.",
+      "Solvent flush the entire system."
+    ],
+    "answer": 0,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-44",
+    "question": "What precaution should be taken prior to recovering refrigerant from a chiller suspected of having tube leaks?",
+    "options": [
+      "Drain the water sides of the evaporator and condenser.",
+      "Run the circulating pumps.",
+      "Be certain the purge unit is operating.",
+      "Open the condenser vents."
+    ],
+    "answer": 0,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-45",
+    "question": "What should be done to reduce refrigerant loss from a purge unit on a R-123 chiller?",
+    "options": [
+      "Leak test and repair the chiller.",
+      "Seal the purge unit discharge line.",
+      "Pipe purge unit back into the low side.",
+      "Pipe purge unit back into recovery unit."
+    ],
+    "answer": 0,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-46",
+    "question": "What should be on and what should be off during vapor removal from a low-pressure refrigeration system?",
+    "options": [
+      "The system water pumps should be on and the recovery compressor should be off.",
+      "The system water pumps and recovery compressor should be on, and the recovery condenser water should be off.",
+      "The system water pumps, recovery compressor, and recovery condenser water should all be on.",
+      "The system water pumps should be off, and the recovery compressor should be on."
+    ],
+    "answer": 2,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-47",
+    "question": "What should be used to remove ice from sight glasses or viewing glasses?",
+    "options": [
+      "A torch",
+      "Water",
+      "A screwdriver",
+      "lsopropyl alcohol"
+    ],
+    "answer": 3,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-48",
+    "question": "What should you do after reaching the required recovery vacuum on a low-pressure appliance?",
+    "options": [
+      "Immediately disconnect the recycling or recovery equipment, and open the system for service.",
+      "Wait for at least a few minutes to see if the system pressure rises before charging.",
+      "Break the vacuum with nitrogen and open the system for service to begin charging liquid.",
+      "Pressurize the system with nitrogen and perform a leak check."
+    ],
+    "answer": 1,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-49",
+    "question": "What steps may be taken to prevent air accumulation into an idle low-pressure refrigeration system?",
+    "options": [
+      "Leave the purge unit on-line at all times.",
+      "Maintain system pressure slightly above atmospheric pressure.",
+      "Open the air vents on the condenser.",
+      "Intermittently operate the system with no load."
+    ],
+    "answer": 1,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-50",
+    "question": "When does ASHRAE Standard 15-2013 require that each machinery room activate an alarm and mechanical ventilation?",
+    "options": [
+      "When the TLV-TWA (Threshold Limit Value -Time Weighted Average) is exceeded.",
+      "When the UTL (Upper Threshold Limit) is exceeded.",
+      "When the COP (Coefficient of Performance) drops 5% of the original value.",
+      "When the EEL (Emergency Exposure Limit) is exceeded by 10%."
+    ],
+    "answer": 0,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-51",
+    "question": "When evacuating a system, the use of a severely oversized vacuum pump could;",
+    "options": [
+      "cause trapped oil to freeze.",
+      "cause trapped refrigerant to freeze.",
+      "cause trapped water to freeze.",
+      "cause the valves to freeze."
+    ],
+    "answer": 2,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-52",
+    "question": "When leak testing a low-pressure centrifugal with nitrogen, what is the maximum test pressure?",
+    "options": [
+      "0 psig",
+      "10 psig",
+      "25 psig",
+      "50 psig"
+    ],
+    "answer": 1,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-53",
+    "question": "When must the leak rate of an appliance be calculated?",
+    "options": [
+      "When topping off or recharging a system due to a loss of charge.",
+      "Following a retrofit with a new refrigerant.",
+      "Following the installation of a new appliance.",
+      "When adding refrigerant for a seasonal variance."
+    ],
+    "answer": 0,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-54",
+    "question": "When should an appliance NOT be evacuated all the way to the prescribed level?",
+    "options": [
+      "When performing a major repair followed by a minor repair.",
+      "When the repair is followed by an evacuation of the appliance to the environment.",
+      "When leaks in the appliance make evacuation to the prescribed level unattainable.",
+      "When the appliance is being disposed of at a later date."
+    ],
+    "answer": 2,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-55",
+    "question": "Where does refrigerant go after it leaves the purge unit of a low-pressure centrifugal system?",
+    "options": [
+      "The evaporator",
+      "The condenser",
+      "The compressor intercooler",
+      "The recovery service vessel"
+    ],
+    "answer": 0,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-56",
+    "question": "Where does the purge unit on a centrifugal system take its suction?",
+    "options": [
+      "Top of the condenser",
+      "Compressor oil sump",
+      "Top of the evaporator",
+      "Suction elbow"
+    ],
+    "answer": 0,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-57",
+    "question": "Where is refrigerant added to a centrifugal machine?",
+    "options": [
+      "Float valve",
+      "Compressor service valve",
+      "Condenser charging valve",
+      "Evaporator charging valve"
+    ],
+    "answer": 3,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-58",
+    "question": "Where is the lowest access point on a low-pressure centrifugal air-conditioning appliance?",
+    "options": [
+      "Evaporator charging valve.",
+      "Condenser service valve.",
+      "Compressor cooler jacket.",
+      "Purge unit exhaust port."
+    ],
+    "answer": 0,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-59",
+    "question": "Where is the rupture disc located on a centrifugal chiller?",
+    "options": [
+      "Condenser",
+      "Evaporator",
+      "Liquid line",
+      "Economizer"
+    ],
+    "answer": 1,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-60",
+    "question": "Where should the discharge from a rupture disc be piped for venting?",
+    "options": [
+      "Outdoors",
+      "To the duct system",
+      "To the evaporator",
+      "Inside the machinery room"
+    ],
+    "answer": 0,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-61",
+    "question": "Where would you place a leak detector probe to check gas leaks into the water box with water removed?",
+    "options": [
+      "At the rupture disc seal.",
+      "Around the vent valve.",
+      "Around a test plug.",
+      "In the drain valve opening."
+    ],
+    "answer": 3,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-62",
+    "question": "Which component is particularly susceptible to leaks in low-pressure refrigeration systems with open drive type compressors?",
+    "options": [
+      "Chiller tubes",
+      "Shaft seal",
+      "Charging connections",
+      "Shaft bearings"
+    ],
+    "answer": 1,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-63",
+    "question": "Which of the following actions would always be considered \"major\" under EPA's regulations?",
+    "options": [
+      "Replacement of an evaporator coil",
+      "Replacement of a filter-drier",
+      "Replacement of a switch",
+      "Replacement of a purge unit"
+    ],
+    "answer": 0,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-64",
+    "question": "Which of the following always falls under the EPA definition for \"major maintenance, service, or repair?\"",
+    "options": [
+      "Replacing an oil filter",
+      "Replacing an expansion valve",
+      "Replacing a compressor",
+      "Replacing an accumulator"
+    ],
+    "answer": 2,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-65",
+    "question": "Which of the following CANNOT be used as a reason to extend the appliance leak repair deadlines?",
+    "options": [
+      "Requirements of federal, state or local regulations make the repair within 30 days impossible.",
+      "The appliance is located in an area that is subject to radiological contamination.",
+      "Necessary repair parts are unavailable.",
+      "A certified service technician is not available."
+    ],
+    "answer": 3,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-66",
+    "question": "Which of the following indicates air in a low-pressure system?",
+    "options": [
+      "High head pressure.",
+      "High liquid level.",
+      "Low head pressure.",
+      "Low suction pressure."
+    ],
+    "answer": 0,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-67",
+    "question": "Which of the following is a reason to take an oil sample?",
+    "options": [
+      "A new filter drier has been installed.",
+      "The unit has had a compressor burnout.",
+      "The unit is not cooling properly.",
+      "Recycled refrigerant has been added to the unit."
+    ],
+    "answer": 1,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-68",
+    "question": "Which of the following is NOT required for an appliance that is using an ozone-depleting refrigerant to be mothballed (thereby extending the leak repair deadline)?",
+    "options": [
+      "Shut down the appliance temporarily.",
+      "Evacuate the refrigerant from the isolated section or component.",
+      "Evacuate refrigerant from the appliance to at least atmospheric pressure.",
+      "Remove the appliance and store it in a warehouse at the facility."
+    ],
+    "answer": 3,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-69",
+    "question": "Which of the following methods can be used to pressurize an R-1233zd system for the purpose of opening the system for a non-major repair?",
+    "options": [
+      "Adding nitrogen to the system.",
+      "Warming the liquid refrigerant in the system.",
+      "Adding compressed air to the system's condenser.",
+      "Adding carbon dioxide to the system's condenser and evaporator."
+    ],
+    "answer": 1,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-70",
+    "question": "Which of the following safety precautions should be adhered to for low-pressure systems?",
+    "options": [
+      "Use gloves and safety goggles when working with liquid refrigerant.",
+      "Reset the water freezestat after recharging.",
+      "Shut down the compressor before removing the gauge from the low side of the system.",
+      "Use a refrigerant leak detector before entering the mechanical room."
+    ],
+    "answer": 0,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-71",
+    "question": "Which of the following statements about R-1233zd is FALSE?",
+    "options": [
+      "It is a SNAP approved replacement for low-pressure centrifugal compressor systems.",
+      "It is being considered for applications where R-123 might have been used.",
+      "It is suitable for air conditioning applications where cooling water is used (large chiller applications).",
+      "It is mildly flammable."
+    ],
+    "answer": 0,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-72",
+    "question": "Which of the following statements is true of recycling and recovery equipment?",
+    "options": [
+      "It must be tested by an AHRI-approved third party.",
+      "It must be equipped with low-loss ball valves and flare fittings.",
+      "It must be able to handle more than one refrigerant.",
+      "It must be labeled as certified to meet EPA's requirements."
+    ],
+    "answer": 3,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-73",
+    "question": "Who is responsible for keeping records of all leak inspections and any completed leak repair verification tests?",
+    "options": [
+      "The original installing technician's employers",
+      "Only the technician that has actually performed each inspection or verification test",
+      "The owner and/or operator of the equipment",
+      "The EPA leak rate assessment division"
+    ],
+    "answer": 2,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-74",
+    "question": "Why do chillers using low-pressure refrigerants require purge units?",
+    "options": [
+      "These systems require the removal of contaminated refrigerant.",
+      "These systems operate below atmospheric pressure.",
+      "Purge units remove refrigerant from the oil sump.",
+      "These systems require the removal of condensables from the chiller."
+    ],
+    "answer": 1,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-75",
+    "question": "Why must water be circulated through a chiller during refrigerant evacuation?",
+    "options": [
+      "To speed up the recovery process.",
+      "To prevent loss of refrigerant to the atmosphere.",
+      "To prevent freezing of water in the appliance.",
+      "To maintain constant refrigerant pressure in the appliance."
+    ],
+    "answer": 2,
+    "topic": 3,
+    "sectionName": "Type 3"
+  },
+  {
+    "id": "3-76",
+    "question": "Why should the oil be removed from a low-pressure system at 130°F?",
+    "options": [
+      "130°F is the normal operating temperature for oil in a low-pressure system.",
+      "Less refrigerant will be contained in the oil at the higher temperature.",
+      "Warmer oil has a lower viscosity and flows more easily.",
+      "It shows that the heater is working."
+    ],
+    "answer": 1,
+    "topic": 3,
+    "sectionName": "Type 3"
+  }
+]

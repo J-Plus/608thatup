@@ -3,7 +3,6 @@ dist/
 *.db
 *.db-shm
 *.db-wal
-data/
 .env
 .DS_Store
 .gstack/

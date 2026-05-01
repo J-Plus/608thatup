@@ -9,7 +9,8 @@
     "seed": "node server/seed.js",
     "build": "vite build",
     "start": "NODE_ENV=production node server/index.js",
-    "ship": "git push && npm run build && fly deploy"
+    "ship": "git push && npm run build && fly deploy",
+    "ship:staging": "git push && npm run build && fly deploy --config fly.staging.toml --app stagethatup"
   },
   "dependencies": {
     "better-sqlite3": "^11.10.0",
