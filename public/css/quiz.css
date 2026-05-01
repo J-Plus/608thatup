@@ -1,0 +1,287 @@
+/* ============================================
+   Quiz Page Layout
+   ============================================ */
+.quiz-page {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 52px);
+  padding: 64px var(--space-xl) var(--space-lg);
+  max-width: 1100px;
+  margin: 0 auto;
+  gap: var(--space-xl);
+  animation: pageIn 300ms var(--ease-out) both;
+}
+
+/* ============================================
+   Quiz Progress
+   ============================================ */
+.quiz-progress {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.quiz-progress__bar {
+  flex: 1;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.quiz-progress__bar-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 3px;
+  transition: width var(--transition-slow);
+}
+
+.quiz-progress__pill {
+  background: rgba(0, 0, 0, 0.45);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+}
+
+/* ============================================
+   Question Banner
+   ============================================ */
+.question-banner {
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl) var(--space-2xl);
+  text-align: center;
+  position: relative;
+}
+
+.question-banner__text {
+  font-size: clamp(2.1rem, 4.4vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.4;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+.question-banner__miss {
+  display: inline-block;
+  margin-top: var(--space-sm);
+  background: rgba(255, 59, 48, 0.2);
+  color: #ff6b60;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+/* ============================================
+   Answer Tile Grid
+   ============================================ */
+.option-tiles {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  flex: 1;
+}
+
+/* ============================================
+   Option Buttons — colored tiles
+   ============================================ */
+.option-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  padding: 40px 20px 20px;
+  border-radius: var(--radius-lg);
+  border: none;
+  color: #ffffff;
+  font-size: clamp(1.9rem, 3.6vw, 2.35rem);
+  font-weight: 700;
+  line-height: 1.45;
+  text-align: center;
+  cursor: pointer;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+  transition: transform 120ms var(--ease-out),
+              filter 120ms var(--ease-out),
+              opacity 300ms var(--ease-out);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.option-btn[data-index="0"] { background: var(--tile-1); }
+.option-btn[data-index="1"] { background: var(--tile-2); }
+.option-btn[data-index="2"] { background: var(--tile-3); }
+.option-btn[data-index="3"] { background: var(--tile-4); }
+
+.option-btn:hover:not(:disabled) {
+  transform: scale(1.025);
+  filter: brightness(1.12);
+}
+
+.option-btn:active:not(:disabled) {
+  transform: scale(0.97);
+  transition-duration: 60ms;
+}
+
+.option-btn--text-md {
+  font-size: clamp(1.4rem, 2.6vw, 1.75rem);
+}
+
+.option-btn--text-sm {
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+}
+
+.option-btn:disabled {
+  cursor: default;
+}
+
+/* Number badge */
+.option-btn__num {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 26px;
+  height: 26px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1;
+}
+
+/* Answer states */
+.option-btn--correct {
+  background: var(--tile-correct) !important;
+}
+
+.option-btn--correct::before {
+  content: "★ ";
+}
+
+.option-btn--wrong {
+  background: var(--tile-wrong) !important;
+}
+
+.option-btn--dimmed {
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+/* ============================================
+   Topic Select
+   ============================================ */
+.topic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-md);
+}
+
+/* ============================================
+   Results
+   ============================================ */
+.results-score {
+  text-align: center;
+  padding: var(--space-3xl) var(--space-2xl);
+  margin-bottom: var(--space-xl);
+}
+
+.results-score__number {
+  font-family: var(--font-heading);
+  font-size: clamp(3.5rem, 10vw, 5rem);
+  font-weight: 600;
+  line-height: 1;
+  color: var(--card-text);
+}
+
+.results-score__number--perfect {
+  color: var(--accent);
+}
+
+.results-score__label {
+  font-size: 1rem;
+  color: var(--card-text-secondary);
+  margin-top: 10px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.results-rewards {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-lg);
+  margin-top: var(--space-xl);
+}
+
+.results-review {
+  margin-top: var(--space-2xl);
+}
+
+.results-review__item {
+  padding: var(--space-lg);
+  margin-bottom: 8px;
+  display: flex;
+  gap: var(--space-md);
+}
+
+.results-review__icon {
+  font-size: 1.125rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.results-review__question {
+  font-weight: 500;
+  font-size: 0.9375rem;
+  margin-bottom: 4px;
+  letter-spacing: -0.01em;
+  color: var(--card-text);
+}
+
+.results-review__answer {
+  font-size: 0.8125rem;
+  color: var(--card-text-secondary);
+  line-height: 1.6;
+}
+
+.results-review__answer strong {
+  color: var(--success);
+  font-weight: 500;
+}
+
+.results-actions {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-md);
+  margin-top: var(--space-2xl);
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+@media (max-width: 640px) {
+  .quiz-page {
+    padding: 60px var(--space-md) var(--space-md);
+  }
+
+  .option-tiles {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .option-btn {
+    min-height: 140px;
+    font-size: 0.9375rem;
+    padding: 36px 14px 14px;
+  }
+
+  .question-banner {
+    padding: var(--space-lg) var(--space-md);
+  }
+}

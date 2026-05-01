@@ -1,0 +1,425 @@
+/* ============================================
+   Card — white panel on dark background
+   ============================================ */
+.glass {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--card-shadow);
+  color: var(--card-text);
+  transition: box-shadow var(--transition-base),
+              transform var(--transition-base);
+}
+
+.glass--interactive {
+  cursor: pointer;
+}
+
+.glass--interactive:hover {
+  box-shadow: var(--card-shadow-elevated);
+  transform: translateY(-2px);
+}
+
+.glass--interactive:active {
+  transform: translateY(0) scale(0.985);
+  transition-duration: 80ms;
+}
+
+/* ============================================
+   Navbar — solid dark bar
+   ============================================ */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-xl);
+  background: #111111;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.navbar__brand {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.navbar__brand span {
+  color: var(--text-primary);
+}
+
+.navbar__nav {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.navbar__link {
+  color: var(--text-secondary);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  transition: color var(--transition-fast), background var(--transition-fast);
+  padding: 6px 12px;
+  border-radius: 8px;
+  letter-spacing: -0.01em;
+}
+
+.navbar__link:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.navbar__avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+}
+
+.navbar__user {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-left: var(--space-sm);
+}
+
+/* ============================================
+   Buttons
+   ============================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: 10px 20px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: -0.01em;
+  transition: all var(--transition-fast);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn:active {
+  transform: scale(0.97);
+  transition-duration: 60ms;
+}
+
+.btn--primary {
+  background: var(--accent);
+  color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.btn--primary:hover {
+  background: var(--accent-light);
+  box-shadow: 0 2px 12px var(--accent-glow);
+}
+
+.btn--ghost {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-primary);
+  background: transparent;
+}
+
+.btn--ghost:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Text utilities on white card */
+.glass .text-muted {
+  color: var(--card-text-secondary);
+}
+
+/* Ghost on white card */
+.glass .btn--ghost {
+  border-color: rgba(0, 0, 0, 0.15);
+  color: var(--card-text);
+}
+
+.glass .btn--ghost:hover {
+  border-color: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.btn--large {
+  padding: 14px 28px;
+  font-size: 0.9375rem;
+  border-radius: var(--radius-lg);
+}
+
+.btn--block {
+  width: 100%;
+}
+
+.btn--google {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  color: var(--card-text);
+  font-size: 0.9375rem;
+  padding: 14px 24px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--card-shadow);
+}
+
+.btn--google:hover {
+  background: var(--card-bg-hover);
+  box-shadow: var(--card-shadow-elevated);
+}
+
+/* ============================================
+   Progress Bar
+   ============================================ */
+.progress-bar {
+  width: 100%;
+  height: 4px;
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-bar__fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-dim), var(--accent), var(--accent-light));
+  border-radius: 2px;
+  transition: width var(--transition-slow);
+}
+
+/* ============================================
+   Stat card
+   ============================================ */
+.stat {
+  padding: var(--space-lg) var(--space-xl);
+  text-align: center;
+}
+
+.stat__value {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 3vw, 1.875rem);
+  font-weight: 600;
+  color: var(--card-text);
+  line-height: 1;
+}
+
+.stat__label {
+  font-size: 0.6875rem;
+  color: var(--card-text-secondary);
+  margin-top: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+}
+
+/* ============================================
+   Reward Badge
+   ============================================ */
+.reward-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: 1.25rem;
+  opacity: 0.2;
+  filter: grayscale(1);
+  transition: all var(--transition-base);
+}
+
+.reward-badge--unlocked {
+  opacity: 1;
+  filter: grayscale(0);
+}
+
+.reward-badge--new {
+  animation: rewardPop 600ms var(--ease-spring);
+}
+
+@keyframes rewardPop {
+  0% { transform: scale(0); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes glowBurst {
+  0% {
+    box-shadow: 0 0 0 0 var(--accent-glow);
+  }
+  50% {
+    box-shadow: 0 0 30px 15px var(--accent-glow), var(--card-shadow);
+  }
+  100% {
+    box-shadow: var(--card-shadow);
+  }
+}
+
+.reward-unlock {
+  animation: glowBurst 1s var(--ease-out);
+}
+
+/* ============================================
+   Section Card — dashboard tiles
+   ============================================ */
+.section-card {
+  padding: var(--space-xl) var(--space-xl) var(--space-lg);
+}
+
+.section-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: var(--space-md);
+}
+
+.section-card__name {
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.section-card__count {
+  font-size: 0.75rem;
+  color: var(--card-text-secondary);
+  font-weight: 500;
+}
+
+.section-card__stats {
+  display: flex;
+  gap: var(--space-lg);
+  margin-top: 14px;
+  font-size: 0.8125rem;
+  color: var(--card-text-secondary);
+}
+
+.section-card__stats strong {
+  color: var(--card-text);
+  font-weight: 600;
+}
+
+.section-card__rewards {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 4px;
+  margin-top: 14px;
+  justify-items: center;
+}
+
+.section-card__rewards .reward-badge {
+  font-size: 1rem;
+  cursor: default;
+}
+
+.section-card__rewards .reward-badge--unlocked:hover {
+  transform: scale(3);
+  z-index: 10;
+  position: relative;
+}
+
+/* ============================================
+   Toast
+   ============================================ */
+.toast-container {
+  position: fixed;
+  top: 64px;
+  right: var(--space-xl);
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.toast {
+  padding: 12px 20px;
+  border-radius: var(--radius-md);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  animation: toastIn 400ms var(--ease-spring);
+  min-width: 240px;
+  letter-spacing: -0.01em;
+}
+
+.toast--success {
+  background: rgba(48, 209, 88, 0.12);
+  border: 1px solid rgba(48, 209, 88, 0.2);
+  color: var(--success);
+}
+
+.toast--error {
+  background: rgba(255, 69, 58, 0.12);
+  border: 1px solid rgba(255, 69, 58, 0.2);
+  color: var(--error);
+}
+
+.toast--info {
+  background: var(--accent-subtle);
+  border: 1px solid rgba(255, 20, 147, 0.2);
+  color: var(--accent);
+}
+
+@keyframes toastIn {
+  from { transform: translateX(40px) scale(0.95); opacity: 0; }
+  to { transform: translateX(0) scale(1); opacity: 1; }
+}
+
+/* ============================================
+   Loading spinner
+   ============================================ */
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 800ms linear infinite;
+  margin: var(--space-2xl) auto;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ============================================
+   Login page
+   ============================================ */
+.login-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: var(--space-xl);
+  text-align: center;
+}
+
+.login-logo {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 7vw, 3.5rem);
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+
+.login-tagline {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: var(--space-3xl);
+  letter-spacing: -0.01em;
+}
+
+.login-card {
+  padding: var(--space-2xl) var(--space-xl);
+  max-width: 380px;
+  width: 100%;
+}
+
+.login-card h2 {
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: var(--space-lg);
+  color: var(--card-text);
+}

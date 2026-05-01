@@ -1,0 +1,71 @@
+:root {
+  /* Background — deep maroon (Quizizz-style) */
+  --bg-primary: #2D0820;
+  --bg-secondary: #3D0A2C;
+  --bg-tertiary: #4A1035;
+  --bg-elevated: #5A1540;
+
+  /* Quiz answer tile colors — S+J brand palette */
+  --tile-1: #E820A8;
+  --tile-2: #3DAD5A;
+  --tile-3: #E8A82E;
+  --tile-4: #72D0E0;
+  --tile-correct: #3DC940;
+  --tile-wrong: #DC3030;
+
+  /* Accent — S+J hot pink */
+  --accent: #FF1493;
+  --accent-light: #ff47ab;
+  --accent-dim: #cc1076;
+  --accent-glow: rgba(255, 20, 147, 0.25);
+  --accent-subtle: rgba(255, 20, 147, 0.08);
+
+  /* Card — white panels on dark bg */
+  --card-bg: #ffffff;
+  --card-bg-hover: #f5f5f5;
+  --card-border: rgba(0, 0, 0, 0.08);
+  --card-text: #1a1a1a;
+  --card-text-secondary: #666666;
+  --card-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.08),
+    0 4px 16px rgba(0, 0, 0, 0.06);
+  --card-shadow-elevated:
+    0 2px 8px rgba(0, 0, 0, 0.1),
+    0 8px 32px rgba(0, 0, 0, 0.08);
+
+  /* Text on dark bg */
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.65);
+  --text-tertiary: rgba(255, 255, 255, 0.35);
+
+  /* Semantic */
+  --success: #30d158;
+  --error: #ff453a;
+  --warning: #ffd60a;
+
+  /* Typography */
+  --font-heading: 'Montagu Slab', serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4.5rem;
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --transition-fast: 180ms var(--ease-out);
+  --transition-base: 280ms var(--ease-out);
+  --transition-slow: 450ms var(--ease-out);
+}

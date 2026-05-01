@@ -1,0 +1,195 @@
+/* ============================================
+   Admin table — clean, white card style
+   ============================================ */
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-table th {
+  text-align: left;
+  padding: 10px var(--space-xl);
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--card-text-secondary);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  font-weight: 500;
+}
+
+.admin-table td {
+  padding: 12px var(--space-xl);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  font-size: 0.875rem;
+  color: var(--card-text-secondary);
+}
+
+.admin-table tr {
+  transition: background var(--transition-fast);
+}
+
+.admin-table tr:hover td {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.admin-table .student-cell {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  color: var(--card-text);
+  font-weight: 500;
+}
+
+.admin-table .student-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+}
+
+.admin-table .clickable {
+  cursor: pointer;
+}
+
+/* Admin overview stat cards */
+.admin-overview {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 8px;
+  margin-bottom: var(--space-xl);
+}
+
+/* ============================================
+   Student detail
+   ============================================ */
+.student-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xl);
+}
+
+.student-header__avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.student-header__name {
+  font-family: var(--font-heading);
+  font-size: 1.375rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.student-header__email {
+  color: var(--text-secondary);
+  font-size: 0.8125rem;
+  margin-top: 2px;
+}
+
+.student-section {
+  padding: var(--space-lg) var(--space-xl);
+  margin-bottom: 8px;
+}
+
+.student-section__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-md);
+}
+
+.student-section__name {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+  color: var(--card-text);
+}
+
+.student-section__stats {
+  display: flex;
+  gap: var(--space-lg);
+  font-size: 0.8125rem;
+  color: var(--card-text-secondary);
+}
+
+.student-section__stats strong {
+  color: var(--card-text);
+  font-weight: 600;
+}
+
+.round-history {
+  display: flex;
+  gap: 4px;
+  margin-top: var(--space-md);
+}
+
+.round-dot {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.625rem;
+  font-weight: 700;
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--card-text-secondary);
+  transition: all var(--transition-fast);
+}
+
+.round-dot--perfect {
+  background: rgba(255, 20, 147, 0.1);
+  color: var(--accent);
+  box-shadow: inset 0 0 0 1px rgba(255, 20, 147, 0.25);
+}
+
+.round-dot--retrain {
+  background: rgba(100, 160, 255, 0.12);
+  color: #64a0ff;
+  box-shadow: inset 0 0 0 1px rgba(100, 160, 255, 0.3);
+  font-size: 0.65rem;
+}
+
+/* Cohort tags */
+.cohort-tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: rgba(255, 20, 147, 0.1);
+  color: var(--accent);
+  letter-spacing: 0.02em;
+}
+
+/* Cohort select dropdown */
+.cohort-select {
+  padding: 3px 6px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  background: rgba(0, 0, 0, 0.02);
+  color: var(--card-text);
+  cursor: pointer;
+  min-width: 70px;
+}
+
+.cohort-select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+@media (max-width: 640px) {
+  .admin-table th:nth-child(n+4),
+  .admin-table td:nth-child(n+4) {
+    display: none;
+  }
+
+  .admin-overview {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
