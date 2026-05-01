@@ -65,7 +65,25 @@ router.get('/students/:id', (req, res) => {
     };
   });
 
-  res.json({ student, sections, quizLength: QUIZ_LENGTH });
+  const SECTION_MAP = ['Core', 'Type I', 'Type II', 'Type III'];
+
+  // Lifetime wrong answers grouped by question, sorted by miss count desc
+  const wrongQuestions = db.prepare(`
+    SELECT q.id, q.question, q.topic,
+      COUNT(*) as missCount,
+      SUM(CASE WHEN qa.is_correct = 1 THEN 1 ELSE 0 END) as correctCount
+    FROM quiz_answers qa
+    JOIN questions q ON q.id = qa.question_id
+    JOIN quiz_rounds qr ON qr.id = qa.round_id
+    WHERE qr.user_id = ? AND qa.is_correct = 0
+    GROUP BY q.id
+    ORDER BY missCount DESC
+  `).all(student.id).map(q => ({
+    ...q,
+    sectionName: SECTION_MAP[q.topic] || 'Unknown',
+  }));
+
+  res.json({ student, sections, quizLength: QUIZ_LENGTH, wrongQuestions });
 });
 
 router.get('/overview', (req, res) => {
