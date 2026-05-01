@@ -162,7 +162,8 @@
   background: var(--tile-correct) !important;
 }
 
-.option-btn--correct::before {
+.option-btn--correct::before,
+.option-btn--debug::before {
   content: "★ ";
 }
 

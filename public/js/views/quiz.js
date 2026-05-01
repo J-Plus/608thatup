@@ -78,7 +78,7 @@ export async function quizView(params) {
           </div>
           <span class="quiz-progress__pill">${label}</span>
         </div>
-        ${questionCard(q, answers[currentQ], false, null, q.missCount || 0)}
+        ${questionCard(q, answers[currentQ], false, q.correctAnswer ?? null, q.missCount || 0, true)}
       </div>
     `;
 

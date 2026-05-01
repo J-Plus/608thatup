@@ -1,10 +1,12 @@
-export function questionCard(question, selectedIndex, revealed = false, correctAnswer = null, missCount = 0) {
+export function questionCard(question, selectedIndex, revealed = false, correctAnswer = null, missCount = 0, preReveal = false) {
   const optionsHtml = question.options.map((opt, i) => {
     let classes = 'option-btn';
     if (revealed) {
       if (i === correctAnswer) classes += ' option-btn--correct';
       else if (i === selectedIndex && i !== correctAnswer) classes += ' option-btn--wrong';
       else classes += ' option-btn--dimmed';
+    } else if (preReveal && correctAnswer !== null && i === correctAnswer) {
+      classes += ' option-btn--debug';
     }
 
     const len = opt.length;
