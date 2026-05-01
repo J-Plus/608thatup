@@ -6,7 +6,7 @@ const router = Router();
 router.use(requireAuth);
 
 const SECTION_NAMES = ['Core', 'Type I', 'Type II', 'Type III'];
-export const QUIZ_LENGTH = 5;
+export const QUIZ_LENGTH = 25;
 
 function shuffleArray(arr) {
   const a = [...arr];
