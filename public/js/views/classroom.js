@@ -192,5 +192,16 @@ export async function classroomView(params) {
     });
   }
 
+  // Keyboard 1-4 → click corresponding tile
+  const keyHandler = (e) => {
+    const n = parseInt(e.key);
+    if (n >= 1 && n <= 4) {
+      const btn = app.querySelector(`.classroom-tile[data-index="${n - 1}"]`);
+      if (btn && !btn.disabled) btn.click();
+    }
+  };
+  document.addEventListener('keydown', keyHandler);
+  window.addEventListener('hashchange', () => document.removeEventListener('keydown', keyHandler), { once: true });
+
   render();
 }

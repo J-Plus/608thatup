@@ -118,5 +118,20 @@ export async function quizView(params) {
     });
   }
 
+  // Keyboard 1-4 → click corresponding tile
+  const keyHandler = (e) => {
+    const n = parseInt(e.key);
+    if (n >= 1 && n <= 4) {
+      const btn = app.querySelector(`#quiz-root .option-btn[data-index="${n - 1}"]`);
+      if (btn && !btn.disabled) btn.click();
+    }
+  };
+  document.addEventListener('keydown', keyHandler);
+
+  // Clean up on navigate away
+  const origNavigate = navigate;
+  const cleanup = () => document.removeEventListener('keydown', keyHandler);
+  window.addEventListener('hashchange', cleanup, { once: true });
+
   render();
 }
