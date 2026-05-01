@@ -7,6 +7,7 @@ router.use(requireAuth);
 
 const SECTION_NAMES = ['Core', 'Type I', 'Type II', 'Type III'];
 export const QUIZ_LENGTH = 25;
+const RETRAIN_LENGTH = 10;
 
 function shuffleArray(arr) {
   const a = [...arr];
@@ -119,7 +120,8 @@ router.get('/retrain', (req, res) => {
   const missMap = {};
   wrongAnswers.forEach(w => { missMap[w.question_id] = w.missCount; });
 
-  const questionIds = wrongAnswers.map(w => w.question_id);
+  // Cap at RETRAIN_LENGTH — already sorted by missCount desc so worst ones come first
+  const questionIds = wrongAnswers.slice(0, RETRAIN_LENGTH).map(w => w.question_id);
   const qPlaceholders = questionIds.map(() => '?').join(',');
   const dbQuestions = db.prepare(`SELECT * FROM questions WHERE id IN (${qPlaceholders})`).all(...questionIds);
 
