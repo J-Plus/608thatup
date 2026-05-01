@@ -8,7 +8,8 @@
     "dev:client": "vite",
     "seed": "node server/seed.js",
     "build": "vite build",
-    "start": "NODE_ENV=production node server/index.js"
+    "start": "NODE_ENV=production node server/index.js",
+    "ship": "git push && npm run build && fly deploy"
   },
   "dependencies": {
     "better-sqlite3": "^11.10.0",
