@@ -619,7 +619,7 @@
       "3.5",
       "4.6"
     ],
-    "answer": 1,
+    "answer": 0,
     "topic": 0,
     "sectionName": "Core"
   },
@@ -645,7 +645,7 @@
       "Number of cylinders of each gas",
       "Total weight of all cylinders"
     ],
-    "answer": 0,
+    "answer": 2,
     "topic": 0,
     "sectionName": "Core"
   },
@@ -1123,7 +1123,7 @@
     "options": [
       "Moisture solubility data sheets (MSDS)",
       "Chemical compound reference sheets (CCRS)",
-      "Safety data sheets (SOS)",
+      "Safety data sheets (SDS)",
       "Chemical composition reference sheets (CCRS)"
     ],
     "answer": 2,
@@ -1555,7 +1555,7 @@
       "Failing to recover refrigerant in a leaking system to at least 0 psig.",
       "Adding nitrogen to a fully charged system, then call the mixture a \"leak check gas\" and venting the mixture to the atmosphere."
     ],
-    "answer": 3,
+    "answer": 1,
     "topic": 0,
     "sectionName": "Core"
   },
@@ -2218,7 +2218,7 @@
       "R-600a",
       "R-404A"
     ],
-    "answer": 0,
+    "answer": 3,
     "topic": 1,
     "sectionName": "Type 1"
   },
@@ -2530,7 +2530,7 @@
       "recover the refrigerant to both 4 inches of mercury vacuum and 80% of the nameplate charge.",
       "either recover the refrigerant to 4 inches of mercury vacuum or 90% of the nameplate charge."
     ],
-    "answer": 2,
+    "answer": 3,
     "topic": 1,
     "sectionName": "Type 1"
   },
@@ -3336,7 +3336,7 @@
       "Pressurize with the refrigerant to be used in the system.",
       "Introduce an initial charge of refrigerant and start the compressor."
     ],
-    "answer": 0,
+    "answer": 1,
     "topic": 2,
     "sectionName": "Type 2"
   },
@@ -3622,7 +3622,7 @@
       "Comfort cooling",
       "Ice making refrigeration"
     ],
-    "answer": 1,
+    "answer": 0,
     "topic": 2,
     "sectionName": "Type 2"
   },
@@ -3687,7 +3687,7 @@
       "Excessive superheat",
       "Frequent purging"
     ],
-    "answer": 0,
+    "answer": 2,
     "topic": 2,
     "sectionName": "Type 2"
   },
@@ -4038,7 +4038,7 @@
       "Comfort cooling",
       "Ice making refrigeration"
     ],
-    "answer": 0,
+    "answer": 2,
     "topic": 3,
     "sectionName": "Type 3"
   },
@@ -4182,19 +4182,6 @@
       "oil separation."
     ],
     "answer": 1,
-    "topic": 3,
-    "sectionName": "Type 3"
-  },
-  {
-    "id": "3-29",
-    "question": "Starting in 2019, EPA regulations require that leaking industrial process refrigeration be repaired (or retrofitted or retired) when the leak rate exceeds;",
-    "options": [
-      "5% of the charge per year.",
-      "10% of the charge per year.",
-      "20% of the charge per year.",
-      "30% of the charge per year."
-    ],
-    "answer": 3,
     "topic": 3,
     "sectionName": "Type 3"
   },
@@ -4426,7 +4413,7 @@
       "A torch",
       "Water",
       "A screwdriver",
-      "lsopropyl alcohol"
+      "Isopropyl alcohol"
     ],
     "answer": 3,
     "topic": 3,
@@ -4740,7 +4727,7 @@
       "It is suitable for air conditioning applications where cooling water is used (large chiller applications).",
       "It is mildly flammable."
     ],
-    "answer": 0,
+    "answer": 3,
     "topic": 3,
     "sectionName": "Type 3"
   },
