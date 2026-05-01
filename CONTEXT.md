@@ -2,9 +2,10 @@
 
 EPA 608 refrigeration certification test prep app built for **Stacks+Joules** (workforce development org, NYC). Students log in, take quizzes, track progress. Teachers run classroom sessions. Admins monitor cohorts.
 
-**Live:** https://608thatup.fly.dev  
+**Prod:** https://608thatup.fly.dev (Fly app `608thatup`)  
+**Staging:** https://stagethatup.fly.dev (Fly app `stagethatup`)  
 **Repo:** https://github.com/J-Plus/608thatup  
-**Local:** `/Users/jonathanspooner/code/608thatup`
+**Local:** `/Users/jonathanspooner/Documents/Claude/code/608thatupapp`
 
 ---
 
@@ -16,8 +17,8 @@ EPA 608 refrigeration certification test prep app built for **Stacks+Joules** (w
 | Backend | Node.js + Express (ESM) |
 | Database | SQLite via better-sqlite3 |
 | Auth | Google OAuth (passport-google-oauth20), session-based |
-| Hosting | Fly.io (EWR region, single machine, 256MB RAM) |
-| Deploy | `npm run build && fly deploy` |
+| Hosting | Fly.io (EWR region, 256MB RAM, auto-stop machines). Prod app `608thatup`, staging app `stagethatup`. |
+| Deploy | `npm run ship` (prod) or `npm run ship:staging` (staging) — each runs `git push && npm run build && fly deploy [--config fly.staging.toml]` |
 | Node version | 22 (see `.nvmrc`) — use `nvm use 22` |
 
 ---
@@ -28,10 +29,15 @@ EPA 608 refrigeration certification test prep app built for **Stacks+Joules** (w
 source ~/.nvm/nvm.sh && nvm use 22
 npm install
 cp .env.example .env  # fill in secrets
-npm run dev           # runs server (3001) + vite (5174) concurrently
+npm run dev           # runs Express server (3000) + Vite (5173) concurrently
 ```
 
-`.env` keys: `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `SESSION_SECRET`, `ADMIN_EMAILS`, `ADMIN_DOMAINS`, `BASE_URL`, `PORT`
+`.env` keys read by the server:
+- `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET` — OAuth credentials
+- `CALLBACK_URL` — full OAuth callback URL (e.g. `https://stagethatup.fly.dev/api/auth/google/callback`). **Read by `server/auth.js`.** Note: `.env.example` lists `BASE_URL` but the code reads `CALLBACK_URL`; treat `BASE_URL` as deprecated/ignored.
+- `SESSION_SECRET` — express-session secret
+- `ADMIN_EMAILS` (comma-separated), `ADMIN_DOMAINS` (comma-separated) — first-login admin promotion
+- `PORT` — Express port (defaults to 3000)
 
 Admin access granted to any email in `ADMIN_EMAILS` or any `@ADMIN_DOMAINS` domain on first login.
 
@@ -206,11 +212,23 @@ CLASSROOM_LENGTH = 25   // classroom mode
 
 ## Deployment
 
+Two Fly apps share one repo, deployed via separate `fly.toml` files:
+
 ```bash
-npm run build    # Vite build to /dist
-fly deploy       # Docker build + deploy to Fly.io
+npm run ship           # → prod (608thatup.fly.dev)        uses fly.toml
+npm run ship:staging   # → staging (stagethatup.fly.dev)   uses fly.staging.toml
 ```
 
-Fly volume `vol_493jd5z6y1ymd064` (1GB, EWR) holds SQLite DB at `/data/app.db`. Daily snapshots auto-taken, 5-day retention.
+Each runs `git push && npm run build && fly deploy [--config fly.staging.toml]`. Recommended flow: ship to staging → eyeball → ship to prod.
 
-Restore snapshot: `fly volumes snapshots restore <snapshot-id>`
+The Dockerfile auto-runs `npm run seed && npm start` so a fresh volume populates the question bank from `data/parsedEPA608.json` on first boot. (That file is checked into git — required for boot.)
+
+**Fly secrets per app** (set via `fly secrets set ... --app <name>`):
+- Both: `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `SESSION_SECRET`, `ADMIN_EMAILS`, `ADMIN_DOMAINS`, `CALLBACK_URL`
+- Each app's `CALLBACK_URL` points to its own domain. The same Google OAuth client is shared; both callback URIs are registered in Google Cloud Console.
+
+**Volumes (separate SQLite DBs):**
+- Prod: `vol_493jd5z6y1ymd064` (1GB, EWR) → `/data/app.db`
+- Staging: `vol_rnzyn6zdw7gzqe1r` (1GB, EWR) → `/data/app.db`
+
+Daily snapshots auto-taken, 5-day retention. Restore: `fly volumes snapshots restore <snapshot-id> --app <app>`.

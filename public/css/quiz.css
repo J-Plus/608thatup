@@ -171,8 +171,8 @@
   background: var(--tile-wrong) !important;
 }
 
-.option-btn--dimmed {
-  opacity: 0.15;
+.option-tiles .option-btn--dimmed {
+  opacity: 0.15 !important;
   pointer-events: none;
 }
 
