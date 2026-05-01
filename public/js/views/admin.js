@@ -166,67 +166,102 @@ export async function adminView() {
       </div>
     `;
 
-    const tableHtml = students.length === 0
-      ? '<p class="text-muted text-center mt-xl">No students yet</p>'
-      : `
-        <div class="glass" style="overflow-x:auto;">
-          <table class="admin-table">
-            <thead>
-              <tr>
-                <th>Student</th>
-                ${isSuperAdmin ? '<th>Cohort</th>' : ''}
-                <th>Rounds</th>
-                <th>Perfect</th>
-                <th>Avg Score</th>
-                <th>Last Active</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${students.map(s => `
-                <tr class="clickable" data-student-id="${s.id}">
-                  <td>
-                    <div class="student-cell">
-                      ${s.avatar_url ? `<img src="${s.avatar_url}" alt="" class="student-avatar" onerror="this.style.display='none'">` : ''}
-                      <span>${s.name}</span>
-                    </div>
-                  </td>
-                  ${isSuperAdmin ? `<td class="cohort-cell" data-user-id="${s.id}">${cohortSelect(cohorts, s.cohort || '', s.id)}</td>` : ''}
-                  <td>${s.totalRounds}</td>
-                  <td>${s.totalPerfects}</td>
-                  <td>${s.avgScore}/${overview.quizLength}</td>
-                  <td>${new Date(s.last_login).toLocaleDateString()}</td>
-                </tr>
-              `).join('')}
-            </tbody>
-          </table>
-        </div>
-      `;
+    // Cohort filter chips
+    const allCohorts = [...new Set(students.map(s => s.cohort).filter(Boolean))].sort();
+    let activeCohort = null;
 
-    container.insertAdjacentHTML('beforeend', overviewHtml + tableHtml);
-
-    // Click row to view student detail
-    container.querySelectorAll('.clickable').forEach(row => {
-      row.addEventListener('click', (e) => {
-        if (e.target.closest('.cohort-cell')) return;
-        window.location.hash = `#/admin/${row.dataset.studentId}`;
-      });
-    });
-
-    // Cohort dropdown change handler (super-admin only)
-    if (isSuperAdmin) {
-      container.querySelectorAll('.cohort-select').forEach(sel => {
-        sel.addEventListener('change', async (e) => {
-          e.stopPropagation();
-          const userId = sel.dataset.userId;
-          try {
-            await api.setCohort(userId, sel.value);
-          } catch (err) {
-            alert('Failed to set cohort');
-          }
-        });
-        sel.addEventListener('click', (e) => e.stopPropagation());
-      });
+    function buildRows(list) {
+      if (list.length === 0) return '<tr><td colspan="6" style="text-align:center;color:var(--card-text-secondary);padding:2rem;">No students in this cohort</td></tr>';
+      return list.map(s => `
+        <tr class="clickable" data-student-id="${s.id}">
+          <td>
+            <div class="student-cell">
+              ${s.avatar_url ? `<img src="${s.avatar_url}" alt="" class="student-avatar" onerror="this.style.display='none'">` : ''}
+              <span>${s.name}</span>
+            </div>
+          </td>
+          ${isSuperAdmin ? `<td class="cohort-cell" data-user-id="${s.id}">${cohortSelect(cohorts, s.cohort || '', s.id)}</td>` : ''}
+          <td>${s.totalRounds}</td>
+          <td>${s.totalPerfects}</td>
+          <td>${s.avgScore}/${overview.quizLength}</td>
+          <td>${new Date(s.last_login).toLocaleDateString()}</td>
+        </tr>
+      `).join('');
     }
+
+    function buildChips() {
+      const chips = ['All', ...allCohorts].map(c => {
+        const isActive = (c === 'All' && !activeCohort) || c === activeCohort;
+        return `<button class="cohort-chip ${isActive ? 'cohort-chip--active' : ''}" data-cohort="${c}">${c}${c !== 'All' ? ` <span class="cohort-chip__count">${students.filter(s => s.cohort === c).length}</span>` : ''}</button>`;
+      }).join('');
+      return `<div class="cohort-chips" style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1rem;">${chips}</div>`;
+    }
+
+    function renderTable() {
+      const filtered = activeCohort ? students.filter(s => s.cohort === activeCohort) : students;
+      const tableWrap = container.querySelector('#student-table-wrap');
+      tableWrap.innerHTML = students.length === 0
+        ? '<p class="text-muted text-center mt-xl">No students yet</p>'
+        : `
+          ${buildChips()}
+          <div class="glass" style="overflow-x:auto;">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Student</th>
+                  ${isSuperAdmin ? '<th>Cohort</th>' : ''}
+                  <th>Rounds</th>
+                  <th>Perfect</th>
+                  <th>Avg Score</th>
+                  <th>Last Active</th>
+                </tr>
+              </thead>
+              <tbody>${buildRows(filtered)}</tbody>
+            </table>
+          </div>
+        `;
+
+      // Chip clicks
+      tableWrap.querySelectorAll('.cohort-chip').forEach(chip => {
+        chip.addEventListener('click', () => {
+          activeCohort = chip.dataset.cohort === 'All' ? null : chip.dataset.cohort;
+          renderTable();
+          bindTableEvents();
+        });
+      });
+
+      bindTableEvents();
+    }
+
+    function bindTableEvents() {
+      // Row click → student detail
+      container.querySelectorAll('.clickable').forEach(row => {
+        row.addEventListener('click', (e) => {
+          if (e.target.closest('.cohort-cell')) return;
+          window.location.hash = `#/admin/${row.dataset.studentId}`;
+        });
+      });
+      // Cohort dropdown
+      if (isSuperAdmin) {
+        container.querySelectorAll('.cohort-select').forEach(sel => {
+          sel.addEventListener('change', async (e) => {
+            e.stopPropagation();
+            try {
+              await api.setCohort(sel.dataset.userId, sel.value);
+              // Update local data so filter stays accurate
+              const student = students.find(s => s.id == sel.dataset.userId);
+              if (student) student.cohort = sel.value;
+            } catch (err) {
+              alert('Failed to set cohort');
+            }
+          });
+          sel.addEventListener('click', (e) => e.stopPropagation());
+        });
+      }
+    }
+
+    container.insertAdjacentHTML('beforeend', overviewHtml + '<div id="student-table-wrap"></div>');
+    renderTable();
   } catch (e) {
     app.querySelector('.spinner').outerHTML = `<p class="text-muted text-center">Failed to load admin data</p>`;
   }
