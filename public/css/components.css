@@ -299,6 +299,17 @@
   font-weight: 600;
 }
 
+.section-card__last {
+  margin-top: 8px;
+  font-size: 0.8125rem;
+  color: var(--card-text-secondary);
+}
+
+.section-card__last strong {
+  color: var(--card-text);
+  font-weight: 600;
+}
+
 .section-card__rewards {
   display: grid;
   grid-template-columns: repeat(10, 1fr);

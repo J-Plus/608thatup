@@ -15,6 +15,12 @@ router.get('/summary', (req, res) => {
       FROM quiz_rounds WHERE user_id = ? AND topic = ?
     `).get(req.user.id, topic);
 
+    const lastRound = db.prepare(`
+      SELECT score, completed_at FROM quiz_rounds
+      WHERE user_id = ? AND topic = ?
+      ORDER BY completed_at DESC LIMIT 1
+    `).get(req.user.id, topic);
+
     const rewards = db.prepare(`
       SELECT reward_type FROM rewards WHERE user_id = ? AND topic = ?
     `).all(req.user.id, topic).map(r => r.reward_type);
@@ -64,6 +70,8 @@ router.get('/summary', (req, res) => {
       avgScore: stats.avgScore ? Math.round(stats.avgScore * 10) / 10 : 0,
       rewards,
       wrongCount,
+      lastScore: lastRound ? lastRound.score : null,
+      lastDate: lastRound ? lastRound.completed_at : null,
     };
   });
 

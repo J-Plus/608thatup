@@ -54,6 +54,18 @@ export async function dashboardView() {
     // Check we're still on dashboard (user may have navigated away)
     if (!window.location.hash.includes('/dashboard')) return;
 
+    const relTime = (iso) => {
+      if (!iso) return '';
+      const ms = Date.now() - new Date(iso + 'Z').getTime();
+      const days = Math.floor(ms / 86_400_000);
+      if (days === 0) return 'today';
+      if (days === 1) return 'yesterday';
+      if (days < 7) return `${days}d ago`;
+      if (days < 30) return `${Math.floor(days / 7)}w ago`;
+      if (days < 365) return `${Math.floor(days / 30)}mo ago`;
+      return `${Math.floor(days / 365)}y ago`;
+    };
+
     const cardsHtml = sections.map(s => `
       <div class="section-card glass glass--interactive" data-topic="${s.topic}">
         <div class="section-card__header">
@@ -66,6 +78,7 @@ export async function dashboardView() {
           <span><strong>${s.perfects}</strong> perfect</span>
           <span>Avg: <strong>${s.avgScore}/${s.quizLength}</strong></span>
         </div>
+        ${s.lastScore !== null ? `<div class="section-card__last">Last: <strong>${s.lastScore}/${s.quizLength}</strong> · ${relTime(s.lastDate)}</div>` : ''}
         <div class="section-card__rewards">
           ${rewardSet(s.rewards)}
         </div>
