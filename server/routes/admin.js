@@ -49,9 +49,9 @@ router.get('/students/:id', (req, res) => {
       SELECT reward_type FROM rewards WHERE user_id = ? AND topic = ?
     `).all(student.id, topic).map(r => r.reward_type);
 
-    const recentRounds = db.prepare(`
+    const allRounds = db.prepare(`
       SELECT id, score, is_perfect, is_retrain, completed_at FROM quiz_rounds
-      WHERE user_id = ? AND topic = ? ORDER BY completed_at DESC LIMIT 10
+      WHERE user_id = ? AND topic = ? ORDER BY completed_at DESC
     `).all(student.id, topic);
 
     return {
@@ -61,7 +61,8 @@ router.get('/students/:id', (req, res) => {
       perfects: stats.perfects || 0,
       avgScore: stats.avgScore ? Math.round(stats.avgScore * 10) / 10 : 0,
       rewards,
-      recentRounds,
+      recentRounds: allRounds.slice(0, 10),
+      allRounds,
     };
   });
 

@@ -37,7 +37,9 @@ export async function adminStudentView(params) {
       <a href="#/admin" class="btn btn--ghost" style="margin-bottom:1.5rem;">&larr; Back to students</a>
     `;
 
-    const sectionsHtml = sections.map(s => `
+    const sectionsHtml = sections.map(s => {
+      const allRounds = s.allRounds || s.recentRounds;
+      return `
       <div class="student-section glass">
         <div class="student-section__header">
           <h3 class="student-section__name">${s.sectionName}</h3>
@@ -55,9 +57,20 @@ export async function adminStudentView(params) {
               <a href="#/round/${r.id}" class="round-dot ${r.is_perfect ? 'round-dot--perfect' : ''} ${r.is_retrain ? 'round-dot--retrain' : ''}" title="${r.is_retrain ? 'Retrain: ' : ''}${r.score}/${r.is_retrain ? '?' : quizLength}" style="text-decoration:none;cursor:pointer;">${r.score}</a>
             `).join('')}
           </div>
+          <details class="section-card__history" style="margin-top:0.75rem;">
+            <summary>View all ${s.rounds} ${s.rounds === 1 ? 'round' : 'rounds'}</summary>
+            <ul class="section-card__history-list">
+              ${allRounds.map(r => {
+                const date = new Date(r.completed_at + 'Z').toLocaleDateString();
+                const tag = r.is_retrain ? ' <span class="history-tag">retrain</span>' : (r.is_perfect ? ' <span class="history-tag history-tag--perfect">perfect</span>' : '');
+                return `<li><a href="#/round/${r.id}" style="color:inherit;text-decoration:none;">Date: ${date} &nbsp; Score: <strong>${r.score}/${quizLength}</strong>${tag}</a></li>`;
+              }).join('')}
+            </ul>
+          </details>
         ` : '<p class="text-muted" style="margin-top:0.75rem; font-size:0.85rem;">No rounds yet</p>'}
       </div>
-    `).join('');
+    `;
+    }).join('');
 
     const weakSpotsHtml = wrongQuestions.length === 0 ? '' : `
       <div class="glass weak-spots" style="margin-top:1.5rem;">
