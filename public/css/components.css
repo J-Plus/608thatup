@@ -310,6 +310,73 @@
   font-weight: 600;
 }
 
+.section-card__history {
+  margin-top: 6px;
+  font-size: 0.8125rem;
+}
+
+.section-card__history > summary {
+  cursor: pointer;
+  color: var(--accent);
+  user-select: none;
+  list-style: none;
+  padding: 4px 0;
+}
+
+.section-card__history > summary::-webkit-details-marker {
+  display: none;
+}
+
+.section-card__history > summary::before {
+  content: '▸ ';
+  display: inline-block;
+  transition: transform 120ms ease;
+}
+
+.section-card__history[open] > summary::before {
+  transform: rotate(90deg);
+}
+
+.section-card__history-list {
+  list-style: none;
+  padding: 4px 0 0 14px;
+  margin: 0;
+  max-height: 220px;
+  overflow-y: auto;
+  color: var(--card-text-secondary);
+}
+
+.section-card__history-list li {
+  padding: 3px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.section-card__history-list li:last-child {
+  border-bottom: none;
+}
+
+.section-card__history-list strong {
+  color: var(--card-text);
+}
+
+.history-tag {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--card-text-secondary);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.history-tag--perfect {
+  background: rgba(61, 201, 64, 0.15);
+  color: #3DC940;
+}
+
 .section-card__rewards {
   display: grid;
   grid-template-columns: repeat(10, 1fr);

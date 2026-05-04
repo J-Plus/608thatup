@@ -85,9 +85,9 @@ router.get('/history', (req, res) => {
   }
 
   const rounds = db.prepare(`
-    SELECT id, score, is_perfect, completed_at
+    SELECT id, score, is_perfect, is_retrain, completed_at
     FROM quiz_rounds WHERE user_id = ? AND topic = ?
-    ORDER BY completed_at DESC LIMIT 20
+    ORDER BY completed_at DESC
   `).all(req.user.id, topic);
 
   res.json(rounds);

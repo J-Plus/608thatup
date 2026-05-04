@@ -42,6 +42,8 @@ export async function dashboardView() {
       navigate(`/classroom/${classroomBtn.dataset.topic}`);
       return;
     }
+    // Don't treat clicks on the history accordion as a card click
+    if (e.target.closest('.section-card__history')) return;
     const card = e.target.closest('.section-card');
     if (card) {
       navigate(`/quiz/${card.dataset.topic}`);
@@ -86,6 +88,10 @@ export async function dashboardView() {
           <span>Avg: <strong>${s.avgScore}/${s.quizLength}</strong></span>
         </div>
         ${s.lastScore !== null ? `<div class="section-card__last">Last Test: ${relTime(s.lastDate)} - Last Score: (<strong>${s.lastScore}/${s.quizLength}</strong>)</div>` : ''}
+        ${s.rounds > 0 ? `<details class="section-card__history" data-topic="${s.topic}" data-quiz-length="${s.quizLength}">
+          <summary>View all ${s.rounds} ${s.rounds === 1 ? 'round' : 'rounds'}</summary>
+          <ul class="section-card__history-list"><li class="text-muted">Loading…</li></ul>
+        </details>` : ''}
         <div class="section-card__rewards">
           ${rewardSet(s.rewards)}
         </div>
@@ -98,6 +104,31 @@ export async function dashboardView() {
     const spinner = container.querySelector('.spinner');
     if (spinner) spinner.remove();
     container.insertAdjacentHTML('beforeend', `<div class="topic-grid">${cardsHtml}</div>`);
+
+    // Lazy-load round history when an accordion is opened
+    container.querySelectorAll('details.section-card__history').forEach(el => {
+      el.addEventListener('toggle', async () => {
+        if (!el.open || el.dataset.loaded) return;
+        const topic = el.dataset.topic;
+        const quizLength = el.dataset.quizLength;
+        const list = el.querySelector('.section-card__history-list');
+        try {
+          const history = await api.getHistory(topic);
+          if (history.length === 0) {
+            list.innerHTML = '<li class="text-muted">No rounds yet</li>';
+          } else {
+            list.innerHTML = history.map(r => {
+              const date = new Date(r.completed_at + 'Z').toLocaleDateString();
+              const tag = r.is_retrain ? ' <span class="history-tag">retrain</span>' : (r.is_perfect ? ' <span class="history-tag history-tag--perfect">perfect</span>' : '');
+              return `<li>Date: ${date} &nbsp; Score: <strong>${r.score}/${quizLength}</strong>${tag}</li>`;
+            }).join('');
+          }
+          el.dataset.loaded = '1';
+        } catch (err) {
+          list.innerHTML = '<li class="text-muted">Failed to load</li>';
+        }
+      });
+    });
   } catch (e) {
     const spinner = container.querySelector('.spinner');
     if (spinner) spinner.outerHTML = `<p class="text-muted text-center">Failed to load dashboard</p>`;
