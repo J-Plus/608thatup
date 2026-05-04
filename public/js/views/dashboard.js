@@ -85,7 +85,7 @@ export async function dashboardView() {
           <span><strong>${s.perfects}</strong> perfect</span>
           <span>Avg: <strong>${s.avgScore}/${s.quizLength}</strong></span>
         </div>
-        ${s.lastScore !== null ? `<div class="section-card__last">Last Test: ${relTime(s.lastDate)} score (<strong>${s.lastScore}/${s.quizLength}</strong>)</div>` : ''}
+        ${s.lastScore !== null ? `<div class="section-card__last">Last Test: ${relTime(s.lastDate)} - Last Score: (<strong>${s.lastScore}/${s.quizLength}</strong>)</div>` : ''}
         <div class="section-card__rewards">
           ${rewardSet(s.rewards)}
         </div>
