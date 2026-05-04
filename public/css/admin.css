@@ -248,6 +248,19 @@
   letter-spacing: 0.02em;
 }
 
+/* Tester tag — non-stacksandjoules.org users in admin tables */
+.tester-tag {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.6rem;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--card-text-secondary);
+  letter-spacing: 0.06em;
+}
+
 /* Cohort select dropdown */
 .cohort-select {
   padding: 3px 6px;

@@ -149,6 +149,10 @@ export async function adminView() {
     const allCohorts = [...new Set(students.map(s => s.cohort).filter(Boolean))].sort();
     let activeCohort = null;
 
+    function isTester(email) {
+      return !(email || '').toLowerCase().endsWith('@stacksandjoules.org');
+    }
+
     function buildRows(list) {
       if (list.length === 0) return '<tr><td colspan="6" style="text-align:center;color:var(--card-text-secondary);padding:2rem;">No students in this cohort</td></tr>';
       return list.map(s => `
@@ -157,6 +161,7 @@ export async function adminView() {
             <div class="student-cell">
               ${s.avatar_url ? `<img src="${s.avatar_url}" alt="" class="student-avatar" onerror="this.style.display='none'">` : ''}
               <span>${s.name}</span>
+              ${isTester(s.email) ? '<span class="tester-tag">TESTER</span>' : ''}
             </div>
           </td>
           ${isSuperAdmin ? `<td class="cohort-cell" data-user-id="${s.id}">${cohortSelect(cohorts, s.cohort || '', s.id)}</td>` : ''}
