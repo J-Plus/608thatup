@@ -16,7 +16,8 @@ router.get('/students', (req, res) => {
       (SELECT COUNT(*) FROM quiz_rounds WHERE user_id = u.id) as totalRounds,
       (SELECT SUM(is_perfect) FROM quiz_rounds WHERE user_id = u.id) as totalPerfects,
       (SELECT AVG(score) FROM quiz_rounds WHERE user_id = u.id AND is_retrain = 0) as avgScore,
-      (SELECT COUNT(*) FROM rewards WHERE user_id = u.id) as rewardCount
+      (SELECT COUNT(*) FROM rewards WHERE user_id = u.id) as rewardCount,
+      (SELECT MAX(completed_at) FROM quiz_rounds WHERE user_id = u.id) as lastTestDate
     FROM users u WHERE u.role = 'student' ${cohortFilter}
     ORDER BY u.name COLLATE NOCASE ASC
   `).all(...params);

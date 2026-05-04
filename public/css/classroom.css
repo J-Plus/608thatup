@@ -189,8 +189,31 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 1rem;
   padding: 1rem 2rem 2rem;
   min-height: 80px;
+}
+
+.classroom__prev-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: var(--radius-md);
+  padding: 16px 32px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.01em;
+  transition: transform 120ms var(--ease-out), background 120ms var(--ease-out);
+}
+
+.classroom__prev-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: scale(1.03);
+}
+
+.classroom__prev-btn:active {
+  transform: scale(0.97);
 }
 
 .classroom__hint {

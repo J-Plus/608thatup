@@ -33,6 +33,8 @@ export async function classroomView(params) {
 
   const totalQuestions = quizData.questions.length;
   const scores = new Array(totalQuestions).fill(null); // null=unanswered, true=correct, false=wrong
+  const selectedAnswers = new Array(totalQuestions).fill(null);
+  const correctAnswers = new Array(totalQuestions).fill(null);
   let currentQ = 0;
   let revealed = false;
   let selectedIdx = -1;
@@ -75,7 +77,6 @@ export async function classroomView(params) {
     const q = quizData.questions[currentQ];
     const groups = getPerfect5Groups();
     const score = getScore();
-    const answeredCount = scores.filter(s => s !== null).length;
     const perfectCount = groups.filter(g => g.perfect).length;
 
     const optionsHtml = q.options.map((opt, i) => {
@@ -100,7 +101,7 @@ export async function classroomView(params) {
             <span class="classroom__qnum">Q ${currentQ + 1} / ${totalQuestions}</span>
           </div>
           <div class="classroom__scoreboard">
-            <span class="classroom__score">${score} / ${answeredCount} correct</span>
+            <span class="classroom__score">${score} / ${totalQuestions} correct</span>
             <div class="classroom__stars" title="${perfectCount} perfect 5${perfectCount !== 1 ? 's' : ''}">${renderStars(groups)}</div>
           </div>
           <a href="#/dashboard" class="classroom__exit">✕ Exit</a>
@@ -115,6 +116,7 @@ export async function classroomView(params) {
         </div>
 
         <div class="classroom__controls">
+          ${currentQ > 0 ? `<button class="classroom__prev-btn" id="classroom-prev">← Previous</button>` : ''}
           ${revealed
             ? `<button class="classroom__next-btn" id="classroom-next">
                 ${currentQ < totalQuestions - 1 ? 'Next Question →' : 'See Results'}
@@ -134,6 +136,8 @@ export async function classroomView(params) {
             const result = await api.checkAnswer(currentQ, selectedIdx);
             correctIdx = result.correct;
             scores[currentQ] = result.isCorrect;
+            selectedAnswers[currentQ] = selectedIdx;
+            correctAnswers[currentQ] = correctIdx;
             revealed = true;
             render();
           } catch (e) {
@@ -148,12 +152,38 @@ export async function classroomView(params) {
       nextBtn.addEventListener('click', () => {
         if (currentQ < totalQuestions - 1) {
           currentQ++;
-          revealed = false;
-          selectedIdx = -1;
-          correctIdx = -1;
+          // Restore prior answer state if revisiting an already-answered question
+          if (selectedAnswers[currentQ] !== null) {
+            selectedIdx = selectedAnswers[currentQ];
+            correctIdx = correctAnswers[currentQ];
+            revealed = true;
+          } else {
+            revealed = false;
+            selectedIdx = -1;
+            correctIdx = -1;
+          }
           render();
         } else {
           renderFinale();
+        }
+      });
+    }
+
+    const prevBtn = app.querySelector('#classroom-prev');
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        if (currentQ > 0) {
+          currentQ--;
+          if (selectedAnswers[currentQ] !== null) {
+            selectedIdx = selectedAnswers[currentQ];
+            correctIdx = correctAnswers[currentQ];
+            revealed = true;
+          } else {
+            revealed = false;
+            selectedIdx = -1;
+            correctIdx = -1;
+          }
+          render();
         }
       });
     }

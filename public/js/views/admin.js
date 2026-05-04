@@ -154,7 +154,8 @@ export async function adminView() {
     }
 
     function buildRows(list) {
-      if (list.length === 0) return '<tr><td colspan="6" style="text-align:center;color:var(--card-text-secondary);padding:2rem;">No students in this cohort</td></tr>';
+      const colCount = isSuperAdmin ? 7 : 6;
+      if (list.length === 0) return `<tr><td colspan="${colCount}" style="text-align:center;color:var(--card-text-secondary);padding:2rem;">No students in this cohort</td></tr>`;
       return list.map(s => `
         <tr class="clickable" data-student-id="${s.id}">
           <td>
@@ -169,6 +170,7 @@ export async function adminView() {
           <td>${s.totalPerfects}</td>
           <td>${s.avgScore}/${overview.quizLength}</td>
           <td>${new Date(s.last_login).toLocaleDateString()}</td>
+          <td>${s.lastTestDate ? new Date(s.lastTestDate + 'Z').toLocaleDateString() : '—'}</td>
         </tr>
       `).join('');
     }
@@ -198,6 +200,7 @@ export async function adminView() {
                   <th>Perfect</th>
                   <th>Avg Score</th>
                   <th>Last Active</th>
+                  <th>Last Test</th>
                 </tr>
               </thead>
               <tbody>${buildRows(filtered)}</tbody>
