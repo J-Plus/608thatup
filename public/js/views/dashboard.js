@@ -60,10 +60,17 @@ export async function dashboardView() {
       const days = Math.floor(ms / 86_400_000);
       if (days === 0) return 'today';
       if (days === 1) return 'yesterday';
-      if (days < 7) return `${days}d ago`;
-      if (days < 30) return `${Math.floor(days / 7)}w ago`;
-      if (days < 365) return `${Math.floor(days / 30)}mo ago`;
-      return `${Math.floor(days / 365)}y ago`;
+      if (days < 7) return `${days} days ago`;
+      if (days < 30) {
+        const weeks = Math.floor(days / 7);
+        return `${weeks} ${weeks === 1 ? 'week' : 'weeks'} ago`;
+      }
+      if (days < 365) {
+        const months = Math.floor(days / 30);
+        return `${months} ${months === 1 ? 'month' : 'months'} ago`;
+      }
+      const years = Math.floor(days / 365);
+      return `${years} ${years === 1 ? 'year' : 'years'} ago`;
     };
 
     const cardsHtml = sections.map(s => `
@@ -78,7 +85,7 @@ export async function dashboardView() {
           <span><strong>${s.perfects}</strong> perfect</span>
           <span>Avg: <strong>${s.avgScore}/${s.quizLength}</strong></span>
         </div>
-        ${s.lastScore !== null ? `<div class="section-card__last">Last: <strong>${s.lastScore}/${s.quizLength}</strong> · ${relTime(s.lastDate)}</div>` : ''}
+        ${s.lastScore !== null ? `<div class="section-card__last">Last Test: ${relTime(s.lastDate)} score (<strong>${s.lastScore}/${s.quizLength}</strong>)</div>` : ''}
         <div class="section-card__rewards">
           ${rewardSet(s.rewards)}
         </div>
