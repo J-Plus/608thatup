@@ -37,8 +37,15 @@ export async function adminStudentView(params) {
       <a href="#/admin" class="btn btn--ghost" style="margin-bottom:1.5rem;">&larr; Back to students</a>
     `;
 
+    const fmtDateTime = (iso) => {
+      if (!iso) return '—';
+      const withZ = /[Zz]|[+-]\d{2}:?\d{2}$/.test(iso) ? iso : iso + 'Z';
+      return new Date(withZ).toLocaleString(undefined, { dateStyle: 'short', timeStyle: 'short' });
+    };
+
     const sectionsHtml = sections.map(s => {
       const allRounds = s.allRounds || s.recentRounds;
+      const latest = allRounds && allRounds[0];
       return `
       <div class="student-section glass">
         <div class="student-section__header">
@@ -58,12 +65,12 @@ export async function adminStudentView(params) {
             `).join('')}
           </div>
           <details class="section-card__history" style="margin-top:0.75rem;">
-            <summary>View all ${s.rounds} ${s.rounds === 1 ? 'round' : 'rounds'}</summary>
+            <summary>Last Test ${fmtDateTime(latest.completed_at)} &rsaquo; View all ${s.rounds} ${s.rounds === 1 ? 'round' : 'rounds'}</summary>
             <ul class="section-card__history-list">
               ${allRounds.map(r => {
-                const date = new Date(r.completed_at + 'Z').toLocaleDateString();
+                const dateTime = fmtDateTime(r.completed_at);
                 const tag = r.is_retrain ? ' <span class="history-tag">retrain</span>' : (r.is_perfect ? ' <span class="history-tag history-tag--perfect">perfect</span>' : '');
-                return `<li><a href="#/round/${r.id}" style="color:inherit;text-decoration:none;">Date: ${date} &nbsp; Score: <strong>${r.score}/${quizLength}</strong>${tag}</a></li>`;
+                return `<li><a href="#/round/${r.id}" style="color:inherit;text-decoration:none;">${dateTime} &nbsp; Score: <strong>${r.score}/${quizLength}</strong>${tag}</a></li>`;
               }).join('')}
             </ul>
           </details>
