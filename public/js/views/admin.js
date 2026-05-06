@@ -163,7 +163,7 @@ export async function adminView() {
     }
 
     function buildRows(list) {
-      const colCount = isSuperAdmin ? 7 : 6;
+      const colCount = isSuperAdmin ? 6 : 5;
       if (list.length === 0) return `<tr><td colspan="${colCount}" style="text-align:center;color:var(--card-text-secondary);padding:2rem;">No students in this cohort</td></tr>`;
       return list.map(s => `
         <tr class="clickable" data-student-id="${s.id}">
@@ -176,7 +176,6 @@ export async function adminView() {
           </td>
           ${isSuperAdmin ? `<td class="cohort-cell" data-user-id="${s.id}">${cohortSelect(cohorts, s.cohort || '', s.id)}</td>` : ''}
           <td>${s.totalRounds}</td>
-          <td>${s.totalPerfects}</td>
           <td>${s.avgScore}/${overview.quizLength}</td>
           <td>${fmtDateTime(s.last_login)}</td>
           <td>${fmtDateTime(s.lastTestDate)}</td>
@@ -206,7 +205,6 @@ export async function adminView() {
                   <th>Student</th>
                   ${isSuperAdmin ? '<th>Cohort</th>' : ''}
                   <th>Rounds</th>
-                  <th>Perfect</th>
                   <th>Avg Score</th>
                   <th>Last Active</th>
                   <th>Last Test</th>
