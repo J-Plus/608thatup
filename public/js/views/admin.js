@@ -153,6 +153,15 @@ export async function adminView() {
       return !(email || '').toLowerCase().endsWith('@stacksandjoules.org');
     }
 
+    function fmtDateTime(iso) {
+      if (!iso) return '—';
+      // SQLite stores datetimes as UTC strings without a Z suffix; append one
+      // so JS parses them as UTC, not local time, before formatting in the
+      // viewer's locale.
+      const withZ = /[Zz]|[+-]\d{2}:?\d{2}$/.test(iso) ? iso : iso + 'Z';
+      return new Date(withZ).toLocaleString(undefined, { dateStyle: 'short', timeStyle: 'short' });
+    }
+
     function buildRows(list) {
       const colCount = isSuperAdmin ? 7 : 6;
       if (list.length === 0) return `<tr><td colspan="${colCount}" style="text-align:center;color:var(--card-text-secondary);padding:2rem;">No students in this cohort</td></tr>`;
@@ -169,8 +178,8 @@ export async function adminView() {
           <td>${s.totalRounds}</td>
           <td>${s.totalPerfects}</td>
           <td>${s.avgScore}/${overview.quizLength}</td>
-          <td>${new Date(s.last_login).toLocaleDateString()}</td>
-          <td>${s.lastTestDate ? new Date(s.lastTestDate + 'Z').toLocaleDateString() : '—'}</td>
+          <td>${fmtDateTime(s.last_login)}</td>
+          <td>${fmtDateTime(s.lastTestDate)}</td>
         </tr>
       `).join('');
     }
