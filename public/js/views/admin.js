@@ -149,10 +149,6 @@ export async function adminView() {
     const allCohorts = [...new Set(students.map(s => s.cohort).filter(Boolean))].sort();
     let activeCohort = null;
 
-    function isTester(email) {
-      return !(email || '').toLowerCase().endsWith('@stacksandjoules.org');
-    }
-
     function fmtDateTime(iso) {
       if (!iso) return '—';
       // SQLite stores datetimes as UTC strings without a Z suffix; append one
@@ -171,7 +167,6 @@ export async function adminView() {
             <div class="student-cell">
               ${s.avatar_url ? `<img src="${s.avatar_url}" alt="" class="student-avatar" onerror="this.style.display='none'">` : ''}
               <span>${s.name}</span>
-              ${isTester(s.email) ? '<span class="tester-tag">TESTER</span>' : ''}
             </div>
           </td>
           ${isSuperAdmin ? `<td class="cohort-cell" data-user-id="${s.id}">${cohortSelect(cohorts, s.cohort || '', s.id)}</td>` : ''}
@@ -184,15 +179,24 @@ export async function adminView() {
     }
 
     function buildChips() {
-      const chips = ['All', ...allCohorts].map(c => {
+      const chips = ['All', 'None', ...allCohorts].map(c => {
         const isActive = (c === 'All' && !activeCohort) || c === activeCohort;
-        return `<button class="cohort-chip ${isActive ? 'cohort-chip--active' : ''}" data-cohort="${c}">${c}${c !== 'All' ? ` <span class="cohort-chip__count">${students.filter(s => s.cohort === c).length}</span>` : ''}</button>`;
+        const count = c === 'All'
+          ? null
+          : c === 'None'
+            ? students.filter(s => !s.cohort).length
+            : students.filter(s => s.cohort === c).length;
+        return `<button class="cohort-chip ${isActive ? 'cohort-chip--active' : ''}" data-cohort="${c}">${c}${count !== null ? ` <span class="cohort-chip__count">${count}</span>` : ''}</button>`;
       }).join('');
       return `<div class="cohort-chips" style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1rem;">${chips}</div>`;
     }
 
     function renderTable() {
-      const filtered = activeCohort ? students.filter(s => s.cohort === activeCohort) : students;
+      const filtered = activeCohort === 'None'
+        ? students.filter(s => !s.cohort)
+        : activeCohort
+          ? students.filter(s => s.cohort === activeCohort)
+          : students;
       const tableWrap = container.querySelector('#student-table-wrap');
       tableWrap.innerHTML = students.length === 0
         ? '<p class="text-muted text-center mt-xl">No students yet</p>'
