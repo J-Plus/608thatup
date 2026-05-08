@@ -98,6 +98,34 @@ router.get('/history', (req, res) => {
   res.json(rounds);
 });
 
+router.get('/weak-spots', (req, res) => {
+  const SECTION_MAP = ['Core', 'Type I', 'Type II', 'Type III'];
+  const wrongQuestions = db.prepare(`
+    WITH user_answers AS (
+      SELECT qa.id as qa_id, qa.question_id, qa.is_correct, qr.completed_at
+      FROM quiz_answers qa
+      JOIN quiz_rounds qr ON qr.id = qa.round_id
+      WHERE qr.user_id = ?
+    )
+    SELECT q.id, q.question, q.topic, q.options, q.answer as correctIndex,
+      (SELECT COUNT(*) FROM user_answers WHERE question_id = q.id AND is_correct = 0) as missCount,
+      (SELECT is_correct FROM user_answers WHERE question_id = q.id
+         ORDER BY completed_at DESC, qa_id DESC LIMIT 1) as latestCorrect,
+      (SELECT completed_at FROM user_answers WHERE question_id = q.id
+         ORDER BY completed_at DESC, qa_id DESC LIMIT 1) as latestAt
+    FROM questions q
+    WHERE q.id IN (SELECT question_id FROM user_answers WHERE is_correct = 0)
+    ORDER BY latestCorrect ASC, latestAt DESC
+  `).all(req.user.id).map(q => ({
+    ...q,
+    options: JSON.parse(q.options),
+    sectionName: SECTION_MAP[q.topic] || 'Unknown',
+    corrected: !!q.latestCorrect,
+  }));
+
+  res.json(wrongQuestions);
+});
+
 router.get('/rewards', (req, res) => {
   const rewards = db.prepare(`
     SELECT topic, reward_type, unlocked_at FROM rewards WHERE user_id = ?

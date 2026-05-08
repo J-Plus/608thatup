@@ -3,6 +3,7 @@ import { getState } from '../state.js';
 import { renderNavbar, bindNavbar } from '../components/navbar.js';
 import { rewardSet } from '../components/rewardBadge.js';
 import { progressBar } from '../components/progressBar.js';
+import { renderWeakSpots, bindWeakSpots } from '../components/weakSpots.js';
 import { navigate } from '../router.js';
 
 export async function dashboardView() {
@@ -51,7 +52,10 @@ export async function dashboardView() {
   });
 
   try {
-    const sections = await api.getSummary();
+    const [sections, weakSpots] = await Promise.all([
+      api.getSummary(),
+      api.getWeakSpots(),
+    ]);
 
     // Check we're still on dashboard (user may have navigated away)
     if (!window.location.hash.includes('/dashboard')) return;
@@ -103,7 +107,8 @@ export async function dashboardView() {
 
     const spinner = container.querySelector('.spinner');
     if (spinner) spinner.remove();
-    container.insertAdjacentHTML('beforeend', `<div class="topic-grid">${cardsHtml}</div>`);
+    container.insertAdjacentHTML('beforeend', `<div class="topic-grid">${cardsHtml}</div>${renderWeakSpots(weakSpots)}`);
+    bindWeakSpots(weakSpots);
 
     // Lazy-load round history when an accordion is opened
     container.querySelectorAll('details.section-card__history').forEach(el => {

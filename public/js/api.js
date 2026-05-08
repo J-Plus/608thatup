@@ -37,6 +37,7 @@ export const api = {
   getSummary: () => request('/progress/summary'),
   getHistory: (topic) => request(`/progress/history?topic=${topic}`),
   getRewards: () => request('/progress/rewards'),
+  getWeakSpots: () => request('/progress/weak-spots'),
   getStudents: () => request('/admin/students'),
   getStudent: (id) => request(`/admin/students/${id}`),
   getOverview: () => request('/admin/overview'),
