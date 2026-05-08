@@ -71,21 +71,29 @@ router.get('/students/:id', (req, res) => {
 
   const SECTION_MAP = ['Core', 'Type I', 'Type II', 'Type III'];
 
-  // Lifetime wrong answers grouped by question, sorted by miss count desc
+  // Questions the student has ever missed. Still-wrong sorted newest-miss first;
+  // corrected (latest answer was right) pushed to the bottom.
   const wrongQuestions = db.prepare(`
+    WITH user_answers AS (
+      SELECT qa.id as qa_id, qa.question_id, qa.is_correct, qr.completed_at
+      FROM quiz_answers qa
+      JOIN quiz_rounds qr ON qr.id = qa.round_id
+      WHERE qr.user_id = ?
+    )
     SELECT q.id, q.question, q.topic, q.options, q.answer as correctIndex,
-      COUNT(*) as missCount,
-      SUM(CASE WHEN qa.is_correct = 1 THEN 1 ELSE 0 END) as correctCount
-    FROM quiz_answers qa
-    JOIN questions q ON q.id = qa.question_id
-    JOIN quiz_rounds qr ON qr.id = qa.round_id
-    WHERE qr.user_id = ? AND qa.is_correct = 0
-    GROUP BY q.id
-    ORDER BY missCount DESC
+      (SELECT COUNT(*) FROM user_answers WHERE question_id = q.id AND is_correct = 0) as missCount,
+      (SELECT is_correct FROM user_answers WHERE question_id = q.id
+         ORDER BY completed_at DESC, qa_id DESC LIMIT 1) as latestCorrect,
+      (SELECT completed_at FROM user_answers WHERE question_id = q.id
+         ORDER BY completed_at DESC, qa_id DESC LIMIT 1) as latestAt
+    FROM questions q
+    WHERE q.id IN (SELECT question_id FROM user_answers WHERE is_correct = 0)
+    ORDER BY latestCorrect ASC, latestAt DESC
   `).all(student.id).map(q => ({
     ...q,
     options: JSON.parse(q.options),
     sectionName: SECTION_MAP[q.topic] || 'Unknown',
+    corrected: !!q.latestCorrect,
   }));
 
   res.json({ student, sections, quizLength: QUIZ_LENGTH, wrongQuestions });

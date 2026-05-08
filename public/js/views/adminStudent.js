@@ -95,7 +95,7 @@ export async function adminStudentView(params) {
                 <th style="text-align:left;padding:0.5rem 0.75rem;color:var(--card-text-secondary);font-weight:600;">Question</th>
                 <th style="text-align:left;padding:0.5rem 0.75rem;color:var(--card-text-secondary);font-weight:600;">Section</th>
                 <th style="text-align:center;padding:0.5rem 0.75rem;color:var(--card-text-secondary);font-weight:600;">Missed</th>
-                <th style="text-align:center;padding:0.5rem 0.75rem;color:var(--card-text-secondary);font-weight:600;">Also Got Right</th>
+                <th style="text-align:center;padding:0.5rem 0.75rem;color:var(--card-text-secondary);font-weight:600;">Corrected</th>
               </tr>
             </thead>
             <tbody>
@@ -108,8 +108,8 @@ export async function adminStudentView(params) {
                   <td style="padding:0.6rem 0.75rem;text-align:center;">
                     <span style="display:inline-block;min-width:28px;padding:2px 8px;border-radius:12px;font-size:0.8rem;font-weight:700;background:rgba(220,48,48,0.12);color:#dc3030;">${q.missCount}×</span>
                   </td>
-                  <td style="padding:0.6rem 0.75rem;text-align:center;color:${q.correctCount > 0 ? '#30a850' : 'var(--card-text-secondary)'};">
-                    ${q.correctCount > 0 ? `<span style="font-weight:600;">${q.correctCount}×</span>` : '—'}
+                  <td style="padding:0.6rem 0.75rem;text-align:center;color:${q.corrected ? '#30a850' : 'var(--card-text-secondary)'};">
+                    ${q.corrected ? '<span style="font-weight:700;font-size:1.1rem;">✓</span>' : '—'}
                   </td>
                 </tr>
               `).join('')}
