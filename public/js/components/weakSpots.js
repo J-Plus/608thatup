@@ -1,51 +1,77 @@
 // Weak Spots widget — collapsible table of questions the user has missed,
-// with click-to-practice modal. Used on admin student detail and student
-// dashboard.
+// with click-to-practice modal and sortable column headers. Used on admin
+// student detail and student dashboard.
 
 let widgetSeq = 0;
+
+const SORT_MODES = {
+  question: { label: 'Question', cmp: (a, b) => cmpDate(b.latestAt, a.latestAt) },
+  section:  { label: 'Section',  cmp: (a, b) => (a.topic - b.topic) || cmpDate(b.latestAt, a.latestAt) },
+  missed:   { label: 'Missed',   cmp: (a, b) => (b.missCount - a.missCount) || cmpDate(b.latestAt, a.latestAt) },
+};
+
+function cmpDate(a, b) {
+  if (a === b) return 0;
+  return a > b ? 1 : -1;
+}
+
+function sortQuestions(qs, mode) {
+  const cmp = SORT_MODES[mode].cmp;
+  const wrong = qs.filter(q => !q.corrected).sort(cmp);
+  const correct = qs.filter(q => q.corrected).sort(cmp);
+  return [...wrong, ...correct];
+}
+
+function renderHeader(mode, activeMode) {
+  const isActive = mode === activeMode;
+  const arrow = isActive ? ' <span style="font-size:0.7em;">▾</span>' : '';
+  const align = mode === 'question' ? 'left' : (mode === 'section' ? 'left' : 'center');
+  const color = isActive ? 'var(--card-text)' : 'var(--card-text-secondary)';
+  return `<th data-sort="${mode}" style="text-align:${align};padding:0.5rem 0.75rem;color:${color};font-weight:600;cursor:pointer;user-select:none;">${SORT_MODES[mode].label}${arrow}</th>`;
+}
+
+function renderRows(qs) {
+  return qs.map((q, i) => `
+    <tr class="weak-spot-row" data-idx="${i}" style="border-bottom:1px solid rgba(0,0,0,0.05);background:${i % 2 === 0 ? 'transparent' : 'rgba(0,0,0,0.02)'};cursor:pointer;" onmouseover="this.style.background='rgba(255,20,147,0.06)'" onmouseout="this.style.background='${i % 2 === 0 ? 'transparent' : 'rgba(0,0,0,0.02)'}'">
+      <td style="padding:0.6rem 0.75rem;color:var(--card-text);line-height:1.4;max-width:480px;">${q.question}</td>
+      <td style="padding:0.6rem 0.75rem;white-space:nowrap;">
+        <span style="display:inline-block;padding:2px 8px;border-radius:12px;font-size:0.75rem;font-weight:600;background:rgba(0,0,0,0.06);color:var(--card-text-secondary);">${q.sectionName}</span>
+      </td>
+      <td style="padding:0.6rem 0.75rem;text-align:center;">
+        <span style="display:inline-block;min-width:28px;padding:2px 8px;border-radius:12px;font-size:0.8rem;font-weight:700;background:rgba(220,48,48,0.12);color:#dc3030;">${q.missCount}×</span>
+      </td>
+      <td style="padding:0.6rem 0.75rem;text-align:center;color:${q.corrected ? '#30a850' : 'var(--card-text-secondary)'};">
+        ${q.corrected ? '<span style="font-weight:700;font-size:1.1rem;">✓</span>' : '—'}
+      </td>
+    </tr>
+  `).join('');
+}
 
 export function renderWeakSpots(wrongQuestions) {
   if (!wrongQuestions || wrongQuestions.length === 0) return '';
   const id = ++widgetSeq;
-  const toggleId = `weak-spots-toggle-${id}`;
-  const bodyId = `weak-spots-body-${id}`;
-  const chevronId = `weak-spots-chevron-${id}`;
+  const sorted = sortQuestions(wrongQuestions, 'question');
 
   return `
     <div class="glass weak-spots" data-weak-spots="${id}" style="margin-top:1.5rem;">
-      <div class="weak-spots__header" id="${toggleId}" style="display:flex;align-items:center;justify-content:space-between;cursor:pointer;padding:1.25rem 1.25rem 0;">
+      <div class="weak-spots__header" style="display:flex;align-items:center;justify-content:space-between;cursor:pointer;padding:1.25rem 1.25rem 0;">
         <h3 style="margin:0;font-family:var(--font-heading);font-weight:600;color:var(--card-text);">
           ⚠️ Weak Spots
           <span style="font-size:0.8rem;font-weight:400;color:var(--card-text-secondary);margin-left:0.5rem;">${wrongQuestions.length} questions missed</span>
         </h3>
-        <span id="${chevronId}" style="color:var(--card-text-secondary);font-size:1rem;">▼</span>
+        <span class="weak-spots__chevron" style="color:var(--card-text-secondary);font-size:1rem;">▼</span>
       </div>
-      <div id="${bodyId}" style="padding:1rem 1.25rem 1.25rem;">
+      <div class="weak-spots__body" style="padding:1rem 1.25rem 1.25rem;">
         <table style="width:100%;border-collapse:collapse;font-size:0.875rem;">
           <thead>
             <tr style="border-bottom:2px solid rgba(0,0,0,0.08);">
-              <th style="text-align:left;padding:0.5rem 0.75rem;color:var(--card-text-secondary);font-weight:600;">Question</th>
-              <th style="text-align:left;padding:0.5rem 0.75rem;color:var(--card-text-secondary);font-weight:600;">Section</th>
-              <th style="text-align:center;padding:0.5rem 0.75rem;color:var(--card-text-secondary);font-weight:600;">Missed</th>
+              ${renderHeader('question', 'question')}
+              ${renderHeader('section', 'question')}
+              ${renderHeader('missed', 'question')}
               <th style="text-align:center;padding:0.5rem 0.75rem;color:var(--card-text-secondary);font-weight:600;">Corrected</th>
             </tr>
           </thead>
-          <tbody>
-            ${wrongQuestions.map((q, i) => `
-              <tr class="weak-spot-row" data-widget="${id}" data-idx="${i}" style="border-bottom:1px solid rgba(0,0,0,0.05);background:${i % 2 === 0 ? 'transparent' : 'rgba(0,0,0,0.02)'};cursor:pointer;" onmouseover="this.style.background='rgba(255,20,147,0.06)'" onmouseout="this.style.background='${i % 2 === 0 ? 'transparent' : 'rgba(0,0,0,0.02)'}'">
-                <td style="padding:0.6rem 0.75rem;color:var(--card-text);line-height:1.4;max-width:480px;">${q.question}</td>
-                <td style="padding:0.6rem 0.75rem;white-space:nowrap;">
-                  <span style="display:inline-block;padding:2px 8px;border-radius:12px;font-size:0.75rem;font-weight:600;background:rgba(0,0,0,0.06);color:var(--card-text-secondary);">${q.sectionName}</span>
-                </td>
-                <td style="padding:0.6rem 0.75rem;text-align:center;">
-                  <span style="display:inline-block;min-width:28px;padding:2px 8px;border-radius:12px;font-size:0.8rem;font-weight:700;background:rgba(220,48,48,0.12);color:#dc3030;">${q.missCount}×</span>
-                </td>
-                <td style="padding:0.6rem 0.75rem;text-align:center;color:${q.corrected ? '#30a850' : 'var(--card-text-secondary)'};">
-                  ${q.corrected ? '<span style="font-weight:700;font-size:1.1rem;">✓</span>' : '—'}
-                </td>
-              </tr>
-            `).join('')}
-          </tbody>
+          <tbody>${renderRows(sorted)}</tbody>
         </table>
       </div>
     </div>
@@ -55,24 +81,45 @@ export function renderWeakSpots(wrongQuestions) {
 export function bindWeakSpots(wrongQuestions) {
   if (!wrongQuestions || wrongQuestions.length === 0) return;
 
-  document.querySelectorAll('.weak-spots__header').forEach(header => {
-    if (header.dataset.bound) return;
-    header.dataset.bound = '1';
-    const widget = header.closest('.weak-spots');
-    const body = widget.querySelector('[id^="weak-spots-body-"]');
-    const chevron = widget.querySelector('[id^="weak-spots-chevron-"]');
+  document.querySelectorAll('.weak-spots').forEach(widget => {
+    if (widget.dataset.bound) return;
+    widget.dataset.bound = '1';
+
+    const header = widget.querySelector('.weak-spots__header');
+    const body = widget.querySelector('.weak-spots__body');
+    const chevron = widget.querySelector('.weak-spots__chevron');
+    const tbody = widget.querySelector('tbody');
+    const thead = widget.querySelector('thead tr');
+
+    let sortMode = 'question';
+    let sorted = sortQuestions(wrongQuestions, sortMode);
+
     header.addEventListener('click', () => {
       const hidden = body.style.display === 'none';
       body.style.display = hidden ? '' : 'none';
       chevron.textContent = hidden ? '▼' : '▶';
     });
-  });
 
-  document.querySelectorAll('.weak-spot-row').forEach(row => {
-    if (row.dataset.bound) return;
-    row.dataset.bound = '1';
-    const idx = parseInt(row.dataset.idx);
-    row.addEventListener('click', () => openPracticeModal(wrongQuestions[idx]));
+    thead.addEventListener('click', e => {
+      const th = e.target.closest('th[data-sort]');
+      if (!th) return;
+      sortMode = th.dataset.sort;
+      sorted = sortQuestions(wrongQuestions, sortMode);
+      tbody.innerHTML = renderRows(sorted);
+      thead.innerHTML = `
+        ${renderHeader('question', sortMode)}
+        ${renderHeader('section', sortMode)}
+        ${renderHeader('missed', sortMode)}
+        <th style="text-align:center;padding:0.5rem 0.75rem;color:var(--card-text-secondary);font-weight:600;">Corrected</th>
+      `;
+    });
+
+    widget.addEventListener('click', e => {
+      const row = e.target.closest('.weak-spot-row');
+      if (!row || !widget.contains(row)) return;
+      const idx = parseInt(row.dataset.idx);
+      openPracticeModal(sorted[idx]);
+    });
   });
 }
 
