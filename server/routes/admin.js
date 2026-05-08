@@ -51,7 +51,9 @@ router.get('/students/:id', (req, res) => {
     `).all(student.id, topic).map(r => r.reward_type);
 
     const allRounds = db.prepare(`
-      SELECT id, score, is_perfect, is_retrain, completed_at FROM quiz_rounds
+      SELECT id, score, is_perfect, is_retrain, completed_at,
+        (SELECT COUNT(*) FROM quiz_answers WHERE round_id = quiz_rounds.id) as total
+      FROM quiz_rounds
       WHERE user_id = ? AND topic = ? ORDER BY completed_at DESC
     `).all(student.id, topic);
 

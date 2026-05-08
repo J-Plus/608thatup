@@ -61,7 +61,7 @@ export async function adminStudentView(params) {
         ${s.recentRounds.length > 0 ? `
           <div class="round-history">
             ${s.recentRounds.map(r => `
-              <a href="#/round/${r.id}" class="round-dot ${r.is_perfect ? 'round-dot--perfect' : ''} ${r.is_retrain ? 'round-dot--retrain' : ''}" title="${r.is_retrain ? 'Retrain: ' : ''}${r.score}/${r.is_retrain ? '?' : quizLength}" style="text-decoration:none;cursor:pointer;">${r.score}</a>
+              <a href="#/round/${r.id}" class="round-dot ${r.is_perfect ? 'round-dot--perfect' : ''} ${r.is_retrain ? 'round-dot--retrain' : ''}" title="${r.is_retrain ? 'Retrain: ' : ''}${r.score}/${r.total ?? quizLength}" style="text-decoration:none;cursor:pointer;">${r.score}</a>
             `).join('')}
           </div>
           <details class="section-card__history" style="margin-top:0.75rem;">
@@ -70,7 +70,7 @@ export async function adminStudentView(params) {
               ${allRounds.map(r => {
                 const dateTime = fmtDateTime(r.completed_at);
                 const tag = r.is_retrain ? ' <span class="history-tag">retrain</span>' : (r.is_perfect ? ' <span class="history-tag history-tag--perfect">perfect</span>' : '');
-                return `<li><a href="#/round/${r.id}" style="color:inherit;text-decoration:none;">${dateTime} &nbsp; Score: <strong>${r.score}/${quizLength}</strong>${tag}</a></li>`;
+                return `<li><a href="#/round/${r.id}" style="color:inherit;text-decoration:none;">${dateTime} &nbsp; Score: <strong>${r.score}/${r.total ?? quizLength}</strong>${tag}</a></li>`;
               }).join('')}
             </ul>
           </details>

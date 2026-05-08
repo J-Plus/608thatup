@@ -16,7 +16,9 @@ router.get('/summary', (req, res) => {
     `).get(req.user.id, topic);
 
     const lastRound = db.prepare(`
-      SELECT score, completed_at FROM quiz_rounds
+      SELECT id, score, is_retrain, completed_at,
+        (SELECT COUNT(*) FROM quiz_answers WHERE round_id = quiz_rounds.id) as total
+      FROM quiz_rounds
       WHERE user_id = ? AND topic = ?
       ORDER BY completed_at DESC LIMIT 1
     `).get(req.user.id, topic);
@@ -72,6 +74,8 @@ router.get('/summary', (req, res) => {
       wrongCount,
       lastScore: lastRound ? lastRound.score : null,
       lastDate: lastRound ? lastRound.completed_at : null,
+      lastTotal: lastRound ? lastRound.total : null,
+      lastIsRetrain: lastRound ? !!lastRound.is_retrain : false,
     };
   });
 
@@ -85,7 +89,8 @@ router.get('/history', (req, res) => {
   }
 
   const rounds = db.prepare(`
-    SELECT id, score, is_perfect, is_retrain, completed_at
+    SELECT id, score, is_perfect, is_retrain, completed_at,
+      (SELECT COUNT(*) FROM quiz_answers WHERE round_id = quiz_rounds.id) as total
     FROM quiz_rounds WHERE user_id = ? AND topic = ?
     ORDER BY completed_at DESC
   `).all(req.user.id, topic);

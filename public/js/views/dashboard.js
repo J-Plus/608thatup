@@ -87,7 +87,7 @@ export async function dashboardView() {
           <span><strong>${s.perfects}</strong> perfect</span>
           <span>Avg: <strong>${s.avgScore}/${s.quizLength}</strong></span>
         </div>
-        ${s.lastScore !== null ? `<div class="section-card__last">Last Test: ${relTime(s.lastDate)} - Last Score: (<strong>${s.lastScore}/${s.quizLength}</strong>)</div>` : ''}
+        ${s.lastScore !== null ? `<div class="section-card__last">Last Test: ${relTime(s.lastDate)} - Last Score: (<strong>${s.lastScore}/${s.lastTotal ?? s.quizLength}</strong>)${s.lastIsRetrain ? ' <span class="history-tag">retrain</span>' : ''}</div>` : ''}
         ${s.rounds > 0 ? `<details class="section-card__history" data-topic="${s.topic}" data-quiz-length="${s.quizLength}">
           <summary>View all ${s.rounds} ${s.rounds === 1 ? 'round' : 'rounds'}</summary>
           <ul class="section-card__history-list"><li class="text-muted">Loading…</li></ul>
@@ -120,7 +120,7 @@ export async function dashboardView() {
             list.innerHTML = history.map(r => {
               const date = new Date(r.completed_at + 'Z').toLocaleDateString();
               const tag = r.is_retrain ? ' <span class="history-tag">retrain</span>' : (r.is_perfect ? ' <span class="history-tag history-tag--perfect">perfect</span>' : '');
-              return `<li>Date: ${date} &nbsp; Score: <strong>${r.score}/${quizLength}</strong>${tag}</li>`;
+              return `<li>Date: ${date} &nbsp; Score: <strong>${r.score}/${r.total ?? quizLength}</strong>${tag}</li>`;
             }).join('');
           }
           el.dataset.loaded = '1';
