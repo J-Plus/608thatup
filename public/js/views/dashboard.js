@@ -97,7 +97,7 @@ export async function dashboardView() {
         </div>
         <button class="btn btn--primary quiz-start-btn" data-topic="${s.topic}" style="margin-top:0.75rem;width:100%;">Quiz It Up!</button>
         ${s.wrongCount > 0 ? `<button class="btn retrain-btn" data-retrain-topic="${s.topic}" style="margin-top:0.5rem;width:100%;font-size:0.85rem;background:rgba(0,0,0,0.7);color:#fff;border:none;">Retry Missed Questions (${s.wrongCount})</button>` : ''}
-        <button class="btn classroom-btn" data-topic="${s.topic}" style="margin-top:0.5rem;width:100%;font-size:0.85rem;background:rgba(255,20,147,0.15);color:#FF1493;border:1px solid rgba(255,20,147,0.4);">🎓 Classroom Mode</button>
+        ${user.role === 'admin' ? `<button class="btn classroom-btn" data-topic="${s.topic}" style="margin-top:0.5rem;width:100%;font-size:0.85rem;background:rgba(255,20,147,0.15);color:#FF1493;border:1px solid rgba(255,20,147,0.4);">🎓 Classroom Mode</button>` : ''}
       </div>
     `).join('');
 
