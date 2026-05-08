@@ -148,6 +148,31 @@ export async function adminView() {
     // Cohort filter chips
     const allCohorts = [...new Set(students.map(s => s.cohort).filter(Boolean))].sort();
     let activeCohort = null;
+    let sortMode = 'name';
+
+    const nullsLast = (a, b, cmp) => {
+      const aNull = a === null || a === undefined || a === '';
+      const bNull = b === null || b === undefined || b === '';
+      if (aNull && bNull) return 0;
+      if (aNull) return 1;
+      if (bNull) return -1;
+      return cmp(a, b);
+    };
+
+    const sortFns = {
+      name:       (a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }),
+      cohort:     (a, b) => nullsLast(a.cohort, b.cohort, (x, y) => x.localeCompare(y, undefined, { sensitivity: 'base' })),
+      rounds:     (a, b) => b.totalRounds - a.totalRounds,
+      avgScore:   (a, b) => b.avgScore - a.avgScore,
+      lastActive: (a, b) => nullsLast(a.last_login, b.last_login, (x, y) => y > x ? 1 : -1),
+      lastTest:   (a, b) => nullsLast(a.lastTestDate, b.lastTestDate, (x, y) => y > x ? 1 : -1),
+    };
+
+    const sortHeader = (key, label, align = 'left') => {
+      const isActive = key === sortMode;
+      const arrow = isActive ? ' <span style="font-size:0.7em;">▾</span>' : '';
+      return `<th data-sort="${key}" style="text-align:${align};cursor:pointer;user-select:none;">${label}${arrow}</th>`;
+    };
 
     function fmtDateTime(iso) {
       if (!iso) return '—';
@@ -197,6 +222,7 @@ export async function adminView() {
         : activeCohort
           ? students.filter(s => s.cohort === activeCohort)
           : students;
+      const sorted = [...filtered].sort(sortFns[sortMode]);
       const tableWrap = container.querySelector('#student-table-wrap');
       tableWrap.innerHTML = students.length === 0
         ? '<p class="text-muted text-center mt-xl">No students yet</p>'
@@ -206,15 +232,15 @@ export async function adminView() {
             <table class="admin-table">
               <thead>
                 <tr>
-                  <th>Student</th>
-                  ${isSuperAdmin ? '<th>Cohort</th>' : ''}
-                  <th>Rounds</th>
-                  <th>Avg Score</th>
-                  <th>Last Active</th>
-                  <th>Last Test</th>
+                  ${sortHeader('name', 'Student')}
+                  ${isSuperAdmin ? sortHeader('cohort', 'Cohort') : ''}
+                  ${sortHeader('rounds', 'Rounds')}
+                  ${sortHeader('avgScore', 'Avg Score')}
+                  ${sortHeader('lastActive', 'Last Active')}
+                  ${sortHeader('lastTest', 'Last Test')}
                 </tr>
               </thead>
-              <tbody>${buildRows(filtered)}</tbody>
+              <tbody>${buildRows(sorted)}</tbody>
             </table>
           </div>
         `;
@@ -223,6 +249,15 @@ export async function adminView() {
       tableWrap.querySelectorAll('.cohort-chip').forEach(chip => {
         chip.addEventListener('click', () => {
           activeCohort = chip.dataset.cohort === 'All' ? null : chip.dataset.cohort;
+          renderTable();
+          bindTableEvents();
+        });
+      });
+
+      // Sort header clicks
+      tableWrap.querySelectorAll('th[data-sort]').forEach(th => {
+        th.addEventListener('click', () => {
+          sortMode = th.dataset.sort;
           renderTable();
           bindTableEvents();
         });
