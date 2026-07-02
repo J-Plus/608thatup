@@ -1,5 +1,6 @@
 import { api } from '../api.js';
 import { renderNavbar, bindNavbar } from '../components/navbar.js';
+import { escapeHtml } from '../util/escape.js';
 
 export async function adminRoundView(params) {
   const app = document.getElementById('app');
@@ -21,9 +22,9 @@ export async function adminRoundView(params) {
     container.querySelector('.spinner').remove();
 
     const headerHtml = `
-      <a href="#/admin/${round.user_id}" class="btn btn--ghost" style="margin-bottom:1.5rem;">&larr; Back to ${round.student_name}</a>
+      <a href="#/admin/${round.user_id}" class="btn btn--ghost" style="margin-bottom:1.5rem;">&larr; Back to ${escapeHtml(round.student_name)}</a>
       <div class="glass" style="padding:1.5rem; margin-bottom:1.5rem;">
-        <h1 style="margin:0 0 0.5rem;">${round.student_name} — ${round.sectionName}</h1>
+        <h1 style="margin:0 0 0.5rem;">${escapeHtml(round.student_name)} — ${escapeHtml(round.sectionName)}</h1>
         <p class="text-muted" style="margin:0;">
           ${new Date(round.completed_at).toLocaleString()} &middot;
           Score: <strong>${round.score}/${answers.length}</strong>
@@ -38,7 +39,7 @@ export async function adminRoundView(params) {
 
       return `
         <div class="glass" style="padding:1.25rem; margin-bottom:1rem;">
-          <p style="margin:0 0 0.75rem; font-weight:600;">${i + 1}. ${a.question}</p>
+          <p style="margin:0 0 0.75rem; font-weight:600;">${i + 1}. ${escapeHtml(a.question)}</p>
           <div style="display:flex; flex-direction:column; gap:0.4rem;">
             ${shuffledOptions.map((opt, j) => {
               const isSelected = j === a.selected;
@@ -53,7 +54,7 @@ export async function adminRoundView(params) {
               } else {
                 style += 'background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1);';
               }
-              return `<div style="${style}">${isSelected ? '→ ' : ''}${opt}${isCorrect && !a.isCorrect ? ' ✓' : ''}</div>`;
+              return `<div style="${style}">${isSelected ? '→ ' : ''}${escapeHtml(opt)}${isCorrect && !a.isCorrect ? ' ✓' : ''}</div>`;
             }).join('')}
           </div>
         </div>

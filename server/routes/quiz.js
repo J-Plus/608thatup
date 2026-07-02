@@ -1,5 +1,7 @@
 import { Router } from 'express';
+import crypto from 'crypto';
 import { requireAuth } from '../middleware/requireAuth.js';
+import { rateLimit } from '../middleware/rateLimit.js';
 import db from '../db.js';
 
 const router = Router();
@@ -8,6 +10,7 @@ router.use(requireAuth);
 const SECTION_NAMES = ['Core', 'Type I', 'Type II', 'Type III'];
 export const QUIZ_LENGTH = 25;
 const RETRAIN_LENGTH = 10;
+const MAX_ACTIVE_QUIZZES = 5;
 
 function shuffleArray(arr) {
   const a = [...arr];
@@ -16,6 +19,29 @@ function shuffleArray(arr) {
     [a[i], a[j]] = [a[j], a[i]];
   }
   return a;
+}
+
+// Active quizzes are keyed by a random quizId in the session (rather than a
+// single `activeQuiz` slot) so two tabs don't clobber each other's answer key.
+// `answered` records the FIRST selection made for each question via /check,
+// which locks the answer and neutralizes answer-harvesting: you cannot learn a
+// correct answer without committing a guess that /submit will score.
+function storeQuiz(req, quiz) {
+  if (!req.session.quizzes) req.session.quizzes = {};
+  const quizId = crypto.randomBytes(16).toString('hex');
+  req.session.quizzes[quizId] = { ...quiz, answered: {} };
+
+  // Bound session growth: keep only the most recent few quizzes (insertion
+  // order is preserved for string keys).
+  const ids = Object.keys(req.session.quizzes);
+  while (ids.length > MAX_ACTIVE_QUIZZES) {
+    delete req.session.quizzes[ids.shift()];
+  }
+  return quizId;
+}
+
+function getQuiz(req, quizId) {
+  return req.session.quizzes && req.session.quizzes[quizId];
 }
 
 router.get('/questions', (req, res) => {
@@ -56,13 +82,14 @@ router.get('/questions', (req, res) => {
     };
   });
 
-  req.session.activeQuiz = { topic, questions: quizSessionData };
+  const quizId = storeQuiz(req, { topic, questions: quizSessionData });
 
   // Check if show_answers debug mode is on
   const showAnswers = db.prepare("SELECT value FROM settings WHERE key = 'show_answers'").get();
   const debugMode = showAnswers && showAnswers.value === '1';
 
   res.json({
+    quizId,
     topic,
     sectionName: SECTION_NAMES[topic],
     questions: quizQuestions.map((q, i) => ({
@@ -151,12 +178,13 @@ router.get('/retrain', (req, res) => {
     };
   });
 
-  req.session.activeQuiz = { topic, retrain: true, questions: retrainSessionData };
+  const quizId = storeQuiz(req, { topic, retrain: true, questions: retrainSessionData });
 
   const showAnswers = db.prepare("SELECT value FROM settings WHERE key = 'show_answers'").get();
   const debugMode = showAnswers && showAnswers.value === '1';
 
   res.json({
+    quizId,
     topic,
     sectionName: SECTION_NAMES[topic],
     retrain: true,
@@ -170,39 +198,53 @@ router.get('/retrain', (req, res) => {
   });
 });
 
-router.post('/check', (req, res) => {
-  const { questionIndex, selected } = req.body;
-  const activeQuiz = req.session.activeQuiz;
+router.post('/check', rateLimit({ windowMs: 10 * 1000, max: 60 }), (req, res) => {
+  const { quizId, questionIndex, selected } = req.body;
+  const quiz = getQuiz(req, quizId);
 
-  if (!activeQuiz) return res.status(400).json({ error: 'No active quiz' });
-  if (typeof questionIndex !== 'number' || questionIndex < 0 || questionIndex >= activeQuiz.questions.length) {
+  if (!quiz) return res.status(400).json({ error: 'No active quiz' });
+  if (typeof questionIndex !== 'number' || questionIndex < 0 || questionIndex >= quiz.questions.length) {
     return res.status(400).json({ error: 'Invalid question index' });
   }
   if (typeof selected !== 'number') {
     return res.status(400).json({ error: 'Invalid selection' });
   }
 
-  const correct = activeQuiz.questions[questionIndex].correctShuffledIndex;
-  res.json({ correct, isCorrect: selected === correct });
+  const correct = quiz.questions[questionIndex].correctShuffledIndex;
+
+  // Lock the first selection for this question. Subsequent /check calls return
+  // the locked answer's result, so you can't probe for the right answer.
+  if (!(questionIndex in quiz.answered)) {
+    quiz.answered[questionIndex] = selected;
+  }
+  const locked = quiz.answered[questionIndex];
+
+  res.json({ correct, isCorrect: locked === correct, selected: locked });
 });
 
 router.post('/submit', (req, res) => {
-  const { answers } = req.body;
-  const activeQuiz = req.session.activeQuiz;
+  const { quizId } = req.body;
+  const quiz = getQuiz(req, quizId);
 
-  if (!activeQuiz) return res.status(400).json({ error: 'No active quiz' });
-  if (!answers || !Array.isArray(answers) || answers.length !== activeQuiz.questions.length) {
-    return res.status(400).json({ error: 'Must answer all questions' });
+  if (!quiz) return res.status(400).json({ error: 'No active quiz' });
+
+  // Scoring uses only the answers locked in server-side via /check, so the
+  // client can't submit a different (or perfect) answer set than it committed.
+  const numQuestions = quiz.questions.length;
+  for (let i = 0; i < numQuestions; i++) {
+    if (!(i in quiz.answered)) {
+      return res.status(400).json({ error: 'Must answer all questions' });
+    }
   }
 
-  const questionIds = activeQuiz.questions.map(q => q.id);
+  const questionIds = quiz.questions.map(q => q.id);
   const dbQuestions = questionIds.map(id =>
     db.prepare('SELECT * FROM questions WHERE id = ?').get(id)
   );
 
   // Check for questions deleted mid-quiz
   if (dbQuestions.some(q => !q)) {
-    delete req.session.activeQuiz;
+    delete req.session.quizzes[quizId];
     return res.status(400).json({ error: 'Some questions are no longer available. Please start a new quiz.' });
   }
 
@@ -211,8 +253,8 @@ router.post('/submit', (req, res) => {
 
   for (let i = 0; i < dbQuestions.length; i++) {
     const q = dbQuestions[i];
-    const quizQ = activeQuiz.questions[i];
-    const selected = answers[i];
+    const quizQ = quiz.questions[i];
+    const selected = quiz.answered[i];
     const correctShuffledIndex = quizQ.correctShuffledIndex;
     const isCorrect = selected === correctShuffledIndex;
     if (isCorrect) score++;
@@ -231,7 +273,7 @@ router.post('/submit', (req, res) => {
 
   const total = dbQuestions.length;
   const isPerfect = score === total;
-  const isRetrain = !!activeQuiz.retrain;
+  const isRetrain = !!quiz.retrain;
 
   let perfectCount = 0;
   const newRewards = [];
@@ -240,7 +282,7 @@ router.post('/submit', (req, res) => {
   const roundResult = db.prepare(`
     INSERT INTO quiz_rounds (user_id, topic, score, is_perfect, is_retrain)
     VALUES (?, ?, ?, ?, ?)
-  `).run(req.user.id, activeQuiz.topic, score, isRetrain ? 0 : (isPerfect ? 1 : 0), isRetrain ? 1 : 0);
+  `).run(req.user.id, quiz.topic, score, isRetrain ? 0 : (isPerfect ? 1 : 0), isRetrain ? 1 : 0);
 
   const roundId = roundResult.lastInsertRowid;
 
@@ -256,7 +298,7 @@ router.post('/submit', (req, res) => {
       r.questionId,
       r.selected,
       r.isCorrect ? 1 : 0,
-      JSON.stringify(activeQuiz.questions[i].answerOrder)
+      JSON.stringify(quiz.questions[i].answerOrder)
     );
   }
 
@@ -265,7 +307,7 @@ router.post('/submit', (req, res) => {
     perfectCount = db.prepare(`
       SELECT COUNT(*) as count FROM quiz_rounds
       WHERE user_id = ? AND topic = ? AND is_perfect = 1 AND is_retrain = 0
-    `).get(req.user.id, activeQuiz.topic).count;
+    `).get(req.user.id, quiz.topic).count;
 
     const REWARD_TYPES = [
       'donut', 'cookie', 'lollipop', 'cupcake', 'cake',
@@ -279,18 +321,18 @@ router.post('/submit', (req, res) => {
       const type = REWARD_TYPES[i];
       const existing = db.prepare(`
         SELECT id FROM rewards WHERE user_id = ? AND topic = ? AND reward_type = ?
-      `).get(req.user.id, activeQuiz.topic, type);
+      `).get(req.user.id, quiz.topic, type);
 
       if (!existing) {
         db.prepare(`
           INSERT INTO rewards (user_id, topic, reward_type) VALUES (?, ?, ?)
-        `).run(req.user.id, activeQuiz.topic, type);
+        `).run(req.user.id, quiz.topic, type);
         newRewards.push(type);
       }
     }
   }
 
-  delete req.session.activeQuiz;
+  delete req.session.quizzes[quizId];
 
   res.json({
     score,
@@ -338,9 +380,10 @@ router.get('/classroom', (req, res) => {
     };
   });
 
-  req.session.activeQuiz = { topic, classroom: true, questions: quizSessionData };
+  const quizId = storeQuiz(req, { topic, classroom: true, questions: quizSessionData });
 
   res.json({
+    quizId,
     topic,
     sectionName: SECTION_NAMES[topic],
     questions: quizQuestions.map(q => ({

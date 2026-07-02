@@ -1,3 +1,5 @@
+import { escapeHtml } from '../util/escape.js';
+
 export function questionCard(question, selectedIndex, revealed = false, correctAnswer = null, missCount = 0, preReveal = false) {
   const optionsHtml = question.options.map((opt, i) => {
     let classes = 'option-btn';
@@ -14,7 +16,7 @@ export function questionCard(question, selectedIndex, revealed = false, correctA
 
     return `<button class="${classes}${sizeClass}" data-index="${i}" ${revealed ? 'disabled' : ''}>
       <span class="option-btn__num">${i + 1}</span>
-      ${opt}
+      ${escapeHtml(opt)}
     </button>`;
   }).join('');
 
@@ -24,7 +26,7 @@ export function questionCard(question, selectedIndex, revealed = false, correctA
 
   return `
     <div class="question-banner">
-      <p class="question-banner__text">${question.question}</p>
+      <p class="question-banner__text">${escapeHtml(question.question)}</p>
       ${missHtml}
     </div>
     <div class="option-tiles">${optionsHtml}</div>

@@ -1,6 +1,7 @@
 import { getState } from '../state.js';
 import { api } from '../api.js';
 import { navigate } from '../router.js';
+import { escapeHtml } from '../util/escape.js';
 
 export function renderNavbar() {
   const { user } = getState();
@@ -17,7 +18,7 @@ export function renderNavbar() {
         <a href="#/dashboard" class="navbar__link">Dashboard</a>
         ${adminLink}
         <div class="navbar__user">
-          ${user.avatar_url ? `<img src="${user.avatar_url}" alt="" class="navbar__avatar" onerror="this.style.display='none'">` : ''}
+          ${user.avatar_url ? `<img src="${escapeHtml(user.avatar_url)}" alt="" class="navbar__avatar" onerror="this.style.display='none'">` : ''}
           <button class="navbar__link" id="logout-btn">Logout</button>
         </div>
       </div>

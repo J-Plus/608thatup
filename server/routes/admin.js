@@ -6,6 +6,15 @@ import { QUIZ_LENGTH } from './quiz.js';
 const router = Router();
 router.use(requireAdmin);
 
+// Quote a CSV field and neutralize spreadsheet formula injection: a value
+// beginning with = + - @ (or a control char) is prefixed with a single quote
+// so Excel/Sheets treats it as text, not a live formula.
+function csvCell(value) {
+  let s = value === null || value === undefined ? '' : String(value);
+  if (/^[=+\-@\t\r]/.test(s)) s = `'${s}`;
+  return `"${s.replace(/"/g, '""')}"`;
+}
+
 router.get('/students', (req, res) => {
   const adminCohort = req.user.cohort;
   const cohortFilter = adminCohort ? 'AND u.cohort = ?' : '';
@@ -33,10 +42,15 @@ router.get('/students/:id', (req, res) => {
   const id = parseInt(req.params.id);
   if (isNaN(id)) return res.status(400).json({ error: 'Invalid student ID' });
 
-  const student = db.prepare('SELECT id, name, email, avatar_url, created_at, last_login FROM users WHERE id = ?')
+  const student = db.prepare('SELECT id, name, email, avatar_url, created_at, last_login, cohort FROM users WHERE id = ?')
     .get(id);
 
   if (!student) return res.status(404).json({ error: 'Student not found' });
+
+  // Cohort-scoped admins may only view students in their own cohort.
+  if (req.user.cohort && student.cohort !== req.user.cohort) {
+    return res.status(404).json({ error: 'Student not found' });
+  }
 
   const SECTION_NAMES = ['Core', 'Type I', 'Type II', 'Type III'];
 
@@ -147,12 +161,18 @@ router.get('/rounds/:id', (req, res) => {
   if (isNaN(id)) return res.status(400).json({ error: 'Invalid round ID' });
 
   const round = db.prepare(`
-    SELECT qr.id, qr.user_id, qr.topic, qr.score, qr.is_perfect, qr.completed_at, u.name as student_name
+    SELECT qr.id, qr.user_id, qr.topic, qr.score, qr.is_perfect, qr.completed_at,
+      u.name as student_name, u.cohort as student_cohort
     FROM quiz_rounds qr JOIN users u ON u.id = qr.user_id
     WHERE qr.id = ?
   `).get(id);
 
   if (!round) return res.status(404).json({ error: 'Round not found' });
+
+  // Cohort-scoped admins may only view rounds belonging to their own cohort.
+  if (req.user.cohort && round.student_cohort !== req.user.cohort) {
+    return res.status(404).json({ error: 'Round not found' });
+  }
 
   const SECTION_NAMES = ['Core', 'Type I', 'Type II', 'Type III'];
 
@@ -200,11 +220,11 @@ router.get('/export-csv', (req, res) => {
 
   const header = 'Name,Email,Cohort,Total Rounds,Perfect Rounds,Avg Score,Rewards,Last Active';
   const rows = students.map(s => {
-    const name = `"${(s.name || '').replace(/"/g, '""')}"`;
-    const email = `"${(s.email || '').replace(/"/g, '""')}"`;
-    const cohort = `"${(s.cohort || '').replace(/"/g, '""')}"`;
+    const name = csvCell(s.name || '');
+    const email = csvCell(s.email || '');
+    const cohort = csvCell(s.cohort || '');
     const avg = s.avgScore ? Math.round(s.avgScore * 10) / 10 : 0;
-    const lastActive = s.last_login ? new Date(s.last_login).toLocaleDateString() : '';
+    const lastActive = csvCell(s.last_login ? new Date(s.last_login).toLocaleDateString() : '');
     return `${name},${email},${cohort},${s.totalRounds},${s.totalPerfects || 0},${avg},${s.rewardCount},${lastActive}`;
   });
 
@@ -266,6 +286,10 @@ router.post('/settings', (req, res) => {
 });
 
 router.post('/promote', (req, res) => {
+  // Promotion grants an unrestricted (super-)admin role, so only super-admins
+  // may do it. Cohort-scoped admins must not be able to mint new admins.
+  if (req.user.cohort) return res.status(403).json({ error: 'Only super-admins can promote users' });
+
   const { userId } = req.body;
   if (!userId) return res.status(400).json({ error: 'userId required' });
 

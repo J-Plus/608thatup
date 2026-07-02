@@ -1,5 +1,6 @@
 import { api } from '../api.js';
 import { navigate } from '../router.js';
+import { escapeHtml } from '../util/escape.js';
 
 export async function classroomView(params) {
   const app = document.getElementById('app');
@@ -31,6 +32,7 @@ export async function classroomView(params) {
     return;
   }
 
+  const quizId = quizData.quizId;
   const totalQuestions = quizData.questions.length;
   const scores = new Array(totalQuestions).fill(null); // null=unanswered, true=correct, false=wrong
   const selectedAnswers = new Array(totalQuestions).fill(null);
@@ -89,7 +91,7 @@ export async function classroomView(params) {
       classes += getTileSize(opt);
       return `<button class="${classes}" data-index="${i}" ${revealed ? 'disabled' : ''}>
         <span class="classroom-tile__num">${i + 1}</span>
-        ${opt}
+        ${escapeHtml(opt)}
       </button>`;
     }).join('');
 
@@ -97,7 +99,7 @@ export async function classroomView(params) {
       <div class="classroom">
         <div class="classroom__header">
           <div class="classroom__meta">
-            <span class="classroom__section">${quizData.sectionName}</span>
+            <span class="classroom__section">${escapeHtml(quizData.sectionName)}</span>
             <span class="classroom__qnum">Q ${currentQ + 1} / ${totalQuestions}</span>
           </div>
           <div class="classroom__scoreboard">
@@ -108,7 +110,7 @@ export async function classroomView(params) {
         </div>
 
         <div class="classroom__question">
-          <p class="classroom__question-text">${q.question}</p>
+          <p class="classroom__question-text">${escapeHtml(q.question)}</p>
         </div>
 
         <div class="classroom__tiles">
@@ -133,7 +135,7 @@ export async function classroomView(params) {
           selectedIdx = parseInt(btn.dataset.index);
           app.querySelectorAll('.classroom-tile').forEach(b => { b.disabled = true; });
           try {
-            const result = await api.checkAnswer(currentQ, selectedIdx);
+            const result = await api.checkAnswer(quizId, currentQ, selectedIdx);
             correctIdx = result.correct;
             scores[currentQ] = result.isCorrect;
             selectedAnswers[currentQ] = selectedIdx;
@@ -218,6 +220,9 @@ export async function classroomView(params) {
     `;
 
     app.querySelector('#play-again').addEventListener('click', () => {
+      // Remove this instance's key handler before re-entering, otherwise each
+      // replay stacks another live listener against detached state.
+      document.removeEventListener('keydown', keyHandler);
       classroomView(params);
     });
   }

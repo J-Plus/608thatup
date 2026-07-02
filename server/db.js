@@ -66,26 +66,25 @@ db.exec(`
   CREATE INDEX IF NOT EXISTS idx_rewards_user ON rewards(user_id);
 `);
 
-// Migration: add is_retrain column
-try {
-  db.exec(`ALTER TABLE quiz_rounds ADD COLUMN is_retrain INTEGER NOT NULL DEFAULT 0`);
-} catch (e) {
-  // Column already exists
+// Idempotent "add column" migration: swallow only the "duplicate column"
+// error (column already exists) and rethrow anything else so real failures
+// (locked db, disk error) aren't hidden.
+function addColumn(sql) {
+  try {
+    db.exec(sql);
+  } catch (e) {
+    if (!/duplicate column/i.test(e.message)) throw e;
+  }
 }
+
+// Migration: add is_retrain column
+addColumn(`ALTER TABLE quiz_rounds ADD COLUMN is_retrain INTEGER NOT NULL DEFAULT 0`);
 
 // Migration: add cohort column to users
-try {
-  db.exec(`ALTER TABLE users ADD COLUMN cohort TEXT`);
-} catch (e) {
-  // Column already exists
-}
+addColumn(`ALTER TABLE users ADD COLUMN cohort TEXT`);
 
 // Migration: add is_active column to questions (soft-delete for removed questions)
-try {
-  db.exec(`ALTER TABLE questions ADD COLUMN is_active INTEGER NOT NULL DEFAULT 1`);
-} catch (e) {
-  // Column already exists
-}
+addColumn(`ALTER TABLE questions ADD COLUMN is_active INTEGER NOT NULL DEFAULT 1`);
 
 db.exec(`CREATE INDEX IF NOT EXISTS idx_users_cohort ON users(cohort)`);
 

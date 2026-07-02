@@ -2,6 +2,7 @@ import { getState } from '../state.js';
 import { renderNavbar, bindNavbar } from '../components/navbar.js';
 import { REWARD_TIERS } from '../components/rewardBadge.js';
 import { navigate } from '../router.js';
+import { escapeHtml } from '../util/escape.js';
 
 export function resultsView() {
   const app = document.getElementById('app');
@@ -18,10 +19,10 @@ export function resultsView() {
     <div class="results-review__item glass">
       <span class="results-review__icon">${r.isCorrect ? '\u2705' : '\u274C'}</span>
       <div>
-        <p class="results-review__question">${r.question}</p>
+        <p class="results-review__question">${escapeHtml(r.question)}</p>
         <p class="results-review__answer">
-          Your answer: ${r.options[r.selected]}
-          ${!r.isCorrect ? `<br><strong>Correct: ${r.options[r.correctAnswer]}</strong>` : ''}
+          Your answer: ${escapeHtml(r.options[r.selected])}
+          ${!r.isCorrect ? `<br><strong>Correct: ${escapeHtml(r.options[r.correctAnswer])}</strong>` : ''}
         </p>
       </div>
     </div>

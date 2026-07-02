@@ -1,9 +1,19 @@
 const BASE = '/api';
 
+let csrfToken = null;
+export function setCsrfToken(token) {
+  csrfToken = token;
+}
+
 async function request(path, options = {}) {
+  const method = (options.method || 'GET').toUpperCase();
+  const csrfHeader = (csrfToken && method !== 'GET' && method !== 'HEAD')
+    ? { 'X-CSRF-Token': csrfToken }
+    : {};
+
   const res = await fetch(`${BASE}${path}`, {
     credentials: 'include',
-    headers: { 'Content-Type': 'application/json', ...options.headers },
+    headers: { 'Content-Type': 'application/json', ...csrfHeader, ...options.headers },
     ...options,
   });
 
@@ -21,18 +31,22 @@ async function request(path, options = {}) {
 }
 
 export const api = {
-  getMe: () => request('/auth/me'),
+  getMe: async () => {
+    const user = await request('/auth/me');
+    if (user && user.csrfToken) setCsrfToken(user.csrfToken);
+    return user;
+  },
   logout: () => request('/auth/logout', { method: 'POST' }),
   getQuestions: (topic) => request(`/quiz/questions?topic=${topic}`),
   getRetrain: (topic) => request(`/quiz/retrain?topic=${topic}`),
   getClassroom: (topic) => request(`/quiz/classroom?topic=${topic}`),
-  checkAnswer: (questionIndex, selected) => request('/quiz/check', {
+  checkAnswer: (quizId, questionIndex, selected) => request('/quiz/check', {
     method: 'POST',
-    body: JSON.stringify({ questionIndex, selected }),
+    body: JSON.stringify({ quizId, questionIndex, selected }),
   }),
-  submitQuiz: (answers) => request('/quiz/submit', {
+  submitQuiz: (quizId) => request('/quiz/submit', {
     method: 'POST',
-    body: JSON.stringify({ answers }),
+    body: JSON.stringify({ quizId }),
   }),
   getSummary: () => request('/progress/summary'),
   getHistory: (topic) => request(`/progress/history?topic=${topic}`),

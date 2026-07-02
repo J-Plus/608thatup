@@ -1,12 +1,13 @@
 import { api } from '../api.js';
 import { getState } from '../state.js';
 import { renderNavbar, bindNavbar } from '../components/navbar.js';
+import { escapeHtml } from '../util/escape.js';
 
 function cohortSelect(cohorts, current, userId) {
   return `
     <select class="cohort-select" data-user-id="${userId}">
       <option value="">—</option>
-      ${cohorts.map(c => `<option value="${c}" ${c === current ? 'selected' : ''}>${c}</option>`).join('')}
+      ${cohorts.map(c => `<option value="${escapeHtml(c)}" ${c === current ? 'selected' : ''}>${escapeHtml(c)}</option>`).join('')}
     </select>
   `;
 }
@@ -88,8 +89,8 @@ export async function adminView() {
         <div id="cohort-list" style="display:flex; flex-wrap:wrap; gap:0.4rem;">
           ${list.map(c => `
             <span class="cohort-tag" style="display:inline-flex; align-items:center; gap:4px; padding:4px 10px;">
-              ${c}
-              <button class="delete-cohort-btn" data-name="${c}" style="background:none; border:none; cursor:pointer; color:var(--error); font-size:1rem; line-height:1; padding:0;">&times;</button>
+              ${escapeHtml(c)}
+              <button class="delete-cohort-btn" data-name="${escapeHtml(c)}" style="background:none; border:none; cursor:pointer; color:var(--error); font-size:1rem; line-height:1; padding:0;">&times;</button>
             </span>
           `).join('')}
           ${list.length === 0 ? '<span style="color:var(--card-text-secondary); font-size:0.85rem;">No cohorts yet</span>' : ''}
@@ -132,7 +133,7 @@ export async function adminView() {
     document.querySelectorAll('.cohort-select').forEach(sel => {
       const userId = sel.dataset.userId;
       const current = sel.value;
-      sel.innerHTML = `<option value="">—</option>${cohorts.map(c => `<option value="${c}" ${c === current ? 'selected' : ''}>${c}</option>`).join('')}`;
+      sel.innerHTML = `<option value="">—</option>${cohorts.map(c => `<option value="${escapeHtml(c)}" ${c === current ? 'selected' : ''}>${escapeHtml(c)}</option>`).join('')}`;
     });
   }
 
@@ -190,8 +191,8 @@ export async function adminView() {
         <tr class="clickable" data-student-id="${s.id}">
           <td>
             <div class="student-cell">
-              ${s.avatar_url ? `<img src="${s.avatar_url}" alt="" class="student-avatar" onerror="this.style.display='none'">` : ''}
-              <span>${s.name}</span>
+              ${s.avatar_url ? `<img src="${escapeHtml(s.avatar_url)}" alt="" class="student-avatar" onerror="this.style.display='none'">` : ''}
+              <span>${escapeHtml(s.name)}</span>
             </div>
           </td>
           ${isSuperAdmin ? `<td class="cohort-cell" data-user-id="${s.id}">${cohortSelect(cohorts, s.cohort || '', s.id)}</td>` : ''}
@@ -211,7 +212,7 @@ export async function adminView() {
           : c === 'None'
             ? students.filter(s => !s.cohort).length
             : students.filter(s => s.cohort === c).length;
-        return `<button class="cohort-chip ${isActive ? 'cohort-chip--active' : ''}" data-cohort="${c}">${c}${count !== null ? ` <span class="cohort-chip__count">${count}</span>` : ''}</button>`;
+        return `<button class="cohort-chip ${isActive ? 'cohort-chip--active' : ''}" data-cohort="${escapeHtml(c)}">${escapeHtml(c)}${count !== null ? ` <span class="cohort-chip__count">${count}</span>` : ''}</button>`;
       }).join('');
       return `<div class="cohort-chips" style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1rem;">${chips}</div>`;
     }

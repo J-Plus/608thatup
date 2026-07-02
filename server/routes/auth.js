@@ -4,6 +4,7 @@ import { hasOAuth } from '../auth.js';
 import db from '../db.js';
 
 const router = Router();
+const isProduction = process.env.NODE_ENV === 'production';
 
 if (hasOAuth) {
   router.get('/google', passport.authenticate('google', {
@@ -14,6 +15,12 @@ if (hasOAuth) {
     failureRedirect: '/#/login',
   }), (req, res) => {
     res.redirect('/#/dashboard');
+  });
+} else if (isProduction) {
+  // No OAuth configured in production: fail closed. The dev-login backdoor
+  // below must never be reachable in a production deployment.
+  router.get('/google', (req, res) => {
+    res.status(503).json({ error: 'Authentication is not configured' });
   });
 } else {
   router.get('/google', (req, res) => {
@@ -49,7 +56,7 @@ if (hasOAuth) {
 router.get('/me', (req, res) => {
   if (!req.isAuthenticated()) return res.status(401).json({ error: 'Not authenticated' });
   const { google_id, ...user } = req.user;
-  res.json(user);
+  res.json({ ...user, csrfToken: req.session.csrfToken });
 });
 
 router.post('/logout', (req, res) => {

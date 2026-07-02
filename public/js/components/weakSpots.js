@@ -2,6 +2,8 @@
 // with click-to-practice modal and sortable column headers. Used on admin
 // student detail and student dashboard.
 
+import { escapeHtml } from '../util/escape.js';
+
 let widgetSeq = 0;
 
 const SORT_MODES = {
@@ -33,9 +35,9 @@ function renderHeader(mode, activeMode) {
 function renderRows(qs) {
   return qs.map((q, i) => `
     <tr class="weak-spot-row" data-idx="${i}" style="border-bottom:1px solid rgba(0,0,0,0.05);background:${i % 2 === 0 ? 'transparent' : 'rgba(0,0,0,0.02)'};cursor:pointer;" onmouseover="this.style.background='rgba(255,20,147,0.06)'" onmouseout="this.style.background='${i % 2 === 0 ? 'transparent' : 'rgba(0,0,0,0.02)'}'">
-      <td style="padding:0.6rem 0.75rem;color:var(--card-text);line-height:1.4;max-width:480px;">${q.question}</td>
+      <td style="padding:0.6rem 0.75rem;color:var(--card-text);line-height:1.4;max-width:480px;">${escapeHtml(q.question)}</td>
       <td style="padding:0.6rem 0.75rem;white-space:nowrap;">
-        <span style="display:inline-block;padding:2px 8px;border-radius:12px;font-size:0.75rem;font-weight:600;background:rgba(0,0,0,0.06);color:var(--card-text-secondary);">${q.sectionName}</span>
+        <span style="display:inline-block;padding:2px 8px;border-radius:12px;font-size:0.75rem;font-weight:600;background:rgba(0,0,0,0.06);color:var(--card-text-secondary);">${escapeHtml(q.sectionName)}</span>
       </td>
       <td style="padding:0.6rem 0.75rem;text-align:center;">
         <span style="display:inline-block;min-width:28px;padding:2px 8px;border-radius:12px;font-size:0.8rem;font-weight:700;background:rgba(220,48,48,0.12);color:#dc3030;">${q.missCount}×</span>
@@ -139,7 +141,7 @@ function openPracticeModal(q) {
     const sizeClass = len > 60 ? 'option-btn--text-sm' : len > 25 ? 'option-btn--text-md' : '';
     return `<button class="option-btn ${sizeClass}" data-index="${i}" style="background:${tileColors[i]};">
       <span class="option-btn__num">${i + 1}</span>
-      ${opt}
+      ${escapeHtml(opt)}
     </button>`;
   }).join('');
 
@@ -148,9 +150,9 @@ function openPracticeModal(q) {
   modal.innerHTML = `
     <div class="practice-backdrop"></div>
     <div class="practice-modal">
-      <div class="practice-modal__meta">${q.sectionName} · missed ${q.missCount}×</div>
+      <div class="practice-modal__meta">${escapeHtml(q.sectionName)} · missed ${q.missCount}×</div>
       <div class="question-banner" style="margin-bottom:1.25rem;">
-        <p class="question-banner__text">${q.question}</p>
+        <p class="question-banner__text">${escapeHtml(q.question)}</p>
       </div>
       <div class="option-tiles" style="margin-bottom:1.5rem;">${tilesHtml}</div>
       <div id="practice-result" style="min-height:2rem;text-align:center;"></div>

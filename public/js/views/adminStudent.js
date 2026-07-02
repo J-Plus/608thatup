@@ -3,6 +3,7 @@ import { renderNavbar, bindNavbar } from '../components/navbar.js';
 import { rewardSet } from '../components/rewardBadge.js';
 import { progressBar } from '../components/progressBar.js';
 import { renderWeakSpots, bindWeakSpots } from '../components/weakSpots.js';
+import { escapeHtml } from '../util/escape.js';
 
 export async function adminStudentView(params) {
   const app = document.getElementById('app');
@@ -25,10 +26,10 @@ export async function adminStudentView(params) {
 
     const headerHtml = `
       <div class="student-header">
-        ${student.avatar_url ? `<img src="${student.avatar_url}" alt="" class="student-header__avatar" onerror="this.style.display='none'">` : ''}
+        ${student.avatar_url ? `<img src="${escapeHtml(student.avatar_url)}" alt="" class="student-header__avatar" onerror="this.style.display='none'">` : ''}
         <div>
-          <h1 class="student-header__name">${student.name}</h1>
-          <p class="student-header__email">${student.email}</p>
+          <h1 class="student-header__name">${escapeHtml(student.name)}</h1>
+          <p class="student-header__email">${escapeHtml(student.email)}</p>
           <p class="text-muted" style="font-size:0.8rem; margin-top:0.25rem;">
             Joined ${new Date(student.created_at).toLocaleDateString()} &middot;
             Last active ${new Date(student.last_login).toLocaleDateString()}

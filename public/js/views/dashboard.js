@@ -5,6 +5,7 @@ import { rewardSet } from '../components/rewardBadge.js';
 import { progressBar } from '../components/progressBar.js';
 import { renderWeakSpots, bindWeakSpots } from '../components/weakSpots.js';
 import { navigate } from '../router.js';
+import { escapeHtml } from '../util/escape.js';
 
 export async function dashboardView() {
   const app = document.getElementById('app');
@@ -14,7 +15,7 @@ export async function dashboardView() {
     ${renderNavbar()}
     <div class="container page">
       <div class="page-header">
-        <h1 class="page-title">Welcome back, ${user.name.split(' ')[0]}</h1>
+        <h1 class="page-title">Welcome back, ${escapeHtml(user.name.split(' ')[0])}</h1>
         <p class="page-subtitle">Choose a section to start studying</p>
       </div>
       <div class="spinner"></div>

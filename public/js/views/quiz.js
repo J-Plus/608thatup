@@ -43,6 +43,7 @@ export async function quizView(params) {
     return;
   }
 
+  const quizId = quizData.quizId;
   const totalQuestions = quizData.questions.length;
   const answers = new Array(totalQuestions).fill(-1);
   let currentQ = 0;
@@ -55,7 +56,7 @@ export async function quizView(params) {
       <div class="container page" style="padding-top:80px;"><div class="spinner"></div></div>
     `;
     try {
-      const results = await api.submitQuiz(answers);
+      const results = await api.submitQuiz(quizId);
       setState({ lastResults: { ...results, retrain: isRetrain }, lastTopic: topic, lastSectionName: quizData.sectionName });
       navigate('/results');
     } catch (e) {
@@ -92,7 +93,7 @@ export async function quizView(params) {
 
         // Check answer server-side
         try {
-          const result = await api.checkAnswer(currentQ, selected);
+          const result = await api.checkAnswer(quizId, currentQ, selected);
           const correct = result.correct;
 
           root.querySelectorAll('.option-btn').forEach(b => {
@@ -129,7 +130,6 @@ export async function quizView(params) {
   document.addEventListener('keydown', keyHandler);
 
   // Clean up on navigate away
-  const origNavigate = navigate;
   const cleanup = () => document.removeEventListener('keydown', keyHandler);
   window.addEventListener('hashchange', cleanup, { once: true });
 

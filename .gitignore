@@ -6,3 +6,6 @@ dist/
 .env
 .DS_Store
 .gstack/
+
+.env.*
+!.env.example
