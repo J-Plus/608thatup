@@ -2556,7 +2556,7 @@
       "Replace the damaged Schrader valve core to prevent leakage.",
       "Cap the Schrader ports to prevent accidental depression of the valve core."
     ],
-    "answer": 1,
+    "answer": 0,
     "topic": 1,
     "sectionName": "Type 1"
   },
