@@ -79,6 +79,10 @@ export const api = {
     body: JSON.stringify({ archived }),
   }),
   deleteStudent: (id) => request(`/admin/students/${id}`, { method: 'DELETE' }),
+  bulkStudents: (ids, action) => request('/admin/students/bulk', {
+    method: 'POST',
+    body: JSON.stringify({ ids, action }),
+  }),
   setCohort: (userId, cohort) => request('/admin/set-cohort', {
     method: 'POST',
     body: JSON.stringify({ userId, cohort }),

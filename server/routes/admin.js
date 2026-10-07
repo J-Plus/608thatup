@@ -279,6 +279,40 @@ router.post('/students/:id/archive', (req, res) => {
   res.json({ ok: true });
 });
 
+// Bulk archive / unarchive / permanently delete students in one transaction.
+// Only rows with role 'student' are touched, and the caller is never deleted.
+router.post('/students/bulk', (req, res) => {
+  if (req.user.cohort) return res.status(403).json({ error: 'Only super-admins can manage students' });
+  const { action } = req.body;
+  const ids = Array.isArray(req.body.ids)
+    ? [...new Set(req.body.ids.map(n => parseInt(n)).filter(n => Number.isInteger(n) && n !== req.user.id))]
+    : [];
+  if (!['archive', 'unarchive', 'delete'].includes(action)) return res.status(400).json({ error: 'Invalid action' });
+  if (ids.length === 0) return res.status(400).json({ error: 'No students selected' });
+  if (ids.length > 1000) return res.status(400).json({ error: 'Too many students in one request' });
+
+  const placeholders = ids.map(() => '?').join(',');
+  const studentIds = db.prepare(`SELECT id FROM users WHERE role = 'student' AND id IN (${placeholders})`)
+    .all(...ids).map(r => r.id);
+  if (studentIds.length === 0) return res.status(404).json({ error: 'No matching students' });
+  const ph = studentIds.map(() => '?').join(',');
+
+  const result = db.transaction(() => {
+    if (action === 'delete') {
+      const answers = db.prepare(`DELETE FROM quiz_answers WHERE round_id IN (SELECT id FROM quiz_rounds WHERE user_id IN (${ph}))`).run(...studentIds).changes;
+      const rounds = db.prepare(`DELETE FROM quiz_rounds WHERE user_id IN (${ph})`).run(...studentIds).changes;
+      const rewards = db.prepare(`DELETE FROM rewards WHERE user_id IN (${ph})`).run(...studentIds).changes;
+      const users = db.prepare(`DELETE FROM users WHERE id IN (${ph})`).run(...studentIds).changes;
+      return { users, answers, rounds, rewards };
+    }
+    const users = db.prepare(`UPDATE users SET archived = ? WHERE id IN (${ph})`)
+      .run(action === 'archive' ? 1 : 0, ...studentIds).changes;
+    return { users };
+  })();
+
+  res.json({ ok: true, action, ...result });
+});
+
 // Permanently delete a student and all their quiz history. For test and junk
 // accounts; real students should be archived instead. Rows are removed
 // child-first because foreign keys are enforced without ON DELETE CASCADE.

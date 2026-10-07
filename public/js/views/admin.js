@@ -206,6 +206,8 @@ export async function adminView() {
     const allCohorts = [...new Set(students.map(s => s.cohort).filter(Boolean))].sort();
     let activeCohort = null;
     let sortMode = 'name';
+    const selected = new Set();
+    const rowCheckStyle = 'width:1.1rem;height:1.1rem;cursor:pointer;';
 
     const nullsLast = (a, b, cmp) => {
       const aNull = a === null || a === undefined || a === '';
@@ -241,10 +243,11 @@ export async function adminView() {
     }
 
     function buildRows(list) {
-      const colCount = isSuperAdmin ? 6 : 5;
+      const colCount = isSuperAdmin ? 7 : 5;
       if (list.length === 0) return `<tr><td colspan="${colCount}" style="text-align:center;color:var(--card-text-secondary);padding:2rem;">No students in this cohort</td></tr>`;
       return list.map(s => `
         <tr class="clickable" data-student-id="${s.id}"${s.archived ? ' style="opacity:0.55;"' : ''}>
+          ${isSuperAdmin ? `<td class="select-cell" style="width:2rem;"><input type="checkbox" class="row-select" data-id="${s.id}" ${selected.has(s.id) ? 'checked' : ''} style="${rowCheckStyle}" aria-label="Select ${escapeHtml(s.name)}"></td>` : ''}
           <td>
             <div class="student-cell">
               ${s.avatar_url ? `<img src="${escapeHtml(s.avatar_url)}" alt="" class="student-avatar" onerror="this.style.display='none'">` : ''}
@@ -281,15 +284,20 @@ export async function adminView() {
           ? students.filter(s => s.cohort === activeCohort)
           : students;
       const sorted = [...filtered].sort(sortFns[sortMode]);
+      // Never act on students hidden by the current filter.
+      const visibleIds = new Set(sorted.map(st => st.id));
+      [...selected].forEach(id => { if (!visibleIds.has(id)) selected.delete(id); });
       const tableWrap = container.querySelector('#student-table-wrap');
       tableWrap.innerHTML = students.length === 0
         ? `<p class="text-muted text-center mt-xl">${allStudents.length > 0 ? 'All students are archived. Tick "Show archived" to see them.' : 'No students yet'}</p>`
         : `
           ${buildChips()}
+          ${isSuperAdmin ? '<div id="bulk-bar"></div>' : ''}
           <div class="glass" style="overflow-x:auto;">
             <table class="admin-table">
               <thead>
                 <tr>
+                  ${isSuperAdmin ? `<th class="select-cell" style="width:2rem;"><input type="checkbox" id="select-all" style="${rowCheckStyle}" aria-label="Select all shown"></th>` : ''}
                   ${sortHeader('name', 'Student')}
                   ${isSuperAdmin ? sortHeader('cohort', 'Cohort') : ''}
                   ${sortHeader('rounds', 'Rounds')}
@@ -308,7 +316,6 @@ export async function adminView() {
         chip.addEventListener('click', () => {
           activeCohort = chip.dataset.cohort === 'All' ? null : chip.dataset.cohort;
           renderTable();
-          bindTableEvents();
         });
       });
 
@@ -317,18 +324,89 @@ export async function adminView() {
         th.addEventListener('click', () => {
           sortMode = th.dataset.sort;
           renderTable();
-          bindTableEvents();
         });
       });
 
       bindTableEvents();
+      if (isSuperAdmin && tableWrap.querySelector('#bulk-bar')) bindSelection(sorted);
+    }
+
+    function bulkBarHtml(count) {
+      if (count === 0) return '';
+      const btn = 'font-size:0.85rem; padding:0.35rem 0.8rem;';
+      return `
+        <div class="glass" style="display:flex; flex-wrap:wrap; gap:0.5rem; align-items:center; padding:0.6rem 1rem; margin-bottom:0.75rem;">
+          <strong style="color:var(--card-text); margin-right:0.25rem;">${count} selected</strong>
+          <button class="btn btn--ghost bulk-btn" data-action="archive" style="${btn}">Archive</button>
+          <button class="btn btn--ghost bulk-btn" data-action="unarchive" style="${btn}">Unarchive</button>
+          <button class="btn btn--ghost bulk-btn" data-action="delete" style="${btn} color:var(--error);">Delete permanently</button>
+          <button class="btn btn--ghost" id="bulk-clear" style="${btn} margin-left:auto;">Clear</button>
+        </div>
+      `;
+    }
+
+    function bindSelection(visible) {
+      const tableWrap = container.querySelector('#student-table-wrap');
+      const bar = tableWrap.querySelector('#bulk-bar');
+      const selectAll = tableWrap.querySelector('#select-all');
+
+      const refresh = () => {
+        if (selectAll) {
+          selectAll.checked = visible.length > 0 && visible.every(st => selected.has(st.id));
+          selectAll.indeterminate = !selectAll.checked && visible.some(st => selected.has(st.id));
+        }
+        bar.innerHTML = bulkBarHtml(selected.size);
+        bar.querySelectorAll('.bulk-btn').forEach(b => b.addEventListener('click', () => runBulk(b.dataset.action)));
+        bar.querySelector('#bulk-clear')?.addEventListener('click', () => {
+          selected.clear();
+          tableWrap.querySelectorAll('.row-select').forEach(cb => { cb.checked = false; });
+          refresh();
+        });
+      };
+
+      selectAll?.addEventListener('change', () => {
+        visible.forEach(st => selectAll.checked ? selected.add(st.id) : selected.delete(st.id));
+        tableWrap.querySelectorAll('.row-select').forEach(cb => { cb.checked = selectAll.checked; });
+        refresh();
+      });
+      tableWrap.querySelectorAll('.row-select').forEach(cb => {
+        cb.addEventListener('click', (e) => e.stopPropagation());
+        cb.addEventListener('change', () => {
+          const id = Number(cb.dataset.id);
+          cb.checked ? selected.add(id) : selected.delete(id);
+          refresh();
+        });
+      });
+      refresh();
+    }
+
+    async function runBulk(action) {
+      const ids = [...selected];
+      const n = ids.length;
+      const noun = n === 1 ? 'student' : 'students';
+      if (action === 'delete') {
+        const typed = prompt(
+          `Permanently delete ${n} ${noun} and ALL their quiz history?\n\n` +
+          `This cannot be undone. For real students, use Archive instead.\n\n` +
+          `Type DELETE ${n} to confirm:`
+        );
+        if (typed !== `DELETE ${n}`) return;
+      } else if (!confirm(`${action === 'archive' ? 'Archive' : 'Unarchive'} ${n} ${noun}?`)) {
+        return;
+      }
+      try {
+        await api.bulkStudents(ids, action);
+        adminView();
+      } catch (err) {
+        alert(err.message || 'Bulk action failed');
+      }
     }
 
     function bindTableEvents() {
       // Row click → student detail
       container.querySelectorAll('.clickable').forEach(row => {
         row.addEventListener('click', (e) => {
-          if (e.target.closest('.cohort-cell')) return;
+          if (e.target.closest('.cohort-cell') || e.target.closest('.select-cell')) return;
           window.location.hash = `#/admin/${row.dataset.studentId}`;
         });
       });
@@ -354,6 +432,8 @@ export async function adminView() {
     container.insertAdjacentHTML('beforeend', '<div id="student-table-wrap"></div>');
     renderTable();
   } catch (e) {
-    app.querySelector('.spinner').outerHTML = `<p class="text-muted text-center">Failed to load admin data</p>`;
+    console.error('Admin view failed', e);
+    const target = app.querySelector('.spinner') || app.querySelector('#student-table-wrap');
+    if (target) target.outerHTML = `<p class="text-muted text-center">Failed to load admin data</p>`;
   }
 }
