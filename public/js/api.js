@@ -69,6 +69,16 @@ export const api = {
   deleteCohort: (name) => request(`/admin/cohorts/${encodeURIComponent(name)}`, {
     method: 'DELETE',
   }),
+  getCohortsManage: () => request('/admin/cohorts/manage'),
+  archiveCohort: (name, archived = true) => request(`/admin/cohorts/${encodeURIComponent(name)}/archive`, {
+    method: 'POST',
+    body: JSON.stringify({ archived }),
+  }),
+  archiveStudent: (id, archived = true) => request(`/admin/students/${id}/archive`, {
+    method: 'POST',
+    body: JSON.stringify({ archived }),
+  }),
+  deleteStudent: (id) => request(`/admin/students/${id}`, { method: 'DELETE' }),
   setCohort: (userId, cohort) => request('/admin/set-cohort', {
     method: 'POST',
     body: JSON.stringify({ userId, cohort }),

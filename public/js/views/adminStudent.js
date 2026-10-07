@@ -4,6 +4,7 @@ import { rewardSet } from '../components/rewardBadge.js';
 import { progressBar } from '../components/progressBar.js';
 import { renderWeakSpots, bindWeakSpots } from '../components/weakSpots.js';
 import { escapeHtml } from '../util/escape.js';
+import { getState } from '../state.js';
 
 export async function adminStudentView(params) {
   const app = document.getElementById('app');
@@ -21,6 +22,7 @@ export async function adminStudentView(params) {
     const data = await api.getStudent(studentId);
     const { student, sections, quizLength, wrongQuestions = [] } = data;
 
+    const isSuperAdmin = !getState().user?.cohort;
     const container = app.querySelector('.container');
     container.querySelector('.spinner').remove();
 
@@ -36,7 +38,14 @@ export async function adminStudentView(params) {
           </p>
         </div>
       </div>
-      <a href="#/admin" class="btn btn--ghost" style="margin-bottom:1.5rem;">&larr; Back to students</a>
+      <div style="display:flex; gap:0.5rem; flex-wrap:wrap; align-items:center; margin-bottom:1.5rem;">
+        <a href="#/admin" class="btn btn--ghost">&larr; Back to students</a>
+        ${isSuperAdmin && student.role === 'student' ? `
+          <button id="archive-student-btn" class="btn btn--ghost">${student.archived ? 'Unarchive' : 'Archive'}</button>
+          <button id="delete-student-btn" class="btn btn--ghost" style="color:var(--error);">Delete permanently</button>
+        ` : ''}
+        ${student.archived ? '<span class="history-tag">archived</span>' : ''}
+      </div>
     `;
 
     const fmtDateTime = (iso) => {
@@ -83,6 +92,35 @@ export async function adminStudentView(params) {
 
     container.insertAdjacentHTML('beforeend', headerHtml + sectionsHtml + renderWeakSpots(wrongQuestions));
     bindWeakSpots(wrongQuestions);
+
+    document.getElementById('archive-student-btn')?.addEventListener('click', async () => {
+      const archiving = !student.archived;
+      const msg = archiving
+        ? `Archive ${student.name}? They'll be hidden from the student list, stats and CSV. Their history is kept and you can unarchive later.`
+        : `Unarchive ${student.name}?`;
+      if (!confirm(msg)) return;
+      try {
+        await api.archiveStudent(student.id, archiving);
+        adminStudentView(params);
+      } catch (err) {
+        alert(err.message || 'Failed to update student');
+      }
+    });
+
+    document.getElementById('delete-student-btn')?.addEventListener('click', async () => {
+      const typed = prompt(
+        `Permanently delete ${student.name} (${student.email}) and ALL their quiz history?\n\n` +
+        `This cannot be undone. For real students, use Archive instead.\n\n` +
+        `Type DELETE to confirm:`
+      );
+      if (typed !== 'DELETE') return;
+      try {
+        await api.deleteStudent(student.id);
+        window.location.hash = '#/admin';
+      } catch (err) {
+        alert(err.message || 'Failed to delete student');
+      }
+    });
   } catch (e) {
     app.querySelector('.spinner').outerHTML = `<p class="text-muted text-center">Failed to load student data</p>`;
   }

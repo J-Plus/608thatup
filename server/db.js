@@ -103,4 +103,9 @@ db.exec(`
   );
 `);
 
+// Migration: archive flags. Archived cohorts/students are hidden from admin
+// views, stats and CSV export by default but keep all their quiz history.
+addColumn(`ALTER TABLE cohorts ADD COLUMN archived INTEGER NOT NULL DEFAULT 0`);
+addColumn(`ALTER TABLE users ADD COLUMN archived INTEGER NOT NULL DEFAULT 0`);
+
 export default db;

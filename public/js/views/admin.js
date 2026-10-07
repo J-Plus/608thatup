@@ -12,6 +12,10 @@ function cohortSelect(cohorts, current, userId) {
   `;
 }
 
+// View state that survives re-renders after archive actions.
+let showArchived = false;
+let cohortPanelOpen = false;
+
 export async function adminView() {
   const app = document.getElementById('app');
   const { user } = getState();
@@ -26,6 +30,10 @@ export async function adminView() {
         <div style="display:flex; gap:0.5rem; margin-top:1rem; flex-wrap:wrap; align-items:center;">
           <button id="export-csv-btn" class="btn btn--primary">Download Scores CSV</button>
           ${isSuperAdmin ? '<button id="manage-cohorts-btn" class="btn btn--ghost">Manage Cohorts</button>' : ''}
+          <label style="display:inline-flex; align-items:center; gap:0.4rem; font-size:0.85rem; cursor:pointer; color:var(--text-secondary);">
+            <input type="checkbox" id="show-archived-cb" ${showArchived ? 'checked' : ''} style="cursor:pointer;">
+            Show archived
+          </label>
         </div>
         ${isSuperAdmin ? `
         <label id="show-answers-toggle" style="display:inline-flex; align-items:center; gap:0.5rem; margin-top:1rem; font-size:0.85rem; cursor:pointer; color:var(--text-secondary);">
@@ -41,7 +49,12 @@ export async function adminView() {
   bindNavbar();
 
   document.getElementById('export-csv-btn')?.addEventListener('click', () => {
-    window.location = '/api/admin/export-csv';
+    window.location = `/api/admin/export-csv${showArchived ? '?archived=1' : ''}`;
+  });
+
+  document.getElementById('show-archived-cb')?.addEventListener('change', (e) => {
+    showArchived = e.target.checked;
+    adminView();
   });
 
   // Show answers toggle (super-admin only)
@@ -73,12 +86,36 @@ export async function adminView() {
     const panel = document.getElementById('cohort-panel');
     if (panel.children.length > 0) {
       panel.innerHTML = '';
+      cohortPanelOpen = false;
       return;
     }
-    renderCohortPanel(panel, cohorts);
+    cohortPanelOpen = true;
+    loadCohortPanel(panel);
   });
 
+  async function loadCohortPanel(panel) {
+    try {
+      renderCohortPanel(panel, await api.getCohortsManage());
+    } catch (err) {
+      panel.innerHTML = '<p class="text-muted">Failed to load cohorts</p>';
+    }
+  }
+
+  function cohortTag(c) {
+    const muted = c.archived ? 'opacity:0.55;' : '';
+    const linkBtn = 'background:none; border:none; cursor:pointer; font-size:0.75rem; text-decoration:underline; padding:0; color:var(--card-text-secondary);';
+    return `
+      <span class="cohort-tag" style="display:inline-flex; align-items:center; gap:6px; padding:4px 10px; ${muted}">
+        ${escapeHtml(c.name)} <span style="font-size:0.75rem; color:var(--card-text-secondary);">${c.studentCount}</span>
+        <button class="archive-cohort-btn" data-name="${escapeHtml(c.name)}" data-archived="${c.archived ? '1' : '0'}" style="${linkBtn}">${c.archived ? 'unarchive' : 'archive'}</button>
+        ${c.studentCount === 0 ? `<button class="delete-cohort-btn" data-name="${escapeHtml(c.name)}" title="Remove empty cohort" style="background:none; border:none; cursor:pointer; color:var(--error); font-size:1rem; line-height:1; padding:0;">&times;</button>` : ''}
+      </span>
+    `;
+  }
+
   function renderCohortPanel(panel, list) {
+    const active = list.filter(c => !c.archived);
+    const archived = list.filter(c => c.archived);
     panel.innerHTML = `
       <div class="glass" style="padding:1.25rem; margin-bottom:1.5rem;">
         <h3 style="margin:0 0 0.75rem; font-family:var(--font-heading); font-weight:600; color:var(--card-text);">Manage Cohorts</h3>
@@ -87,14 +124,13 @@ export async function adminView() {
           <button id="add-cohort-btn" class="btn btn--primary" style="font-size:0.85rem;">Add</button>
         </div>
         <div id="cohort-list" style="display:flex; flex-wrap:wrap; gap:0.4rem;">
-          ${list.map(c => `
-            <span class="cohort-tag" style="display:inline-flex; align-items:center; gap:4px; padding:4px 10px;">
-              ${escapeHtml(c)}
-              <button class="delete-cohort-btn" data-name="${escapeHtml(c)}" style="background:none; border:none; cursor:pointer; color:var(--error); font-size:1rem; line-height:1; padding:0;">&times;</button>
-            </span>
-          `).join('')}
-          ${list.length === 0 ? '<span style="color:var(--card-text-secondary); font-size:0.85rem;">No cohorts yet</span>' : ''}
+          ${active.map(cohortTag).join('')}
+          ${active.length === 0 ? '<span style="color:var(--card-text-secondary); font-size:0.85rem;">No active cohorts</span>' : ''}
         </div>
+        ${archived.length > 0 ? `
+          <p style="margin:1rem 0 0.4rem; font-size:0.8rem; color:var(--card-text-secondary);">Archived (hidden from lists, stats and CSV; history kept)</p>
+          <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">${archived.map(cohortTag).join('')}</div>
+        ` : ''}
       </div>
     `;
 
@@ -106,21 +142,38 @@ export async function adminView() {
         await api.createCohort(name);
         cohorts.push(name);
         cohorts.sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }));
-        renderCohortPanel(panel, cohorts);
+        await loadCohortPanel(panel);
         updateAllSelects();
       } catch (err) {
         alert(err.message || 'Failed to add cohort');
       }
     });
 
+    panel.querySelectorAll('.archive-cohort-btn').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const name = btn.dataset.name;
+        const archiving = btn.dataset.archived !== '1';
+        const msg = archiving
+          ? `Archive cohort "${name}"? It and all its students will be hidden from the student list, stats and CSV. Nothing is deleted and you can unarchive later.`
+          : `Unarchive cohort "${name}" and all its students?`;
+        if (!confirm(msg)) return;
+        try {
+          await api.archiveCohort(name, archiving);
+          adminView();
+        } catch (err) {
+          alert(err.message || 'Failed to update cohort');
+        }
+      });
+    });
+
     panel.querySelectorAll('.delete-cohort-btn').forEach(btn => {
       btn.addEventListener('click', async () => {
         const name = btn.dataset.name;
-        if (!confirm(`Remove cohort "${name}"? Students assigned to it will keep their tag.`)) return;
+        if (!confirm(`Remove empty cohort "${name}"?`)) return;
         try {
           await api.deleteCohort(name);
           cohorts = cohorts.filter(c => c !== name);
-          renderCohortPanel(panel, cohorts);
+          await loadCohortPanel(panel);
           updateAllSelects();
         } catch (err) {
           alert('Failed to remove cohort');
@@ -128,6 +181,8 @@ export async function adminView() {
       });
     });
   }
+
+  if (cohortPanelOpen && isSuperAdmin) loadCohortPanel(document.getElementById('cohort-panel'));
 
   function updateAllSelects() {
     document.querySelectorAll('.cohort-select').forEach(sel => {
@@ -138,10 +193,11 @@ export async function adminView() {
   }
 
   try {
-    const [overview, students] = await Promise.all([
+    const [overview, allStudents] = await Promise.all([
       api.getOverview(),
       api.getStudents(),
     ]);
+    const students = showArchived ? allStudents : allStudents.filter(s => !s.archived);
 
     const container = app.querySelector('.container');
     container.querySelector('.spinner').remove();
@@ -188,11 +244,12 @@ export async function adminView() {
       const colCount = isSuperAdmin ? 6 : 5;
       if (list.length === 0) return `<tr><td colspan="${colCount}" style="text-align:center;color:var(--card-text-secondary);padding:2rem;">No students in this cohort</td></tr>`;
       return list.map(s => `
-        <tr class="clickable" data-student-id="${s.id}">
+        <tr class="clickable" data-student-id="${s.id}"${s.archived ? ' style="opacity:0.55;"' : ''}>
           <td>
             <div class="student-cell">
               ${s.avatar_url ? `<img src="${escapeHtml(s.avatar_url)}" alt="" class="student-avatar" onerror="this.style.display='none'">` : ''}
               <span>${escapeHtml(s.name)}</span>
+              ${s.archived ? '<span class="history-tag" style="margin-left:0.4rem;">archived</span>' : ''}
             </div>
           </td>
           ${isSuperAdmin ? `<td class="cohort-cell" data-user-id="${s.id}">${cohortSelect(cohorts, s.cohort || '', s.id)}</td>` : ''}
@@ -226,7 +283,7 @@ export async function adminView() {
       const sorted = [...filtered].sort(sortFns[sortMode]);
       const tableWrap = container.querySelector('#student-table-wrap');
       tableWrap.innerHTML = students.length === 0
-        ? '<p class="text-muted text-center mt-xl">No students yet</p>'
+        ? `<p class="text-muted text-center mt-xl">${allStudents.length > 0 ? 'All students are archived. Tick "Show archived" to see them.' : 'No students yet'}</p>`
         : `
           ${buildChips()}
           <div class="glass" style="overflow-x:auto;">

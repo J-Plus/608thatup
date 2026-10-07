@@ -21,7 +21,7 @@ router.get('/students', (req, res) => {
   const params = adminCohort ? [adminCohort] : [];
 
   const students = db.prepare(`
-    SELECT u.id, u.name, u.email, u.avatar_url, u.last_login, u.cohort,
+    SELECT u.id, u.name, u.email, u.avatar_url, u.last_login, u.cohort, u.archived,
       (SELECT COUNT(*) FROM quiz_rounds WHERE user_id = u.id) as totalRounds,
       (SELECT SUM(is_perfect) FROM quiz_rounds WHERE user_id = u.id) as totalPerfects,
       (SELECT AVG(score) FROM quiz_rounds WHERE user_id = u.id AND is_retrain = 0) as avgScore,
@@ -35,6 +35,7 @@ router.get('/students', (req, res) => {
     ...s,
     avgScore: s.avgScore ? Math.round(s.avgScore * 10) / 10 : 0,
     totalPerfects: s.totalPerfects || 0,
+    archived: !!s.archived,
   })));
 });
 
@@ -42,7 +43,7 @@ router.get('/students/:id', (req, res) => {
   const id = parseInt(req.params.id);
   if (isNaN(id)) return res.status(400).json({ error: 'Invalid student ID' });
 
-  const student = db.prepare('SELECT id, name, email, avatar_url, created_at, last_login, cohort FROM users WHERE id = ?')
+  const student = db.prepare('SELECT id, name, email, avatar_url, created_at, last_login, cohort, role, archived FROM users WHERE id = ?')
     .get(id);
 
   if (!student) return res.status(404).json({ error: 'Student not found' });
@@ -110,50 +111,39 @@ router.get('/students/:id', (req, res) => {
     corrected: !!q.latestCorrect,
   }));
 
-  res.json({ student, sections, quizLength: QUIZ_LENGTH, wrongQuestions });
+  res.json({
+    student: { ...student, archived: !!student.archived },
+    sections, quizLength: QUIZ_LENGTH, wrongQuestions,
+  });
 });
 
 router.get('/overview', (req, res) => {
   const adminCohort = req.user.cohort;
 
-  if (adminCohort) {
-    // Scoped to cohort
-    const studentIds = db.prepare('SELECT id FROM users WHERE role = ? AND cohort = ?').all('student', adminCohort).map(s => s.id);
-    const placeholders = studentIds.length > 0 ? studentIds.map(() => '?').join(',') : 'NULL';
+  // Stats cover active (non-archived) students only, optionally scoped to the
+  // admin's cohort.
+  const studentIds = db.prepare(`
+    SELECT id FROM users
+    WHERE role = 'student' AND archived = 0 ${adminCohort ? 'AND cohort = ?' : ''}
+  `).all(...(adminCohort ? [adminCohort] : [])).map(s => s.id);
 
-    const totalStudents = studentIds.length;
-    const totalRounds = studentIds.length > 0
-      ? db.prepare(`SELECT COUNT(*) as count FROM quiz_rounds WHERE user_id IN (${placeholders})`).get(...studentIds).count : 0;
-    const avgScore = studentIds.length > 0
-      ? db.prepare(`SELECT AVG(score) as avg FROM quiz_rounds WHERE is_retrain = 0 AND user_id IN (${placeholders})`).get(...studentIds).avg : null;
-    const totalRewards = studentIds.length > 0
-      ? db.prepare(`SELECT COUNT(*) as count FROM rewards WHERE user_id IN (${placeholders})`).get(...studentIds).count : 0;
-    const activeToday = studentIds.length > 0
-      ? db.prepare(`SELECT COUNT(DISTINCT user_id) as count FROM quiz_rounds WHERE completed_at >= datetime('now', '-1 day') AND user_id IN (${placeholders})`).get(...studentIds).count : 0;
+  const totalStudents = studentIds.length;
+  let totalRounds = 0, avgScore = null, totalRewards = 0, activeToday = 0;
 
-    res.json({
-      totalStudents, totalRounds,
-      avgScore: avgScore ? Math.round(avgScore * 10) / 10 : 0,
-      quizLength: QUIZ_LENGTH, totalRewards, activeToday,
-      cohort: adminCohort,
-    });
-  } else {
-    // Super-admin sees all
-    const totalStudents = db.prepare('SELECT COUNT(*) as count FROM users WHERE role = ?').get('student').count;
-    const totalRounds = db.prepare('SELECT COUNT(*) as count FROM quiz_rounds').get().count;
-    const avgScore = db.prepare('SELECT AVG(score) as avg FROM quiz_rounds WHERE is_retrain = 0').get().avg;
-    const totalRewards = db.prepare('SELECT COUNT(*) as count FROM rewards').get().count;
-    const activeToday = db.prepare(`
-      SELECT COUNT(DISTINCT user_id) as count FROM quiz_rounds
-      WHERE completed_at >= datetime('now', '-1 day')
-    `).get().count;
-
-    res.json({
-      totalStudents, totalRounds,
-      avgScore: avgScore ? Math.round(avgScore * 10) / 10 : 0,
-      quizLength: QUIZ_LENGTH, totalRewards, activeToday,
-    });
+  if (studentIds.length > 0) {
+    const placeholders = studentIds.map(() => '?').join(',');
+    totalRounds = db.prepare(`SELECT COUNT(*) as count FROM quiz_rounds WHERE user_id IN (${placeholders})`).get(...studentIds).count;
+    avgScore = db.prepare(`SELECT AVG(score) as avg FROM quiz_rounds WHERE is_retrain = 0 AND user_id IN (${placeholders})`).get(...studentIds).avg;
+    totalRewards = db.prepare(`SELECT COUNT(*) as count FROM rewards WHERE user_id IN (${placeholders})`).get(...studentIds).count;
+    activeToday = db.prepare(`SELECT COUNT(DISTINCT user_id) as count FROM quiz_rounds WHERE completed_at >= datetime('now', '-1 day') AND user_id IN (${placeholders})`).get(...studentIds).count;
   }
+
+  res.json({
+    totalStudents, totalRounds,
+    avgScore: avgScore ? Math.round(avgScore * 10) / 10 : 0,
+    quizLength: QUIZ_LENGTH, totalRewards, activeToday,
+    ...(adminCohort ? { cohort: adminCohort } : {}),
+  });
 });
 
 router.get('/rounds/:id', (req, res) => {
@@ -206,26 +196,27 @@ router.get('/rounds/:id', (req, res) => {
 router.get('/export-csv', (req, res) => {
   const adminCohort = req.user.cohort;
   const cohortFilter = adminCohort ? 'AND u.cohort = ?' : '';
+  const archivedFilter = req.query.archived === '1' ? '' : 'AND u.archived = 0';
   const params = adminCohort ? [adminCohort] : [];
 
   const students = db.prepare(`
-    SELECT u.name, u.email, u.cohort, u.last_login,
+    SELECT u.name, u.email, u.cohort, u.last_login, u.archived,
       (SELECT COUNT(*) FROM quiz_rounds WHERE user_id = u.id) as totalRounds,
       (SELECT SUM(is_perfect) FROM quiz_rounds WHERE user_id = u.id) as totalPerfects,
       (SELECT AVG(score) FROM quiz_rounds WHERE user_id = u.id AND is_retrain = 0) as avgScore,
       (SELECT COUNT(*) FROM rewards WHERE user_id = u.id) as rewardCount
-    FROM users u WHERE u.role = 'student' ${cohortFilter}
+    FROM users u WHERE u.role = 'student' ${cohortFilter} ${archivedFilter}
     ORDER BY u.name COLLATE NOCASE ASC
   `).all(...params);
 
-  const header = 'Name,Email,Cohort,Total Rounds,Perfect Rounds,Avg Score,Rewards,Last Active';
+  const header = 'Name,Email,Cohort,Total Rounds,Perfect Rounds,Avg Score,Rewards,Last Active,Archived';
   const rows = students.map(s => {
     const name = csvCell(s.name || '');
     const email = csvCell(s.email || '');
     const cohort = csvCell(s.cohort || '');
     const avg = s.avgScore ? Math.round(s.avgScore * 10) / 10 : 0;
     const lastActive = csvCell(s.last_login ? new Date(s.last_login).toLocaleDateString() : '');
-    return `${name},${email},${cohort},${s.totalRounds},${s.totalPerfects || 0},${avg},${s.rewardCount},${lastActive}`;
+    return `${name},${email},${cohort},${s.totalRounds},${s.totalPerfects || 0},${avg},${s.rewardCount},${lastActive},${s.archived ? 'Yes' : 'No'}`;
   });
 
   const csv = [header, ...rows].join('\n');
@@ -235,8 +226,83 @@ router.get('/export-csv', (req, res) => {
 });
 
 router.get('/cohorts', (req, res) => {
-  const cohorts = db.prepare('SELECT name FROM cohorts ORDER BY name COLLATE NOCASE ASC').all();
+  // Active cohorts only: this feeds the cohort-assignment dropdowns.
+  const cohorts = db.prepare('SELECT name FROM cohorts WHERE archived = 0 ORDER BY name COLLATE NOCASE ASC').all();
   res.json(cohorts.map(c => c.name));
+});
+
+// Full cohort list for the Manage Cohorts panel, including archived ones and
+// legacy cohort tags that exist on students but not in the cohorts table.
+router.get('/cohorts/manage', (req, res) => {
+  if (req.user.cohort) return res.status(403).json({ error: 'Only super-admins can manage cohorts' });
+  const rows = db.prepare(`
+    WITH names AS (
+      SELECT name FROM cohorts
+      UNION
+      SELECT DISTINCT cohort FROM users WHERE cohort IS NOT NULL AND cohort != '' AND role = 'student'
+    )
+    SELECT n.name,
+      COALESCE(c.archived, 0) as archived,
+      (SELECT COUNT(*) FROM users u WHERE u.cohort = n.name AND u.role = 'student') as studentCount
+    FROM names n LEFT JOIN cohorts c ON c.name = n.name
+    ORDER BY n.name COLLATE NOCASE ASC
+  `).all();
+  res.json(rows.map(r => ({ ...r, archived: !!r.archived })));
+});
+
+// Archive or unarchive a cohort AND every student tagged with it, atomically.
+router.post('/cohorts/:name/archive', (req, res) => {
+  if (req.user.cohort) return res.status(403).json({ error: 'Only super-admins can manage cohorts' });
+  const name = req.params.name;
+  const archived = req.body.archived === false ? 0 : 1;
+
+  const result = db.transaction(() => {
+    db.prepare(`
+      INSERT INTO cohorts (name, archived) VALUES (?, ?)
+      ON CONFLICT(name) DO UPDATE SET archived = excluded.archived
+    `).run(name, archived);
+    return db.prepare(`UPDATE users SET archived = ? WHERE cohort = ? AND role = 'student'`).run(archived, name);
+  })();
+
+  res.json({ ok: true, studentsUpdated: result.changes });
+});
+
+// Archive or unarchive a single student.
+router.post('/students/:id/archive', (req, res) => {
+  if (req.user.cohort) return res.status(403).json({ error: 'Only super-admins can archive students' });
+  const id = parseInt(req.params.id);
+  if (isNaN(id)) return res.status(400).json({ error: 'Invalid student ID' });
+  const archived = req.body.archived === false ? 0 : 1;
+
+  const result = db.prepare(`UPDATE users SET archived = ? WHERE id = ? AND role = 'student'`).run(archived, id);
+  if (result.changes === 0) return res.status(404).json({ error: 'Student not found' });
+  res.json({ ok: true });
+});
+
+// Permanently delete a student and all their quiz history. For test and junk
+// accounts; real students should be archived instead. Rows are removed
+// child-first because foreign keys are enforced without ON DELETE CASCADE.
+router.delete('/students/:id', (req, res) => {
+  if (req.user.cohort) return res.status(403).json({ error: 'Only super-admins can delete students' });
+  const id = parseInt(req.params.id);
+  if (isNaN(id)) return res.status(400).json({ error: 'Invalid student ID' });
+  if (id === req.user.id) return res.status(400).json({ error: 'You cannot delete your own account' });
+
+  const user = db.prepare('SELECT id, role FROM users WHERE id = ?').get(id);
+  if (!user) return res.status(404).json({ error: 'Student not found' });
+  if (user.role !== 'student') return res.status(400).json({ error: 'Only student accounts can be deleted' });
+
+  const counts = db.transaction(() => {
+    const answers = db.prepare(`
+      DELETE FROM quiz_answers WHERE round_id IN (SELECT id FROM quiz_rounds WHERE user_id = ?)
+    `).run(id).changes;
+    const rounds = db.prepare('DELETE FROM quiz_rounds WHERE user_id = ?').run(id).changes;
+    const rewards = db.prepare('DELETE FROM rewards WHERE user_id = ?').run(id).changes;
+    db.prepare('DELETE FROM users WHERE id = ?').run(id);
+    return { answers, rounds, rewards };
+  })();
+
+  res.json({ ok: true, deleted: counts });
 });
 
 router.post('/cohorts', (req, res) => {
